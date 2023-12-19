@@ -243,12 +243,12 @@ body {
 
 .sub-container .subCategories {
   width: 25%;
-  max-width: 250px;
+  max-width: 300px;
 }
 
 .sub-container .uiArea {
   width: 25%;
-  max-width: 250px;
+  max-width: 300px;
 }
 .sub-container .subCategories ul a {
   text-decoration: none;
