@@ -44,7 +44,7 @@ body {
 
 .srch-btn {
   position: absolute;
-  top: 5.5%;
+  top: 6%;
   right: 0;
   background: var(
     --primary-gradient,
