@@ -314,6 +314,11 @@ body {
 
 .countdown {
   display: flex;
+  flex-direction: column;
+}
+
+.subCountDown {
+  display: flex;
   gap: 1rem;
 }
 .card {
