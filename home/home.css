@@ -23,6 +23,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 1rem;
 }
 
 .search-bar {
@@ -33,6 +34,12 @@ body {
   box-shadow: none;
   border: 2px solid #127fff;
   font-family: "Inter", sans-serif;
+}
+
+.search-bar:focus {
+  outline: none; /* Remove default focus outline */
+  border: 2px solid #127fff; /* Change border color when focused */
+  /* Add any additional styling specific to the focused state if needed */
 }
 
 .srch-btn {
@@ -68,10 +75,30 @@ body {
   font-size: 18px;
 }
 
+.header .icons div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header .icons div a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.528);
+  font-size: 15px;
+}
+
+.header .icons div:hover i,
+.header .icons div:hover a {
+  color: #127fff;
+}
 .header-2 {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.276);
+  border-top: 1px solid rgba(0, 0, 0, 0.276);
 }
 
 .categories-1 ul {
@@ -106,7 +133,12 @@ body {
   display: none;
   position: absolute;
   bottom: -1;
-  background-color: red;
+  border-radius: 16px;
+  background: rgba(18, 127, 255, 0.55);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   width: max-content;
   padding: 2rem 2rem;
 }
@@ -263,4 +295,67 @@ body {
 
   font-weight: bold;
   background-color: #e5f1ff;
+}
+
+.container-3 {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 1rem 1rem;
+}
+.container h3 {
+  padding: 0rem 0rem 2rem 0rem;
+  color: rgba(0, 0, 0, 0.389);
+}
+
+.countdown {
+  display: flex;
+  gap: 1rem;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #606060;
+  color: white;
+  font-size: 12px;
+  width: 45px;
+  height: 50px;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.card .number {
+  font-size: 16px;
+}
+
+.featuredProducts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding-left: 5rem;
+}
+
+.featuredProducts .fp img {
+  width: 170px;
+  height: 140px;
+}
+.featuredProducts .fp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 179px;
+  height: 235px;
+  gap: 0.7rem;
+}
+
+.featuredProducts .fp .discountRate {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.256);
+  padding: 0.2rem;
 }
