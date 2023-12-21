@@ -1,0 +1,337 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     * {
+  margin: 0;
+  padding: 0;
+  font-family: "Istok Web", sans-serif;
+}
+
+body {
+  /* display: flex;
+  justify-content: center; */
+  align-items: center;
+  min-height: 100vh;
+  background: #212121;
+}
+
+.card {
+  position: relative;
+  width: 320px;
+  height: 480px;
+  background: #191919;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  width: 100%;
+  height: 100%;
+  background: #ffce00;
+  transform: skewY(345deg);
+  transition: 0.5s;
+}
+
+.card:hover::before {
+  top: -70%;
+  transform: skewY(390deg);
+}
+
+.card::after {
+  content: "CORSAIR";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-weight: 600;
+  font-size: 6em;
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.card .imgBox {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 1;
+}
+
+.card .imgBox img {
+    max-width: 100%;
+    
+    transition: .5s;
+}
+
+.card:hover .imgBox img {
+    max-width: 50%;
+      
+}
+
+
+.card .contentBox {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.card .contentBox h3 {
+  font-size: 18px;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.card .contentBox .price {
+  font-size: 24px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.card{
+    display: inline-block;
+}
+
+.card .contentBox .buy {
+  position: relative;
+  top: 100px;
+  opacity: 0;
+  padding: 10px 30px;
+  margin-top: 15px;
+  color: #000000;
+  text-decoration: none;
+  background: #ffce00;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+
+.card:hover .contentBox .buy {
+  top: 0;
+  opacity: 1;
+}
+
+.mouse {
+  height: 300px;
+  width: auto;
+}
+#Data{
+    display: inline-block;
+}
+
+/* form style */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+    </style>
+</head>
+<body>
+  <!-- <header>
+      <div>
+      <form style="background-color: aliceblue;"    >
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+         
+        <label for="name">Image:</label>
+        <input type="file" id="img" name="name" required>
+        
+        <label for="name" >Select Category:</label>
+        <select style="align-content: center;" name="Category" id="Category">
+          <option value="p1">Category 1</option>
+          <option value="p1">Category 2</option>
+          <option value="p1"> Category 3</option>
+        </select>
+            <br>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required>
+    
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+        <label for="price">Stock Quantity:</label>
+        <input type="number" id="Stock" name="price" required>
+  
+        <button type="submit" >Add</button>
+    
+    </form>
+    </div>  
+  </header> -->
+  <br><br>
+
+
+
+
+    <div id="Data"></div>
+
+
+
+<script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase,ref,set,get,child ,onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyADIzVJeauTcF1WjKGMipnNNH3cu8PagDg",
+    authDomain: "gothic-album-381415.firebaseapp.com",
+    databaseURL: "https://gothic-album-381415-default-rtdb.firebaseio.com",
+    projectId: "gothic-album-381415",
+    storageBucket: "gothic-album-381415.appspot.com",
+    messagingSenderId: "474429480537",
+    appId: "1:474429480537:web:5b32b38a9a22072f965b48",
+    measurementId: "G-5TEVJS063P"
+  };
+      
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+if(app){
+  console.log("done Worked!!")
+}
+  
+
+
+// Write data to server 
+//===============================================================================================
+// write to data base  opration 1
+// var Id = (() => ( id = 0, () => id++))();
+// productNmae
+
+// function writeUserData() {  
+// // const productPrice = document.getElementById("price").value;
+// // const productImag = document.getElementById("img").value;
+// // const productTitle = document.getElementById("name").value;
+// // const productDes = document.getElementById("description").value
+// // const productStock = document.getElementById("Stock").value
+// // const productCategory = document.getElementById("Category").value;
+//  var UserId =  Math.floor((Math.random() * 1000));
+//   const db = getDatabase();
+//    set(ref(db,'/' + userId),{
+//     title: "This the first Product i entered",//productTitle|| 
+//     rating: 3.5,       //productStock ||
+//     price:3.44,       //productPrice ||
+//     image:"img.png" , //productImag || 
+//     id: UserId ,      //||0,
+//     description: "this is the first description ", //productDes ||
+//     category: "Women's clothig"  // productCategory || 
+//  });
+//  }
+
+//  writeUserData();
+
+/*
+hold elments of html page
+*/
+
+
+// function Add_porduct(e){
+// var Id = Math.floor((Math.random() * 1000));
+// if(isNaN(productTitle)&&productTitle.length > 8 && 
+// isFinite(productPrice)&&productPrice.length > 3 &&
+// isFinite(productStock)&&productStock.length > 3){
+// writeUserData();
+// }
+// else{
+//   e.preventDefault()
+// }
+
+// }
+
+//----------------------------------------------------------------------------------------------------
+// read from database 
+const db = getDatabase();
+const postId = 1;
+const starCountRef = ref(db, 'posts/' + postId + '/starCount');
+onValue(starCountRef, (snapshot) => {
+  const data = snapshot.val();
+  updateStarCount(postElement, data);
+  // console.log(data)
+});
+const dbRef = ref(getDatabase());
+
+for(let i=0;i<20;i++){
+const userId = i;
+get(child(dbRef, `/${userId}`))
+.then((snapshot) => {
+  if (snapshot.exists()){
+    var Data = snapshot.val()
+    document.getElementById("Data").innerHTML +=
+    `                                        
+ <div class="card">
+
+<div class="imgBox">
+  <img src="${Data.image}" alt="mouse corsair" class="mouse">
+</div>
+
+<div class="contentBox">
+  <h3>${Data.title}</h3>
+  <h2 class="price">${Data.price}€</h2>
+  <a href="#" class="buy">Buy Now</a>
+</div>
+</div>
+        `; 
+          
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.log(error);
+});
+}
+
+// updata data 
+//=======================================================================================================================================================
+
+
+
+
+
+
+
+
+// Delete Data 
+//==================================================================================================
+
+
+
+
+
+    </script>
+</body>
+</html>

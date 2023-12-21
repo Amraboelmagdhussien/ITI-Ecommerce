@@ -18,7 +18,7 @@
 //     elements[i].classList.add("drop-down");
 //   }
 // };
- // hi amr 
+// hi amr 
 let dropList = document.querySelectorAll(".dropDownList");
 for (let i = 0; i < dropList.length; i++) {
   let list = dropList[i];
