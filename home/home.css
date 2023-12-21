@@ -73,6 +73,7 @@ body {
 .icons i {
   color: rgba(0, 0, 0, 0.528);
   font-size: 18px;
+  cursor: pointer;
 }
 
 .header .icons div {
@@ -170,6 +171,87 @@ body {
 .imgIcon {
   height: 32px;
 }
+
+.container .sub-container-2 {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(0, 0, 0, 0.272);
+  padding: 1rem 0rem;
+}
+
+.container .sub-container-2 .flexed-div .social-logos a {
+  color: rgba(0, 0, 0, 0.528);
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.container .sub-container-2 .flexed-div .social-logos {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.container .sub-container-2 .flexed-div .sub-div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.container .sub-container-2 .flexed-div .sub-div .store-info {
+  max-width: 250px;
+}
+
+.container .sub-container-2 div ul {
+  list-style: none;
+  text-decoration: none;
+}
+
+.container .sub-container-2 .flexed-div .sub-div .logo-brand-store {
+  color: #1281ff7d;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.container .sub-container-2 .flexed-div ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.container .sub-container-2 .flexed-div .sec-header {
+  font-size: 20px;
+}
+
+.container .sub-container-2 div ul li a {
+  text-decoration: none;
+  color: #8b96a5;
+}
+
+.container .sub-container-2 div ul li a:hover {
+  text-decoration: underline;
+}
+
+.container .sub-container-2 .flexed-div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.container .sub-container-2 .flexed-div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .sub-container-2 .flexed-div .button-images img {
+  width: 200px;
+  height: 125px;
+  cursor: pointer;
+}
+
 .sub-container {
   display: flex;
   justify-content: space-between;
@@ -443,4 +525,68 @@ body {
   background-size: auto;
   background-position: right top;
   width: 100%;
+}
+
+.container .bg-color {
+  background: linear-gradient(
+      95deg,
+      #2c7cf1 7.19%,
+      rgba(0, 209, 255, 0.5) 89.49%
+    ),
+    url(/Utilites/Storage-1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: auto;
+  height: 400px;
+  padding: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px;
+}
+
+.container .bg-color .part-right {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.container .bg-color .part-right select {
+  border-style: none;
+}
+
+.container .bg-color .part-right #question {
+  /* border-style: none; */
+  height: 35px;
+  border-radius: 11px;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.331);
+}
+
+.container .bg-color .part-right #question:focus {
+  outline: none;
+}
+
+.container .bg-color .part-right .question-selector {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.container .bg-color .part-right .submit-btn {
+  background: var(
+    --primary-gradient,
+    linear-gradient(180deg, #127fff 0%, #0067ff 100%)
+  );
+  border-style: none;
+  border-radius: 5px;
+  color: white;
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+  align-self: flex-start;
+  padding: 0.4rem 2rem;
+  font-size: 16px;
 }
