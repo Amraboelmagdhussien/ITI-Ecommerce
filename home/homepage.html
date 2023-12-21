@@ -83,7 +83,7 @@
               <li><a href="#">Gift Boxes</a></li>
               <li><a href="#">Projects</a></li>
               <li><a href="#">Menu Item</a></li>
-              <li>Help <i class="fa-solid fa-caret-down"></i></li>
+              <li><a href="#">Help</a></li>
             </ul>
           </div>
 
@@ -102,8 +102,14 @@
                     <span>EG </span>
                     <img class="imgIcon" src="/Flags/EG.png" alt="EG" />
                   </li>
-                  <li><img class="imgIcon" src="/Flags/DE.png" alt="DE" /></li>
-                  <li><img class="imgIcon" src="/Flags/US.png" alt="USA" /></li>
+                  <li>
+                    <span>DE</span
+                    ><img class="imgIcon" src="/Flags/DE.png" alt="DE" />
+                  </li>
+                  <li>
+                    <span>USA</span
+                    ><img class="imgIcon" src="/Flags/US.png" alt="USA" />
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -457,13 +463,12 @@
         <div class="part-right">
           <h2>Sent Inquiry to Our Customer Service</h2>
           <label for="question">What is you Inquiry?</label>
-          <input
+          <textarea
             name="question"
             id="question"
-            type="text"
-            placeholder="Enter Your Question..."
-          />
-
+            rows="3"
+            placeholder="Enter Your inquiry"
+          ></textarea>
           <div class="question-selector">
             <label for="options">Inquiry Type</label>
             <select name="options" id="options">

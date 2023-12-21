@@ -108,6 +108,10 @@ body {
   list-style: none;
 }
 
+.categories-1 ul li:hover a {
+  color: #127fff;
+}
+
 .info-1 ul {
   display: flex;
   gap: 2rem;
@@ -123,6 +127,7 @@ body {
 
 .dropDownList {
   position: relative;
+  cursor: pointer;
 }
 
 .dropDownList.showList ul {
@@ -538,8 +543,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   width: auto;
-  height: 400px;
-  padding: 2.5rem;
+  padding: 3.5rem 3rem;
   display: flex;
   justify-content: space-between;
   border-radius: 15px;
@@ -551,20 +555,37 @@ body {
   padding: 1rem;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   flex-direction: column;
+  gap: 1.25rem;
 }
 
-.container .bg-color .part-right select {
-  border-style: none;
+.container .bg-color .part-right {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.container .bg-color .part-right #question {
-  /* border-style: none; */
+.container .bg-color .part-right textarea,
+select {
+  border: 1px solid rgba(0, 0, 0, 0.313);
+  padding: 0.5rem 0.3rem;
+  border-radius: 5px;
+  width: 100%;
+  resize: none;
+}
+
+/* .container .bg-color .part-right #question {
   height: 35px;
   border-radius: 11px;
   padding: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.331);
-}
+} */
 
 .container .bg-color .part-right #question:focus {
   outline: none;
@@ -586,7 +607,6 @@ body {
   color: white;
   padding: 0.5rem 0.5rem;
   cursor: pointer;
-  align-self: flex-start;
   padding: 0.4rem 2rem;
   font-size: 16px;
 }
