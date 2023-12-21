@@ -303,6 +303,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding: 1.3rem;
 }
 
 .products .product-card-1 .product-info-1 #price {
