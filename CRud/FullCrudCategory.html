@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Categories</title>
+    <style>
+            body {
+              font-family: sans-serif;
+              margin: 0;
+              padding: 20px;
+            }
+
+            h1 {
+              text-align: center;
+              margin-bottom: 20px;
+            }
+            #category-list {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 10px;
+            }
+
+            .category {
+              background-color: #eee;
+              padding: 10px;
+              border-radius: 5px;
+              cursor: pointer;
+            }
+
+            .category:hover {
+              background-color: #ddd;
+            }
+
+            #category-form {
+              margin-top: 20px;
+              display: flex;
+              gap: 10px;
+            }
+
+            #new-category {
+              padding: 5px;
+              border: 1px solid #ccc;
+              border-radius: 3px;
+            }
+            #category-list{
+              width: 100%;
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              margin-bottom: 10px;
+              font-size: 16px;
+              border-color: #007bff; /* Primary color from Bootstrap */
+              box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+            }
+            .btn {
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              text-decoration: none;
+              cursor: pointer;
+              color: yellowgreen;
+
+            }
+            .btn2{
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              text-decoration: none;
+              cursor: pointer;
+              color: red;
+            }
+            table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+    </style>  
+</head>
+<body>
+  <form id="category-form">
+    <label for="new-category">Add New Category:</label>
+    <input type="text" id="new-category" name="new-category" required>
+    <button type="submit">Add Category</button>
+  </form>
+
+  <h1>Product Categories</h1>
+<select  width="200px" id="category-list">
+</select>
+<div>
+ <button id="buttonEdit" class="btn" >Edit</button>
+ <button id="buttonDelet" onclick="deleteCategory(category)" class="btn2"> Delet </button> 
+</div>
+<label for="Search">Search by Category </label>
+<input type="search" onkeyup="searchProdctCategory()" id="Search">
+<div>
+  <table class="table w-75 mx-auto">
+    <thead>
+        <th>index</th>
+        <th>name</th>
+        <th>imgs</th>
+        <th>price</th>
+        <th>productCategory </th>
+        <th>desc</th>
+        <th>stockQuantity</th>
+    </thead>
+    <tbody id="CategoryBody">
+    </tbody>
+</div>
+      <script src="category.js">
+      </script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff; /* Primary color from Bootstrap */
+  color: #b73232;
+}
+
+.btn-primary:hover {
+  background-color: #0062cc;
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Danger color from Bootstrap */
+  color: #d26969;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+#category-list{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border-color: #007bff; /* Primary color from Bootstrap */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+input:focus,
+textarea:focus {
+  border-color: #007bff; /* Primary color from Bootstrap */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5; /* Adjust as needed */
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff; /* Adjust as needed */
+  border-radius: 5px; /* Optional for rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional for shadow */
+}
+#error{
+  color: #c82333;
+  text-align: center;
+}
+</style>
+    </head>
+    <body>
+        <div class="w-75 mx-auto p-5 m-5 shadow-lg">
+            <h1>Add Product</h1>
+            <h3 id="error"></h3>
+            <label>productName:</label>
+            <input type="text" onblur="validateProduct()" class="form-control mb-3" id="productName"  placeholder="Product Name ....">
+            <label for="img">Add Img</label>
+            <input type="file" id="img" >
+            <label>productCategory:</label>
+            <select name="" id="category-list">
+
+            </select>
+            <label>productPrice:</label> 
+            <input type="number" class="form-control mb-3" id="productPrice" onblur=" validateProduct()"  placeholder="price... ">
+            <label>productDescription</label>
+            <textarea class="form-control mb-3" id="productDesc" onblur="validateProduct()"  placeholder="productDescription..." ></textarea>
+            <label for="stockQuantity">stockQuantity</label>
+            <input type="number" id="Stock">
+            <button  class="btn btn-primary" id="addProduct">AddProduct</button>
+            <button class="btn btn-danger" onclick="clearForm()">clear</button>
+        </div>
+        <input onkeyup="searchProdct()"  id="searchValue" type="text" placeholder="search BY productDescription ... " class="form-control my-5 w-50 mx-auto">
+        <table class="table w-75 mx-auto">
+          <thead>
+              <th>index</th>
+              <th>name</th>
+              <th>imgs</th>
+              <th>price</th>
+              <th>productCategory </th>
+              <th>desc</th>
+              <th>stockQuantity</th>
+              <th>Edite</th>
+              <th>delete</th>
+          </thead>
+          <tbody id="tableBody">
+          </tbody>
+          <script>
+            // The provided code already implements full CRUD functionality for category management, including:
+
+// 1-  Create:
+// Users can enter a new category name in the form.
+// Clicking "Add Category" adds the new category to the categories array and updates local storage.
+//2-  Read:
+// The application reads categories from local storage and displays them dynamically in the category-list div.
+// 3- Update:
+// Edit functionality isn't currently implemented, but the comment points to the need for a modal or form to edit category names.
+// 4-Delete:
+// Clicking "Delete" on a category item removes it from the categories array and updates local storage, reflecting the deletion in the displayed list.
+
+
+
+/*
+holds all values of html page to push it in local storage 
+
+*/
+var productName = document.getElementById('productName');
+var productImg = document.getElementById("img");
+var productCategory = document.getElementById('category-list')
+var productPrice = document.getElementById('productPrice')
+var productDesc = document.getElementById('productDesc')
+var productStock = document.getElementById('Stock')
+var searchValue = document.getElementById('searchValue')
+/// Buttom to save products in memory 
+var addBtn = document.getElementById('addProduct')
+var currentIndex= 0;
+
+/* cheeke the local storage  localStorage if it's empty => declare array of products 
+other wise  => save data in variable and display it in html elment 
+*/
+if(localStorage.getItem('allproduct')== null){
+  var productContainer=[]
+}else{
+  var productContainer = JSON.parse(localStorage.getItem('allproduct'))
+  display()
+}
+/*
+Add product after saving value of input user (form elment)
+cheeke if the data user entered to form is valid call function (createProduct())
+to add new products 
+*/
+addBtn.onclick=function(event){
+  if(validateProduct()){
+            if(addBtn.innerHTML == 'AddProduct'){
+            createProduct()
+            }else{
+            event.preventDefault();
+            updateProdct()
+            }
+            localStorage.setItem('allproduct',JSON.stringify(productContainer))
+            clearForm()
+            display()
+  }else{
+    document.getElementById("error").textContent ="Please Enter Valid Data ..."
+  }
+
+}
+/*
+Create object to push it in memory 
+*/
+function createProduct(){
+var product ={
+  pname:productName.value,
+  pimg :productImg.value,
+  price : productPrice.value,
+  category:productCategory.value,
+  desc:productDesc.value,
+  Stock:productStock.value
+}
+productContainer.push(product)
+}
+/*
+first step assign current index to the index of this elment 
+*/
+
+function getProductInfo(index){ 
+  currentIndex =index;
+  productName.value= productContainer[index].pname;
+  productImg.files[0]= productContainer[index].pimg;
+  productPrice.value=productContainer[index].price;
+  productCategory.value=productContainer[index].category;
+  productDesc.value=productContainer[index].desc;
+  productStock.value=productContainer[index].Stock;
+  addBtn.innerHTML ='updateProduct'
+  }
+
+
+//  update
+  function updateProdct(){
+            var product ={
+            pname:productName.value,
+            pimg :productImg.files[0],
+            price : productPrice.value,
+            category:productCategory.value,
+            desc:productDesc.value,
+            Stock:productStock.value
+            }
+            productContainer[currentIndex] = product;
+            addBtn.innerHTML ='AddProduct';
+    }
+/*
+clear form as restart 
+ all value of form is empty 
+*/
+//  clear
+function clearForm(){
+  productName.value='';
+  productImg.value='';
+  productPrice.value='';
+  productCategory.value='';
+  productDesc.value='';
+  productStock.value='';
+}
+
+// display
+function display(){ 
+  var trs='';
+  for(var i =0 ; i<productContainer.length;i++){
+    trs +=`<tr>
+    <td>${i+1}</td>
+    <td>${productContainer[i].pname}</td>
+    <td>${productContainer[i].pimg}</td>
+    <td>${productContainer[i].price}</td>
+    <td>${productContainer[i].category}</td>
+    <td>${productContainer[i].desc}</td>
+    <td>${productContainer[i].Stock}</td>
+    <td>
+      <button class="btn btn-info" onclick="getProductInfo(${i})" ><i class="fa fa-solid fa-edit"></i></button>
+    </td>
+    <td>
+ 
+      <button class="btn btn-danger" onclick="delet(${i})"><i class="fa-solid fa-trash"></i></button>
+    </td>
+  </tr>`
+  }
+  document.getElementById('tableBody').innerHTML = trs;
+}
+/*
+Clicking "Delete" on a product item removes it from the categories array and updates local storage,
+ reflecting the deletion in the displayed list.
+*/
+// delete
+function delet(index){
+console.log(index)
+productContainer.splice(index,1)
+console.log(productContainer)
+localStorage.setItem('allproduct',JSON.stringify(productContainer))
+display()
+}
+/*
+Function Search 
+search about 
+1- products description
+2- products price 
+3- products category 
+4-  
+*/
+// search
+function searchProdct(){
+var trs='';
+for(var i =0 ; i<productContainer.length;i++){
+  if(productContainer[i].pname.toLowerCase().includes(searchValue.value.toLowerCase()) 
+//   || productContainer[i].price.toLowerCase().includes(searchValue.value.toLowerCase()) 
+//   || productContainer[i].category.toLowerCase().includes(searchValue.value.toLowerCase()) 
+//   || productContainer[i].desc.toLowerCase().includes(searchValue.value.toLowerCase())
+  )
+  {
+    trs +=`<tr>
+    <td>${i+1}</td>
+    <td>${productContainer[i].pname}</td>
+    <td>${productContainer[i].pimg}</td>
+    <td>${productContainer[i].price}</td>
+    <td>${productContainer[i].category}</td>
+    <td>${productContainer[i].desc}</td>
+    <td>${productContainer[i].Stock}</td>
+    <td>
+      <button class="btn btn-info" onclick="getProductInfo(${i})"><i class="fa fa-solid fa-edit"></i></button>
+    </td>
+    <td>
+      <button class="btn btn-danger" onclick="delet(${i})"><i class="fa-solid fa-trash"></i></button>
+    </td>
+  </tr>`
+  }
+
+}
+document.getElementById('tableBody').innerHTML=trs
+}
+
+/* 
+Validate poroduct name , product price ,product category 
+*/
+function validateProduct(){
+var pname =productName.value;
+var price = productPrice.value;
+var category=productCategory.value;
+  var pnameRegex = /^[A-Z][a-z]{1,10}$/;
+  var priceRegex= /[0-9]{1,5}$/;
+  var categoryRegex =/^[A-Z][a-z]{3,10}$/;
+  if(
+     categoryRegex.test(category) == true 
+     && isNaN(pname)&& isFinite(price)&&
+      pnameRegex.test(pname) == true &&
+       priceRegex.test(price) == true  ){
+     return true;
+  }else{
+    return false;
+  }
+}
+          </script>
+    <script src="category.js"></script>
+</body>
+</html>
