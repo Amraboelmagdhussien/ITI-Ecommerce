@@ -196,7 +196,7 @@
             </div>
           </div>
         </div>
-        <div class="products">
+        <div id="Data" class="products">
           <div class="product-card-1">
             <div class="product-image-1">
               <img src="/Product-Page/FP/Iphone 14.jpg" alt="" />
@@ -262,9 +262,7 @@
         </div>
       </div>
     </div>
-    <div id="Data" class="product-card-1">
-
-    </div>
+    <div class="product-card-1"></div>
 
     <footer class="container">
       <div class="sub-container-2">
@@ -327,50 +325,56 @@
     </footer>
 
     <script src="home.js"></script>
-    <script type="module" >
+    <script type="module">
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-      import { getDatabase,ref,set,get,child ,onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-    
+      import {
+        getDatabase,
+        ref,
+        set,
+        get,
+        child,
+        onValue,
+      } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
       // https://firebase.google.com/docs/web/setup#available-libraries
       // Your web app's Firebase configuration
-    const firebaseConfig = {
-    apiKey: "AIzaSyADIzVJeauTcF1WjKGMipnNNH3cu8PagDg",
-    authDomain: "gothic-album-381415.firebaseapp.com",
-    databaseURL: "https://gothic-album-381415-default-rtdb.firebaseio.com",
-    projectId: "gothic-album-381415",
-    storageBucket: "gothic-album-381415.appspot.com",
-    messagingSenderId: "474429480537",
-    appId: "1:474429480537:web:5b32b38a9a22072f965b48",
-    measurementId: "G-5TEVJS063P"
-    };
-    
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    if(app){
-    console.log("done Worked!!")
-    }
-    
-    
-    
-    // read Data from firebse 
-    const db = getDatabase();
-    const postId = 1;
-    const starCountRef = ref(db, 'posts/' + postId + '/starCount');
-    // onValue(starCountRef, (snapshot) => {
-    //   const data = snapshot.val();
-    //   updateStarCount(postElement, data);
-    //   // console.log(data)
-    // });
-    const dbRef = ref(getDatabase());
-    for(let i=0;i<20;i++){
-    const userId = i;
-    get(child(dbRef, `/${userId}`))
-    .then((snapshot) => {
-      if (snapshot.exists()){
-        var Data = snapshot.val()
-        document.getElementById("Data").innerHTML +=
-        ` <div class="product-card-1">
+      const firebaseConfig = {
+        apiKey: "AIzaSyADIzVJeauTcF1WjKGMipnNNH3cu8PagDg",
+        authDomain: "gothic-album-381415.firebaseapp.com",
+        databaseURL: "https://gothic-album-381415-default-rtdb.firebaseio.com",
+        projectId: "gothic-album-381415",
+        storageBucket: "gothic-album-381415.appspot.com",
+        messagingSenderId: "474429480537",
+        appId: "1:474429480537:web:5b32b38a9a22072f965b48",
+        measurementId: "G-5TEVJS063P",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      if (app) {
+        console.log("done Worked!!");
+      }
+
+      // read Data from firebse
+      const db = getDatabase();
+      const postId = 1;
+      const starCountRef = ref(db, "posts/" + postId + "/starCount");
+      // onValue(starCountRef, (snapshot) => {
+      //   const data = snapshot.val();
+      //   updateStarCount(postElement, data);
+      //   // console.log(data)
+      // });
+      const dbRef = ref(getDatabase());
+      for (let i = 0; i < 20; i++) {
+        const userId = i;
+        get(child(dbRef, `/${userId}`))
+          .then((snapshot) => {
+            if (snapshot.exists()) {
+              var Data = snapshot.val();
+              document.getElementById(
+                "Data"
+              ).innerHTML += ` <div class="product-card-1">
                 <div class="product-image-1">
                   <img src="${Data.image}"   alt="" />
                 </div>
@@ -387,15 +391,15 @@
                   </div>
                 </div>
               </div>                                    
-    `; 
-              
-      } else {
-        console.log("No data available");
+    `;
+            } else {
+              console.log("No data available");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
-    }).catch((error) => {
-      console.log(error);
-    });
-    }
-    </script> 
+    </script>
   </body>
 </html>
