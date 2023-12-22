@@ -15,4 +15,5 @@ let arrProd = [];
  let pushFunc = function() {
 
  }
- cl
+let test = document.getElementById("prodButton")
+console.log(test);
