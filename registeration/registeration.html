@@ -322,6 +322,7 @@
               signInContainer.classList.add('active');
           }
       }
+      
       // function handleCredentialResponse(response) {
       //     console.log("Encoded JWT ID token: " + response.credential);
       // }
@@ -338,58 +339,58 @@
       // }
 
 
-      // // Register new user
-      // function register() {
-      //     const userName = document.getElementById('name').value;
-      //     const email = document.getElementById('email').value;
-      //     const passWord = document.getElementById('pass').value;
-      //     const type = document.getElementById('userType').value;
+      // Register new user
+      function register() {
+          const userName = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const passWord = document.getElementById('pass').value;
+          const type = document.getElementById('userType').value;
 
-      //     auth.createUserWithEmailAndPassword(email, passWord)
-      //         .then((userCredential) => {
-      //             // Add additional user information to the user profile
-      //             userCredential.user.updateProfile({
-      //                 displayName: userName,
-      //                 userType: type
-      //             }).then(() => {
-      //                 console.log('User profile updated successfully');
-      //             }).catch((error) => {
-      //                 console.error('Error updating user profile:', error.message);
-      //             });
+          auth.createUserWithEmailAndPassword(email, passWord)
+              .then((userCredential) => {
+                  // Add additional user information to the user profile
+                  userCredential.user.updateProfile({
+                      displayName: userName,
+                      userType: type
+                  }).then(() => {
+                      console.log('User profile updated successfully');
+                  }).catch((error) => {
+                      console.error('Error updating user profile:', error.message);
+                  });
 
-      //             console.log('User registered successfully:', userCredential.user.uid);
-      //         })
-      //         .catch((error) => {
-      //             console.error('Registration failed:', error.message);
-      //             alert(error.message);
-      //         });
-      // }
+                  console.log('User registered successfully:', userCredential.user.uid);
+              })
+              .catch((error) => {
+                  console.error('Registration failed:', error.message);
+                  alert(error.message);
+              });
+      }
 
-      // // Login existing user
-      // function login() {
-      //     const loginEmail = document.getElementById('loginEmail').value;
-      //     const loginPassword = document.getElementById('loginPassword').value;
+      // Login existing user
+      function login() {
+          const loginEmail = document.getElementById('loginEmail').value;
+          const loginPassword = document.getElementById('loginPassword').value;
 
-      //     auth.signInWithEmailAndPassword(loginEmail, loginPassword)
-      //         .then((userCredential) => {
-      //             console.log('User logged in successfully:', userCredential.user.uid);
-      //         })
-      //         .catch((error) => {
-      //             console.error('Login failed:', error.message);
-      //             alert(error.message);
-      //         });
-      // }
+          auth.signInWithEmailAndPassword(loginEmail, loginPassword)
+              .then((userCredential) => {
+                  console.log('User logged in successfully:', userCredential.user.uid);
+              })
+              .catch((error) => {
+                  console.error('Login failed:', error.message);
+                  alert(error.message);
+              });
+      }
 
-      // // Logout user
-      // function logout() {
-      //     auth.signOut()
-      //         .then(() => {
-      //             console.log('User logged out successfully');
-      //         })
-      //         .catch((error) => {
-      //             console.error('Logout failed:', error.message);
-      //         });
-      // }
+      // Logout user
+      function logout() {
+          auth.signOut()
+              .then(() => {
+                  console.log('User logged out successfully');
+              })
+              .catch((error) => {
+                  console.error('Logout failed:', error.message);
+              });
+      }
 
       // // Auth state change listener
       // auth.onAuthStateChanged((user) => {
