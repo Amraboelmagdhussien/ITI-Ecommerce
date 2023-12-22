@@ -11,7 +11,7 @@ for (let i = 0; i < dropList.length; i++) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
+
   let arrProd = [];
 
  let products = document.querySelectorAll(".products")
@@ -20,18 +20,19 @@ document.addEventListener('DOMContentLoaded', function() {
  
 
 
- let add = function() {
-  let i = 0
-  for (let i = 0; i < prod.length; i++) {
-    arrProd.push(prod[i]);
-    // console.log(prod[i]);
+
+
+ let add = function(button) {
+   // Get the parent div with class 'product-card-1' from the clicked button
+   let currentProduct = document.querySelector(".product-card-1");
+   let nameProduct = document.querySelector(".data-name")
+   console.log(nameProduct.innerHTML);
+   if (currentProduct) {
+     arrProd.push(currentProduct);
+     console.log(currentProduct.title);
+   } else {
+     console.error("Product card not found");
    }
-  return arrProd.push(prod[i])
-  
- }
+ };
 
- console.log(add());
-
-console.log(arrProd);
-});
 
