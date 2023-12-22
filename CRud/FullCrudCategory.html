@@ -59,7 +59,7 @@
               border-radius: 5px;
               text-decoration: none;
               cursor: pointer;
-              color: yellowgreen;
+              color: rgb(205, 50, 125);
 
             }
             .btn2{
@@ -70,43 +70,52 @@
               cursor: pointer;
               color: red;
             }
+            .Addcat{
+              padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            color: rgb(30, 20, 7);
+            background-color:blue;
+            }
             table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
+              width: 100%;
+              border-collapse: collapse;
+              margin-bottom: 20px;
+            }
 
-th,
-td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  text-align: left;
-}
+            th,
+            td {
+              padding: 10px;
+              border: 1px solid #ddd;
+              text-align: left;
+            }
 
-th {
-  background-color: #f2f2f2;
-  font-weight: bold;
-}
+            th {
+              background-color: #f2f2f2;
+              font-weight: bold;
+            }
 
-tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-input,
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  font-size: 16px;
-}
+            tbody tr:nth-child(even) {
+              background-color: #f9f9f9;
+            }
+            input,
+            textarea {
+              width: 100%;
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              margin-bottom: 10px;
+              font-size: 16px;
+            }
     </style>  
 </head>
 <body>
   <form id="category-form">
     <label for="new-category">Add New Category:</label>
     <input type="text" id="new-category" name="new-category" required>
-    <button type="submit">Add Category</button>
+    <button type="submit" class="Addcat">Add Category</button>
   </form>
 
   <h1>Product Categories</h1>
@@ -114,7 +123,7 @@ textarea {
 </select>
 <div>
  <button id="buttonEdit" class="btn" >Edit</button>
- <button id="buttonDelet" onclick="deleteCategory(category)" class="btn2"> Delet </button> 
+ <button id="buttonDelet" onclick="deleteCategory()" class="btn2"> Delet </button> 
 </div>
 <label for="Search">Search by Category </label>
 <input type="search" onkeyup="searchProdctCategory()" id="Search">
