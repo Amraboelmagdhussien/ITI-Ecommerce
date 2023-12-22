@@ -597,6 +597,11 @@ select {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #007bb5;
 }
 
 .overlay-container {

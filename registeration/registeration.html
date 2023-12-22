@@ -146,15 +146,15 @@
                 <div class="overlay-panel overlay-left">
                     <h1>Welcome Back!</h1>
                     <p>To keep connected with us please login with your personal info</p>
-                    <button class="button" class="ghost" onclick="switchForm('sign-up-container')">Register</button>
+                    <button class="button" class="ghost" onclick="switchForm('sign-in-container')">Login</button>
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1>Hello, Friend!</h1>
                     <p>Enter your personal details and start journey with us</p>
-                    <button class="button" class="ghost" onclick="switchForm('sign-in-container')">Login</button>
+                    <button class="button" class="ghost" onclick="switchForm('sign-up-container')">Register</button>
                     <button class="button" id="signInButton">Sign In / Register</button>
                     <button class="button" id="signOutButton">Sign Out</button>
-                    <p id="message">You have signed in</p>
+                    <p id="message">You have signed in as: <span id="userName"></span> with Email: <span id="userEmail"></span></p>
                 </div>
             </div>
         </div>
@@ -254,6 +254,18 @@
           messagingSenderId: "975600999814",
           appId: "1:975600999814:web:4c0f872050c5c05cc82007"
       };
+
+      // // Production configuration
+      // const firebaseConfig = {
+      //     apiKey: "",
+      //     authDomain: "",
+      //     databaseURL: "",
+      //     projectId: "",
+      //     storageBucket: "",
+      //     messagingSenderId: "",
+      //     appId: ""
+      // };
+
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
 
@@ -264,6 +276,8 @@
       const signInButton = document.getElementById("signInButton");
       const signOutButton = document.getElementById("signOutButton");
       const message = document.getElementById("message");
+      const userName = document.getElementById("userName");
+      const userEmail = document.getElementById("userEmail");
 
       // Login user
       const userSignIn = async () => {
@@ -295,6 +309,9 @@
               signInButton.style.display = "none";
               signOutButton.style.display = "block";
               message.style.display = "block";
+              userName.innerHTML = user.displayName;
+              userEmail.innerHTML = user.email;
+
           }else{
               alert("You are not signed in")
               signInButton.style.display = "block";
@@ -308,20 +325,21 @@
 
       // Switch between login and registration forms
       function switchForm(formType) {
-          const container = document.getElementById('containerReg');
-          const signUpContainer = document.getElementById('signUpContainer');
-          const signInContainer = document.getElementById('signInContainer');
+    const container = document.getElementById('containerReg');
+    const signUpContainer = document.getElementById('signUpContainer');
+    const signInContainer = document.getElementById('signInContainer');
 
-          if (formType === 'sign-up-container') {
-              container.classList.add('sign-up-mode');
-              signUpContainer.classList.add('active');
-              signInContainer.classList.remove('active');
-          } else {
-              container.classList.remove('sign-up-mode');
-              signUpContainer.classList.remove('active');
-              signInContainer.classList.add('active');
-          }
-      }
+    if (formType === 'sign-up-container') {
+        container.classList.add('sign-up-mode');
+        signUpContainer.classList.add('active');
+        signInContainer.classList.remove('active');
+    } else {
+        container.classList.remove('sign-up-mode');
+        signUpContainer.classList.remove('active');
+        signInContainer.classList.add('active');
+    }
+}
+
       
       // function handleCredentialResponse(response) {
       //     console.log("Encoded JWT ID token: " + response.credential);
