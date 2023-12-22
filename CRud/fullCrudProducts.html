@@ -334,14 +334,14 @@ function validateProduct(){
 var pname =productName.value;
 var price = productPrice.value;
 var category=productCategory.value;
-  var pnameRegex = /^[A-Z][a-z]{1,10}$/;
+var Stock=productStock.value;
+  var pnameRegex = /^[A-Za-z][a-z]{1,10}$/;
   var priceRegex= /[0-9]{1,5}$/;
-  var categoryRegex =/^[A-Z][a-z]{3,10}$/;
   if(
-     categoryRegex.test(category) == true 
-     && isNaN(pname)&& isFinite(price)&&
-      pnameRegex.test(pname) == true &&
-       priceRegex.test(price) == true  ){
+    isNaN(pname)&& isFinite(price)&&
+    pnameRegex.test(pname) == true &&
+    priceRegex.test(price) == true  
+    &&isFinite(Stock)){
      return true;
   }else{
     return false;
