@@ -11,3 +11,8 @@ for (let i = 0; i < dropList.length; i++) {
 }
 
 let arrProd = [];
+
+ let pushFunc = function() {
+
+ }
+ cl
