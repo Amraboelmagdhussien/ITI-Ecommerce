@@ -9,3 +9,5 @@ for (let i = 0; i < dropList.length; i++) {
     list.classList.remove("showList");
   });
 }
+let getItemss = localStorage.getItem("cartItems");
+let dataRet = JSON.parse(getItemss);

@@ -363,8 +363,9 @@
         const snapshot = await get(child(dbRef, id)); // btrg3 promise
         const prod = snapshot.val();
         cartItems.push(prod);
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
       };
-
+      console.log(cartItems);
       // read Data from firebse
 
       const postId = 1;
