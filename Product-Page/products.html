@@ -355,9 +355,18 @@
       if (app) {
         console.log("done Worked!!");
       }
+      const db = getDatabase();
+      const dbRef = ref(getDatabase());
+      let cartItems = [];
+
+      let addToCart = async function (id) {
+        const snapshot = await get(child(dbRef, id)); // btrg3 promise
+        const prod = snapshot.val();
+        cartItems.push(prod);
+      };
 
       // read Data from firebse
-      const db = getDatabase();
+
       const postId = 1;
       const starCountRef = ref(db, "posts/" + postId + "/starCount");
       // onValue(starCountRef, (snapshot) => {
@@ -365,33 +374,39 @@
       //   updateStarCount(postElement, data);
       //   // console.log(data)
       // });
-      const dbRef = ref(getDatabase());
+
       for (let i = 0; i < 20; i++) {
         const userId = i;
         get(child(dbRef, `/${userId}`))
           .then((snapshot) => {
             if (snapshot.exists()) {
               var Data = snapshot.val();
-              document.getElementById(
-                "Data"
-              ).innerHTML += ` <div class="product-card-1">
-                <div class="product-image-1">
-                  <img src="${Data.image}"   alt="" />
-                </div>
-                <div class="product-info-1">
-                  <p class="data-name">${Data.title}</p>
-                  <p id="price">${Data.price}$</p>
-                  <p>
-                    ${Data.description}
-                  </p>
-                  <p id="shipping">Free Shipping</p>
-                  <div class="cart-items">
-                    <a href="#">View details</a>
-                    <button onclick="add(this)">Add To Cart</button>
+              const prodEle = document.createElement("div");
+              prodEle.innerHTML = ` <div class="product-card-1">
+                  <div class="product-image-1">
+                    <img src="${Data.image}"   alt="" />
+                  </div>
+                  <div class="product-info-1">
+                    <p class="data-name">${Data.title}</p>
+                    <p id="price">${Data.price}$</p>
+                    <p>
+                      ${Data.description}
+                    </p>
+                    <p id="shipping">Free Shipping</p>
+                    <div class="cart-items">
+                      <a href="#">View details</a>
+                      <button>Add To Cart</button>
+                    </div>
                   </div>
                 </div>
-              </div>                                    
-    `;
+      `;
+              prodEle
+                .querySelector("button")
+                .addEventListener("click", async () => {
+                  await addToCart(userId + "");
+                  console.log(cartItems);
+                });
+              document.getElementById("Data").appendChild(prodEle);
             } else {
               console.log("No data available");
             }
