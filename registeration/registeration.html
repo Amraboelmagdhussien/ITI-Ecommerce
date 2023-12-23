@@ -122,10 +122,10 @@
       <div class="containerReg" id="containerReg">
         <div id="signUpContainer" class="sign-up-container">
             <form id="registrationForm">
-                <h1>Create Account</h1>
+                <h1 class="h1">Create Account</h1>
                 <input class="input" type="text" id="name" placeholder="Username" required>
-                <input class="input"type="email" id="email" placeholder="Email" required>
-                <input class="input"type="password" id="pass" placeholder="Password" required>
+                <input class="input" type="email" id="email" placeholder="Email" required>
+                <input class="input" type="password" id="pass" placeholder="Password" required>
                 <select id="userType" required>
                     <option value="admin">Admin</option>
                     <option value="customer">Customer</option>
@@ -135,7 +135,7 @@
         </div>
         <div id="signInContainer" class="sign-in-container">
             <form id="loginForm">
-                <h1>Login</h1>
+                <h1 class="h1">Login</h1>
                 <input class="input" type="email" id="loginEmail" placeholder="Email" required>
                 <input class="input" type="password" id="loginPassword" placeholder="Password" required>
                 <button class="button" type="button" onclick="login()">Login</button>
@@ -146,12 +146,12 @@
                 <div class="overlay-panel overlay-left">
                     <h1>Welcome Back!</h1>
                     <p>To keep connected with us please login with your personal info</p>
-                    <button class="button" class="ghost" onclick="switchForm('sign-in-container')">Login</button>
+                    <button class="button" class="ghost" onclick="showLoginForm()">Login</button>
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1>Hello, Friend!</h1>
                     <p>Enter your personal details and start journey with us</p>
-                    <button class="button" class="ghost" onclick="switchForm('sign-up-container')">Register</button>
+                    <button class="button" class="ghost" onclick="showRegForm()">Register</button>
                     <button class="button" id="signInButton">Sign In / Register</button>
                     <button class="button" id="signOutButton">Sign Out</button>
                     <p id="message">You have signed in as: <span id="userName"></span> with Email: <span id="userEmail"></span></p>
@@ -237,9 +237,8 @@
     <script type="module">
       // Import the functions you need from the SDKs you need
       import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js'
-
-      // Add Firebase products that you want to use
-      import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } 
+      import { getDatabase, set, ref } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js'
+      import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword } 
       from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
 
 
@@ -269,6 +268,9 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
 
+      // Initialize database
+      const db = getDatabase();
+
       // Firebase Auth
       const auth = getAuth();
       const provider = new GoogleAuthProvider();
@@ -278,6 +280,29 @@
       const message = document.getElementById("message");
       const userName = document.getElementById("userName");
       const userEmail = document.getElementById("userEmail");
+
+      // Switch between login and registration forms
+      function showRegForm(){
+        const signUpContainer = document.getElementById('signUpContainer');
+        const signInContainer = document.getElementById('signInContainer');
+        const signInForm = document.getElementById('overlay-right');
+        const signUpForm = document.getElementById('overlayleft');
+        signUpContainer.style.display = "block";
+        signInContainer.style.display = "none";
+        signInForm.style.display = "none";
+        signUpForm.style.display = "block";
+      }
+
+      function showLoginForm(){
+        const signUpContainer = document.getElementById('signUpContainer');
+        const signInContainer = document.getElementById('signInContainer');
+        const signInForm = document.getElementById('overlay-right');
+        const signUpForm = document.getElementById('overlayleft');
+        signUpContainer.style.display = "none";
+        signInContainer.style.display = "block";
+        signInForm.style.display = "block";
+        signUpForm.style.display = "none";
+      }
 
       // Login user
       const userSignIn = async () => {
@@ -303,9 +328,9 @@
           })
       }
 
+      // Auth state change listener
       onAuthStateChanged(auth, (user)=>{
           if(user){
-              alert(" You signed in");
               signInButton.style.display = "none";
               signOutButton.style.display = "block";
               message.style.display = "block";
@@ -313,7 +338,6 @@
               userEmail.innerHTML = user.email;
 
           }else{
-              alert("You are not signed in")
               signInButton.style.display = "block";
               signOutButton.style.display = "none";
               message.style.display = "none";
@@ -322,108 +346,6 @@
 
       signInButton.addEventListener('click', userSignIn);
       signOutButton.addEventListener('click', userSignOut);
-
-      // Switch between login and registration forms
-      function switchForm(formType) {
-    const container = document.getElementById('containerReg');
-    const signUpContainer = document.getElementById('signUpContainer');
-    const signInContainer = document.getElementById('signInContainer');
-
-    if (formType === 'sign-up-container') {
-        container.classList.add('sign-up-mode');
-        signUpContainer.classList.add('active');
-        signInContainer.classList.remove('active');
-    } else {
-        container.classList.remove('sign-up-mode');
-        signUpContainer.classList.remove('active');
-        signInContainer.classList.add('active');
-    }
-}
-
-      
-      // function handleCredentialResponse(response) {
-      //     console.log("Encoded JWT ID token: " + response.credential);
-      // }
-      // window.onload = function () {
-      //     google.accounts.id.initialize({
-      //     client_id: "YOUR_GOOGLE_CLIENT_ID"
-      //     callback: handleCredentialResponse
-      //     });
-      //     google.accounts.id.renderButton(
-      //     document.getElementById("buttonDiv"),
-      //     { theme: "outline", size: "large" }  // customization attributes
-      //     );
-      //     google.accounts.id.prompt(); // also display the One Tap dialog
-      // }
-
-
-      // Register new user
-      function register() {
-          const userName = document.getElementById('name').value;
-          const email = document.getElementById('email').value;
-          const passWord = document.getElementById('pass').value;
-          const type = document.getElementById('userType').value;
-
-          auth.createUserWithEmailAndPassword(email, passWord)
-              .then((userCredential) => {
-                  // Add additional user information to the user profile
-                  userCredential.user.updateProfile({
-                      displayName: userName,
-                      userType: type
-                  }).then(() => {
-                      console.log('User profile updated successfully');
-                  }).catch((error) => {
-                      console.error('Error updating user profile:', error.message);
-                  });
-
-                  console.log('User registered successfully:', userCredential.user.uid);
-              })
-              .catch((error) => {
-                  console.error('Registration failed:', error.message);
-                  alert(error.message);
-              });
-      }
-
-      // Login existing user
-      function login() {
-          const loginEmail = document.getElementById('loginEmail').value;
-          const loginPassword = document.getElementById('loginPassword').value;
-
-          auth.signInWithEmailAndPassword(loginEmail, loginPassword)
-              .then((userCredential) => {
-                  console.log('User logged in successfully:', userCredential.user.uid);
-              })
-              .catch((error) => {
-                  console.error('Login failed:', error.message);
-                  alert(error.message);
-              });
-      }
-
-      // Logout user
-      function logout() {
-          auth.signOut()
-              .then(() => {
-                  console.log('User logged out successfully');
-              })
-              .catch((error) => {
-                  console.error('Logout failed:', error.message);
-              });
-      }
-
-      // // Auth state change listener
-      // auth.onAuthStateChanged((user) => {
-      //     const logoutButton = document.getElementById('logoutButton');
-
-      //     if (user) {
-      //         console.log('User is logged in:', user.uid);
-      //         // Display logout button when user is logged in
-      //         logoutButton.style.display = 'block';
-      //     } else {
-      //         console.log('User is logged out');
-      //         // Hide logout button when user is logged out
-      //         logoutButton.style.display = 'none';
-      //     }
-      // });
   </script>
   <script src="../cart-items/home.js"></script>
   </body>
