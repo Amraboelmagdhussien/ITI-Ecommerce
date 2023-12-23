@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <style>
-            
             form {
             width: 100%;
             padding: 20px;
@@ -136,12 +135,71 @@
             background: linear-gradient(to right, #0288d1, #0288d1);
             color: white;
             }
-            </style>
+
+            .cls-frm-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                overflow: hidden;
+                display: none;
+                position: relative;
+            }
+
+            .cls-frm-container.active {
+                display: flex;
+            }
+
+            /* Google Button from Firebase Documentation */
+            .cls-btn-login-reg-google {
+                cursor: pointer;
+                transition: background-color .3s, box-shadow .3s;
+                    
+                padding: 12px 16px 12px 42px;
+                border: none;
+                border-radius: 3px;
+                box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+                
+                color: #757575;
+                font-size: 14px;
+                font-weight: 500;
+                font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+                
+                background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+                background-color: white;
+                background-repeat: no-repeat;
+                background-position: 12px 11px;
+            }
+
+            .cls-btn-login-reg-google:hover {
+                box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+            }
+
+            .cls-btn-login-reg-google:active {
+                background-color: #eeeeee;
+            }
+
+            .cls-btn-login-reg-google:active {
+                outline: none;
+                    box-shadow: 
+                    0 -1px 0 rgba(0, 0, 0, .04),
+                    0 2px 4px rgba(0, 0, 0, .25),
+                    0 0 0 3px #c8dafc;
+            }
+
+            .cls-btn-login-reg-google:disabled {
+                filter: grayscale(100%);
+                background-color: #ebebeb;
+                box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+                cursor: not-allowed;
+            }
+        </style>
     </head>
     <body>
         <div class="cls-div-body">
             <div class="cls-div-container">
-                <div class="cls-div-reg-container">
+                <div class="cls-frm-container cls-div-reg-container">
                     <form id="id-frm-registration">
                         <h1 class="id-h1">Register New Account</h1>
                         <input class="cls-inp" type="text" id="id-reg-name" placeholder="Please, Enter Your Username here" required>
@@ -151,15 +209,15 @@
                             <option value="admin">Admin</option>
                             <option value="customer">Customer</option>
                         </select>
-                        <button class="cls-btn" id="id-btn-reg-mail" type="button">Register</button>
+                        <button class="cls-btn" id="id-btn-reg-mail">Register</button>
                     </form>
                 </div>
-                <div class="cls-div-login-container">
+                <div class="cls-frm-container cls-div-login-container">
                     <form id="id-frm-login">
                         <h1 class="id-h1">Login</h1>
                         <input class="cls-inp" type="email" id="id-loginEmail" placeholder="Please, Enter Your Email here" required>
                         <input class="cls-inp" type="password" id="id-loginPassword" placeholder="Please, Enter Your Password here" required>
-                        <button class="cls-btn" id="id-btn-login-mail" type="button">Login</button>
+                        <button class="cls-btn" id="id-btn-login-mail">Login</button>
                     </form>
                 </div>
                 <div class="cls-div-overlay-container">
@@ -168,14 +226,21 @@
                             <h1>Welcome Back!</h1>
                             <p>To keep connected with us please login with your personal info</p>
                             <button class="cls-btn-overlay" id="id-btn-show-login-form">Login</button>
+                            <button type="button" class="cls-btn-login-reg-google">Sign in with Google</button>
+                            <!-- <button type="button" class="cls-btn-login-reg-google" disabled>Sign in with Google</button> -->
+                            <!-- <button class="cls-btn-overlay" id="cls-btn-login-reg-google">Login / Register using Google</button> -->
+                            <button class="cls-btn-overlay cls-btn-signout">Sign Out</button>
+                            <p class="cls-p-message">You have signed in as: <span id="id-span-username"></span> with Email: <span id="id-span-useremail"></span></p>
                         </div>
                         <div class="cls-div-overlay-panel cls-div-reg-overlay-right">
                             <h1>Hello, Friend!</h1>
                             <p>Enter your personal details and start journey with us</p>
                             <button class="cls-btn-overlay" id="id-btn-show-reg-form">Register</button>
-                            <button class="cls-btn-overlay" id="id-btn-login-reg-google">Login / Register using Google</button>
-                            <button class="cls-btn-overlay" id="id-btn-signout">Sign Out</button>
-                            <p id="id-p-message">You have signed in as: <span id="id-span-username"></span> with Email: <span id="id-span-useremail"></span></p>
+                            <button type="button" class="cls-btn-login-reg-google">Sign in with Google</button>
+                            <!-- <button type="button" class="cls-btn-login-reg-google" disabled>Sign in with Google</button> -->
+                            <!-- <button class="cls-btn-overlay" id="cls-btn-login-reg-google">Login / Register using Google</button> -->
+                            <button class="cls-btn-overlay cls-btn-signout">Sign Out</button>
+                            <p class="cls-p-message">You have signed in as: <span id="id-span-username"></span> with Email: <span id="id-span-useremail"></span></p>
                         </div>
                     </div>
                 </div>
@@ -185,21 +250,31 @@
             // Import the functions you need from the SDKs you need
             import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js'
             import { getDatabase, set, ref } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js'
-            import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword } 
+            import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
             from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
 
 
-            // https://firebase.google.com/docs/web/setup#available-libraries
-            // Your web app's Firebase configuration
             const firebaseConfig = {
-                apiKey: "AIzaSyDYDdUx3ZZNAzWL84Ar60fGH7wL_uyd71M",
-                authDomain: "formal-folder-376913.firebaseapp.com",
-                databaseURL: "https://formal-folder-376913-default-rtdb.firebaseio.com",
-                projectId: "formal-folder-376913",
-                storageBucket: "formal-folder-376913.appspot.com",
-                messagingSenderId: "975600999814",
-                appId: "1:975600999814:web:4c0f872050c5c05cc82007"
+                apiKey: "AIzaSyCc3-wg2QDfafZlvwEA9GfLlnW8mWswET0",
+                authDomain: "iti-javsascript-r2-python.firebaseapp.com",
+                databaseURL: "https://iti-javsascript-r2-python-default-rtdb.firebaseio.com",
+                projectId: "iti-javsascript-r2-python",
+                storageBucket: "iti-javsascript-r2-python.appspot.com",
+                messagingSenderId: "1031672503736",
+                appId: "1:1031672503736:web:d64162faaf749114ec834d"
             };
+
+            // https://firebase.google.com/docs/web/setup#available-libraries
+            // Mahmoud Amr Firebase configuration
+            // const firebaseConfig = {
+            //     apiKey: "AIzaSyDYDdUx3ZZNAzWL84Ar60fGH7wL_uyd71M",
+            //     authDomain: "formal-folder-376913.firebaseapp.com",
+            //     databaseURL: "https://formal-folder-376913-default-rtdb.firebaseio.com",
+            //     projectId: "formal-folder-376913",
+            //     storageBucket: "formal-folder-376913.appspot.com",
+            //     messagingSenderId: "975600999814",
+            //     appId: "1:975600999814:web:4c0f872050c5c05cc82007"
+            // };
 
             // // Production configuration
             // const firebaseConfig = {
@@ -218,6 +293,7 @@
 
             // Initialize database
             const db = getDatabase();
+            const dbref = ref(db);
 
             // Firebase Auth
             const auth = getAuth();
@@ -229,16 +305,23 @@
             const btnShowRegForm = document.getElementById("id-btn-show-reg-form");
             const btnLoginMail = document.getElementById("id-btn-login-mail");
             const btnRegMail = document.getElementById("id-btn-reg-mail");
-            const btnLoginRegGoogle = document.getElementById("id-btn-login-reg-google");
-            const btnSignout = document.getElementById("id-btn-signout");
-            //Inputs References
-            const InpRegName = document.getElementById("id-reg-name");
-            const InpRegMail = document.getElementById("id-reg-email");
-            const InpRegPass = document.getElementById("id-reg-pass");
+            const btnLoginRegGoogle = document.getElementsByClassName("cls-btn-login-reg-google");
+            const btnSignout = document.getElementsByClassName("cls-btn-signout");
 
-            const message = document.getElementById("id-p-message");
+            //Inputs References
+            const InpRegName = document.getElementById("id-reg-name").value;
+            const InpRegMail = document.getElementById("id-reg-email").value;
+            const InpRegPass = document.getElementById("id-reg-pass").value;
+
+            // Login Inputs References
+            const InpLoginMail = document.getElementById("id-login-email").value;
+            const InpLoginPass = document.getElementById("id-login-pass").value;
+
+
+            const messageLogin = document.getElementsByClassName("cls-p-message");
             const userName = document.getElementById("id-span-username");
             const userEmail = document.getElementById("id-span-useremail");
+
             // Div References
             const signInContainer = document.getElementsByClassName('cls-div-login-container');
             const signUpContainer = document.getElementsByClassName('cls-div-reg-container');
@@ -260,12 +343,22 @@
 
             // Login using Email/Password
             const funLoginMail = async () => {
+                signInWithEmailAndPassword(auth, InpLoginMail, InpLoginPass)
+                .then((credentials) => {
+                    console.log(credentials);
+                    console.log('User Signed in successfully');
+                    const user = credentials.user;
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                });
 
             }
 
             // Register using Email/Password
             const funRegMail = async () => {
-                createUserWithEmailAndPassword(auth, InpRegMail.value, InpRegPass.value)
+                createUserWithEmailAndPassword(auth, InpRegMail, InpRegPass)
                 .then((credentials)=>{
                     console.log(credentials);
                     console.log('User Registered successfully');
@@ -289,39 +382,37 @@
             }
 
             // Switch between login and registration forms
-            function funShowRegForm(){
-                signInContainer.style.display = "none";
-                signUpContainer.style.display = "block";
-                signInForm.style.display = "none";
-                signUpForm.style.display = "block";
-            }
-        
-            function funShowLoginForm(){
-                signUpContainer.style.display = "block";
-                signInContainer.style.display = "none";
-                signInForm.style.display = "block";
-                signUpForm.style.display = "none";
+            function switchForm(formType) {
+                const container = document.getElementById('container');
+                const forms = document.querySelectorAll('.form-container');
+
+                forms.forEach(form => form.classList.remove('active'));
+                
+                const activeForm = document.querySelector(`.${formType}`);
+                activeForm.classList.add('active');
+                container.classList.toggle('sign-up-mode', formType === 'cls-div-reg-container');
+                // container.classList.toggle('sign-in-mode', formType === 'cls-div-login-container');
             }
             
             // Auth state change listener
             onAuthStateChanged(auth, (user)=>{
                 if(user){
-                    signInButton.style.display = "none";
-                    signOutButton.style.display = "block";
-                    message.style.display = "block";
+                    btnLoginRegGoogle.style.display = "none";
+                    btnSignout.style.display = "block";
+                    messageLogin.style.display = "block";
                     userName.innerHTML = user.displayName;
                     userEmail.innerHTML = user.email;
                     
                 }else{
-                    signInButton.style.display = "block";
-                    signOutButton.style.display = "none";
-                    message.style.display = "none";
+                    btnLoginRegGoogle.style.display = "block";
+                    btnSignout.style.display = "none";
+                    messageLogin.style.display = "none";
                 }
             })
             
             // Event Listeners
-            btnShowLoginForm.addEventListener('click',funShowLoginForm)
-            btnShowRegForm.addEventListener('click',funShowRegForm)
+            btnShowLoginForm.addEventListener('click',switchForm("cls-div-login-container"))
+            btnShowRegForm.addEventListener('click',switchForm("cls-div-reg-container"))
             btnLoginMail.addEventListener('click',funLoginMail)
             btnRegMail.addEventListener('click',funRegMail)
             btnLoginRegGoogle.addEventListener('click', funLoginRegGoogle);
