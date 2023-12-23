@@ -1,0 +1,164 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  /* form {
+    max-width: 400px;
+    margin: 0 auto;
+  } */
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  thead {
+    background-color: #f2f2f2;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tbody tr:hover {
+    background-color: #f5f5f5;
+  }  
+
+
+  /* Items */
+  .product-card-1 {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-image-1 {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .product-image-1 img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .product-info-1 {
+    flex: 2;
+  }
+  
+  .product-info-1 p {
+    margin-bottom: 10px;
+  }
+  
+  #price {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  #shipping {
+    color: green;
+    margin-top: 10px;
+  }
+  
+  .cart-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cart-items a {
+    text-decoration: none;
+    color: #333;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: 1px solid #333;
+    border-radius: 3px;
+  }
+  
+  .cart-items button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .cart-items button:hover {
+    background-color: #555;
+  }
+   /*  */
+   label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  
+  select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }

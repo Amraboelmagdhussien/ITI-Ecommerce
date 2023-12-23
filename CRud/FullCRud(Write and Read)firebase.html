@@ -1,0 +1,277 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <h1>Add Product</h1>
+      <!-- a.	ID
+b.	Name
+c.	Image
+d.	Category
+e.	Price
+f.	Description
+g.	Stock Quantity -->
+ <form action=""><fieldset>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+         
+        <label for="name">Image:</label>
+        <input type="file" id="img" name="name" required>
+        
+        <label for="name" >Select Category:</label>
+        <select style="align-content: center;" name="Category" id="Category">
+          <option value="p1">Category 1</option>
+          <option value="p1">Category 2</option>
+          <option value="p1"> Category 3</option>
+        </select>
+            <br>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required>
+    
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+        <label for="price">Stock Quantity:</label>
+        <input type="number" id="Stock" name="price" required>
+    
+        <button value="Add" id="Add" >ADD Product</button>
+      </fieldset>
+     </form>
+
+  
+
+    <div > 
+      <h1>Product List</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Img</th>
+            <th>Price</th>
+            <th>Catogery</th>
+            <th>Stock Quantity</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="Data">
+          <!-- <tr>
+            <td>1</td>
+            <td>Product 1</td>
+            <td>$10.99</td>
+            <td>This is the description of product 1.</td>
+            <td><img src="download (2).png" alt="" width="40px"></td>
+            <td><img src="download.png" width="40px" alt=""></td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+    <h1>Products items</h1>
+    <div id="Items">
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase,ref,set,get,child ,onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDYDdUx3ZZNAzWL84Ar60fGH7wL_uyd71M",
+          authDomain: "formal-folder-376913.firebaseapp.com",
+          databaseURL: "https://formal-folder-376913-default-rtdb.firebaseio.com",
+          projectId: "formal-folder-376913",
+          storageBucket: "products.appspot.com",
+          messagingSenderId: "975600999814",
+          appId: "1:975600999814:web:4c0f872050c5c05cc82007"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        if(app)
+        console.log("done Worked!!")
+
+
+        const DB = getDatabase(); 
+
+  var prod_name = document.getElementById("name").value;
+  var prod_img = document.getElementById("img").value;
+  var prod_price = parseInt(document.getElementById("price").value);
+  var prod_Cat = document.getElementById("Category").value;
+  var prod_Stock = document.getElementById("Stock").value;
+// write function 
+// function writeUserData(producId,prod_name, prod_img, prod_price, prod_Cat ,prod_Stock) {
+//   const db = getDatabase();
+//   set(ref(db, 'products/' + producId), {
+//     productName: prod_name,
+//     productImag: prod_img,
+//     productPrice:prod_price,
+//     productCatogery : prod_Cat,
+//     productStock:prod_Stock,
+
+//   });
+// }
+//   writeUserData(3,"prod_name","prod_img",13,"prod_Cat",2);
+//----------------------------------------------------------------------------------------------------
+// read from database
+
+//1- leson event 
+// const db = getDatabase();
+// const postId = 1;
+// const starCountRef = ref(db, 'posts/' + postId + '/starCount');
+// // onValue(starCountRef, (snapshot) => {
+// //   const data = snapshot.val();
+// //   updateStarCount(postElement, data);
+// //   console.log(data)
+// // });
+// read 
+/*
+{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{READ}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+*/ // make it global 
+var UserId =  Math.floor((Math.random() * 1000));
+
+const dbRef = ref(getDatabase());
+for(let i=0;i<UserId;i++){
+const userId = i;
+get(child(dbRef, `products/${userId}`)).then((snapshot) => {
+  if (snapshot.exists()){
+    const Data = snapshot.val()
+    document.getElementById("Data").innerHTML +=
+    `<tr>                                        
+            <td>${userId}</td>
+            <td>${Data.productName}</td>
+            <td><img  src='${Data.productImag}' width='40px'></td>
+            <td>${Data.productPrice}</td>
+            <td>${Data.productCatogery}</td>
+            <td>${Data.productStock}</td>
+            <td><img src="4.png" id="btn_E" alt="" width="40px"></td>
+            <td><img src="8.png" width="40px" id="btn_d" alt=""></td>
+     </tr>`;
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.log(error);
+});
+}
+ console.log(Data.productImag);
+//=--------------------------  Read----------------------------------------------------------
+// const dbRef = ref(getDatabase());
+// show items
+for(let i=0;i<UserId;i++){
+const userId = i;
+get(child(dbRef, `products/${userId}`)).then((snapshot) => {
+  if (snapshot.exists()){
+    const Data = snapshot.val()
+    document.getElementById("Items").innerHTML +=
+    ` <div class="product-card-1">
+                <div class="product-image-1">
+                  <img src="${Data.productImag}"    alt="" />
+                </div>
+                <div class="product-info-1">
+                  <p>${Data.productName}</p>
+                  <p id="price">${Data.productPrice}$</p>
+                  <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus rerum perspiciatis ducimus accusantium odit eos facere sit quaerat laborum rem doloribus dolor eligendi, libero iusto ex earum dolores! Ea, natus!
+                  </p>
+                  <p id="shipping">Free Shipping</p>
+                  <div class="cart-items">
+                    <a href="#">View details</a>
+                    <button>Add To Cart</button>
+                  </div>
+                </div>
+              </div>`
+    ;
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.log(error);
+});
+
+}
+
+
+
+
+
+
+
+//=================================================================================
+
+// write to database  opration 1
+// function writeUserData
+/*
+{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{Creat}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+*/
+const a_btn = document.getElementById("Add")
+a_btn.addEventListener("click",()=>{
+  const db = getDatabase();
+  set(ref(db, 'products/' + UserId ), {
+    productName:document.getElementById("name").value,
+    productImag: document.getElementById("img").files[0],
+    productPrice: document.getElementById("price").value,
+    productCatogery : document.getElementById("Category").value ,
+    productStock: document.getElementById("Stock").value 
+  });
+})
+
+/*
+{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{Updata}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+*/
+
+
+
+
+
+/*
+{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{Delet}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+*/
+let db = getDatabase();
+ref(`/products/${1}`).remove();
+
+function Del_spcificdata(id){
+  let db = getDatabase();
+  db.ref(`products/${id}`).remove();
+}
+
+Del_spcificdata(2);
+// const Re_btn = document.getElementById("btn_d")
+// Re_btn.addEventListener("click",function Remove_item(id){
+//   get(child(dbRef, `products/${userId}`)).then((snapshot) => {
+//   if (snapshot.exists()){ const Data = snapshot.val()
+//       Data[id].remove();
+//   } else {
+//     console.log("No data available");
+//   }
+// }).catch((error) => {
+//   console.log(error);
+// });
+// }
+// );
+
+// const uid = 1;
+// function toggleStar(postRef, uid) {
+//   postRef.transaction((post) => {if (post) {
+//       if (post.stars && post.stars[uid]) {
+//         post.starCount--;
+//         post.stars[uid] = null;
+//       } else {
+//         post.starCount++;
+//         if (!post.stars) {
+//           post.stars = {};
+//         }
+//         post.stars[uid] = true;
+//       }
+//     }
+//     return post;
+//   });
+// }
+
+
+      </script>
+</body>
+</html>
