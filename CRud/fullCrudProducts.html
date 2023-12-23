@@ -101,6 +101,59 @@
             color: #c82333;
             text-align: center;
           }
+          /* Product itemes  */
+         /* {{{{{{{{{{{{{{{{{{{{CSS }}}}}}}}}}}}}}}}}}}}  */
+.full-sec .products .product-card-1 {
+  border: 1px solid rgba(128, 128, 128, 0.399);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.products .product-card-1 .product-info-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.3rem;
+}
+
+.products .product-card-1 .product-info-1 #price {
+  font-weight: 700;
+}
+
+.products .product-card-1 .product-info-1 #shipping {
+  color: #00b517;
+}
+
+.products .product-card-1 .product-info-1 a {
+  text-decoration: none;
+  color: #0d6efd;
+}
+
+.products .product-card-1 .product-info-1 button {
+  background: linear-gradient(180deg, #127fff 0%, #0067ff 100%);
+  border-style: none;
+  border-radius: 5px;
+  color: white;
+  padding: 0.3rem;
+  cursor: pointer;
+}
+
+.products .product-card-1 .product-info-1 .cart-items {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.products .product-card-1 .product-info-1 a:hover {
+  color: grey;
+}
+
+.products .product-card-1 img {
+  width: 225px;
+  height: 225px;
+  padding: 0.5rem 0.3rem;
+}
+
 </style>
     </head>
     <body>
@@ -141,6 +194,12 @@
           </thead>
           <tbody id="tableBody">
           </tbody>
+          <div >
+            <h2>Product Items</h2>
+            <div id="display_items">
+
+            </div>
+          </div>
           <script>
 // The provided code already implements full CRUD functionality for category management, including:
 // 1-  Create:
@@ -208,7 +267,7 @@ Create object to push it in memory
 function createProduct(){
 var product ={
   pname:productName.value,
-  pimg :productImg.value,
+  pimg :productImg.value.split('\\').pop(),
   price : productPrice.value,
   category:productCategory.value,
   desc:productDesc.value,
@@ -268,7 +327,7 @@ function display(){
     trs +=`<tr>
     <td>${i+1}</td>
     <td>${productContainer[i].pname}</td>
-    <td>${productContainer[i].pimg}</td>
+    <td><img src='${productContainer[i].pimg}' width='40px' ></td>
     <td>${productContainer[i].price}</td>
     <td>${productContainer[i].category}</td>
     <td>${productContainer[i].desc}</td>
@@ -315,10 +374,10 @@ for(var i =0 ; i<productContainer.length;i++){
     <td>${productContainer[i].desc}</td>
     <td>${productContainer[i].Stock}</td>
     <td>
-      <button class="btn btn-info" onclick="getProductInfo(${i})"><i class="fa fa-solid fa-edit"></i></button>
+      <button  onclick="getProductInfo(${i})" class="btnEdit" ></button>
     </td>
     <td>
-      <button class="btn btn-danger" onclick="delet(${i})"><i class="fa-solid fa-trash"></i></button>
+      <button  onclick="delet(${i})" class="btndelet"></button>
     </td>
   </tr>`
   }
@@ -347,6 +406,42 @@ var Stock=productStock.value;
     return false;
   }
 }
+
+/*
+Display products as cards 
+*/
+function display_items(){ 
+for(var i =0 ; i<productContainer.length;i++){
+ document.getElementById(
+       "display_items"
+              ).innerHTML += 
+                  `<div class='full-sec'>
+                  <div class='products'>
+                  <div class="product-card-1">
+                  <div class="product-image-1">
+                    <img src="${productContainer[i].pimg}"   alt="" />
+                  </div>
+                  <div class="product-info-1">
+                    <p class="data-name">${productContainer[i].pname}</p>
+                    <p id="price">${productContainer[i].price}$</p>
+                    <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae dicta molestiae,
+                     laboriosam quasi debitis ea sint soluta hic, nihil aperiam dolorum quaerat quisquam 
+                     asperiores? Ipsam nesciunt dignissimos blanditiis qui quasi.
+
+                    </p>
+                    <p id="shipping">Free Shipping</p>
+                    <div class="cart-items">
+                      <a href="#">View details</a>
+                      <button>Add To Cart</button>
+                    </div>
+                  </div>
+                </div>
+                </div><br>`;
+  }
+}
+display_items();
+
           </script>
     <script src="category.js"></script>
 </body>
