@@ -198,7 +198,7 @@
         </div>
 
         <div id="Data" class="products">
-          <div class="product-card-1">
+          <!-- <div class="product-card-1">
             <div class="product-image-1">
               <img src="/Product-Page/FP/Iphone 14.jpg" alt="" />
             </div>
@@ -259,7 +259,7 @@
                 <button>Add To Cart</button>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -382,12 +382,12 @@
                   <p class="data-name">${Data.title}</p>
                   <p id="price">${Data.price}$</p>
                   <p>
-                     ${Data.description}
+                    ${Data.description}
                   </p>
                   <p id="shipping">Free Shipping</p>
                   <div class="cart-items">
                     <a href="#">View details</a>
-                    <button button onclick="add(this)">Add To Cart</button>
+                    <button onclick="add(this)">Add To Cart</button>
                   </div>
                 </div>
               </div>                                    
@@ -399,11 +399,7 @@
           .catch((error) => {
             console.log(error);
           });
-
       }
-
-
-
     </script>
   </body>
 </html>
