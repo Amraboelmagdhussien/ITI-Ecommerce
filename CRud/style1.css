@@ -1,0 +1,162 @@
+/* Full CRUd product local storage  */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  th,
+  td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .btnEdit {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    /* color:  */
+    background-color: rgb(236, 152, 43);;
+  }
+  .btndelet{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    color: rgb(30, 20, 7);
+    background-color: brown;
+  }
+  .btnAdd{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    color: rgb(30, 20, 7);
+    background-color:blue;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  #category-list{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-color: #007bff; /* Primary color from Bootstrap */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+  }
+  input:focus,
+  textarea:focus {
+    border-color: #007bff; /* Primary color from Bootstrap */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+  }
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Adjust as needed */
+  }
+
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* Adjust as needed */
+    border-radius: 5px; /* Optional for rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional for shadow */
+  }
+  #error{
+    color: #c82333;
+    text-align: center;
+  }
+  /* Product itemes  */
+ /* {{{{{{{{{{{{{{{{{{{{CSS }}}}}}}}}}}}}}}}}}}}  */
+.full-sec .products .product-card-1 {
+border: 1px solid rgba(128, 128, 128, 0.399);
+border-radius: 10px;
+display: flex;
+align-items: center;
+}
+.products .product-card-1 .product-info-1 {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+padding: 1.3rem;
+}
+
+.products .product-card-1 .product-info-1 #price {
+font-weight: 700;
+}
+
+.products .product-card-1 .product-info-1 #shipping {
+color: #00b517;
+}
+
+.products .product-card-1 .product-info-1 a {
+text-decoration: none;
+color: #0d6efd;
+}
+
+.products .product-card-1 .product-info-1 button {
+background: linear-gradient(180deg, #127fff 0%, #0067ff 100%);
+border-style: none;
+border-radius: 5px;
+color: white;
+padding: 0.3rem;
+cursor: pointer;
+}
+
+.products .product-card-1 .product-info-1 .cart-items {
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+
+.products .product-card-1 .product-info-1 a:hover {
+color: grey;
+}
+
+.products .product-card-1 img {
+width: 225px;
+height: 225px;
+padding: 0.5rem 0.3rem;
+}
+/* Weeed */
+.cart-items i {
+color: red;
+border-radius: 3px;
+padding: 0.3rem;
+cursor: pointer;
+}
+
+.cart-items .added {
+display: none;
+}
