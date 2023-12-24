@@ -47,12 +47,6 @@ function deleteFunction() {
   location.reload();
 }
 
-async function qtyAdding() {
-  let stringNumb = document.getElementById("qty").value;
-  let parsedNumb = parseInt(stringNumb);
-  document.getElementById("add-qty");
-}
-
 let getItemss = localStorage.getItem("cartItems");
 let dataRet = JSON.parse(getItemss || "[]");
 
@@ -76,11 +70,14 @@ let display = function () {
     <div class="price">
     ${dataRet[i].price}$
     <input id="qty" type="text" placeholder="QTY..." value="1">
-    <button id="add-qty">Add</button>
+    <button class="addQtys" data-index="${i}" id="add-qty">Add</button>
     </div>
     </div>`;
       document.querySelector(".checkout-left").appendChild(cartEle);
     }
+
+    let testing = document.querySelectorAll("addQtys");
+    console.log(testing.values());
   } catch (error) {
     console.log("The Cart Is just Empty Nothing to Show Here");
   }
@@ -91,10 +88,16 @@ let display = function () {
   });
 };
 
-display();
+function increaseQuantity(index) {
+  // Increase quantity logic for the item at the given index
+  const quantityInput = document.querySelectorAll(".qty")[index];
+  let currentQty = parseInt(quantityInput.value);
+  currentQty++;
+  quantityInput.value = currentQty;
+  // Update your dataRet array or perform any other necessary actions with the increased quantity
+}
 
-// let total = document.querySelector(".total-prices");
-// let subTotal = document.getElementsByClassName("subTotal");
+display();
 
 function ShowMyPrice() {
   try {
