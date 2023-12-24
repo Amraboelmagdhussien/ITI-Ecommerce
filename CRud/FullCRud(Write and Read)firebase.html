@@ -13,7 +13,8 @@ c.	Image
 d.	Category
 e.	Price
 f.	Description
-g.	Stock Quantity -->
+g.	Stock Quantity 
+-->
  <form action=""><fieldset>
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
@@ -23,9 +24,9 @@ g.	Stock Quantity -->
         
         <label for="name" >Select Category:</label>
         <select style="align-content: center;" name="Category" id="Category">
-          <option value="p1">Category 1</option>
-          <option value="p1">Category 2</option>
-          <option value="p1"> Category 3</option>
+          <option value="p1">Category 1 </option>
+          <option value="p1">Category 2 </option>
+          <option value="p1"> Category 3 </option>
         </select>
             <br>
         <label for="price">Price:</label>
@@ -39,9 +40,6 @@ g.	Stock Quantity -->
         <button value="Add" id="Add" >ADD Product</button>
       </fieldset>
      </form>
-
-  
-
     <div > 
       <h1>Product List</h1>
       <table>
@@ -132,7 +130,6 @@ g.	Stock Quantity -->
 {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{READ}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
 */ // make it global 
 var UserId =  Math.floor((Math.random() * 1000));
-
 const dbRef = ref(getDatabase());
 for(let i=0;i<UserId;i++){
 const userId = i;
@@ -167,7 +164,9 @@ get(child(dbRef, `products/${userId}`)).then((snapshot) => {
   if (snapshot.exists()){
     const Data = snapshot.val()
     document.getElementById("Items").innerHTML +=
-    ` <div class="product-card-1">
+    ` <div class='full-sec'>
+                  <div class='products'>
+    <div class="product-card-1">
                 <div class="product-image-1">
                   <img src="${Data.productImag}"    alt="" />
                 </div>
@@ -183,7 +182,9 @@ get(child(dbRef, `products/${userId}`)).then((snapshot) => {
                     <button>Add To Cart</button>
                   </div>
                 </div>
-              </div>`
+              </div>
+              </div>
+              </div> <br>`
     ;
   } else {
     console.log("No data available");
@@ -193,13 +194,6 @@ get(child(dbRef, `products/${userId}`)).then((snapshot) => {
 });
 
 }
-
-
-
-
-
-
-
 //=================================================================================
 
 // write to database  opration 1
@@ -212,7 +206,7 @@ a_btn.addEventListener("click",()=>{
   const db = getDatabase();
   set(ref(db, 'products/' + UserId ), {
     productName:document.getElementById("name").value,
-    productImag: document.getElementById("img").files[0],
+    productImag: document.getElementById("img").value.split('\\').pop(),
     productPrice: document.getElementById("price").value,
     productCatogery : document.getElementById("Category").value ,
     productStock: document.getElementById("Stock").value 
@@ -231,14 +225,11 @@ a_btn.addEventListener("click",()=>{
 {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{Delet}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
 */
 let db = getDatabase();
-ref(`/products/${1}`).remove();
-
 function Del_spcificdata(id){
   let db = getDatabase();
   db.ref(`products/${id}`).remove();
 }
 
-Del_spcificdata(2);
 // const Re_btn = document.getElementById("btn_d")
 // Re_btn.addEventListener("click",function Remove_item(id){
 //   get(child(dbRef, `products/${userId}`)).then((snapshot) => {
