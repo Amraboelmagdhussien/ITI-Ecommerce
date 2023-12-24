@@ -7,6 +7,7 @@ const cvvMsg = document.getElementById("cvvMsg");
 const nameInput = document.getElementById("name");
 const cardNumInput =document.getElementById("creditCradNum");
 const ccvInput = document.getElementById("cvv");
+const cardTypeImg = document.getElementById('cardImg');
 let displayPrice = 0;
 
 // Display credit options
@@ -55,9 +56,11 @@ function nameValidation(name) {
 function creditValidation(name) {
     const visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
     const mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
-    const amexpRegEx = /^(?:3[47][0-9]{13})$/;
-    const discovRegEx = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
-    return visaRegEx.test(name) || mastercardRegEx.test(name) || amexpRegEx.test(name) || discovRegEx.test(name);
+    // const amexpRegEx = /^(?:3[47][0-9]{13})$/;
+    // const discovRegEx = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
+    return visaRegEx.test(name) || mastercardRegEx.test(name) 
+    // || amexpRegEx.test(name) || discovRegEx.test(name)
+    ;
 }
 
 function cvvValidation(name) {
@@ -87,5 +90,16 @@ checkoutBtn.addEventListener("click", function (e) {
         }
     } else if (flagSpecial === 0) {
         window.location.href = "delvirey.html";
+    }
+});
+
+// Show Image of Card Type
+cardNumInput.addEventListener("blur", function(){
+    if(cardNumInput.value[0]==4){
+        cardTypeImg.src='../Utilites/visa.svg';
+    }else if(cardNumInput.value[0]==5){
+        cardTypeImg.src='../Utilites/mastercard.svg';
+    }else{
+        cardTypeImg.src='../Utilites/generic.svg';
     }
 });
