@@ -1,3 +1,35 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  set,
+  get,
+  child,
+  onValue,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+// https://firebase.google.com/docs/web/setup#available-libraries
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyADIzVJeauTcF1WjKGMipnNNH3cu8PagDg",
+  authDomain: "gothic-album-381415.firebaseapp.com",
+  databaseURL: "https://gothic-album-381415-default-rtdb.firebaseio.com",
+  projectId: "gothic-album-381415",
+  storageBucket: "gothic-album-381415.appspot.com",
+  messagingSenderId: "474429480537",
+  appId: "1:474429480537:web:5b32b38a9a22072f965b48",
+  measurementId: "G-5TEVJS063P",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+if (app) {
+  console.log("done Worked!!");
+}
+const db = getDatabase();
+const dbRef = ref(getDatabase());
+
 let dropList = document.querySelectorAll(".dropDownList");
 for (let i = 0; i < dropList.length; i++) {
   let list = dropList[i];
@@ -18,14 +50,17 @@ function deleteFunction() {
   location.reload();
 }
 
-let getItemss = localStorage.getItem("cartItems");
-let dataRet = JSON.parse(getItemss);
+async function qtyAdding() {
+  let stringNumb = document.getElementById("qty").value;
+  let parsedNumb = parseInt(stringNumb);
+  document.getElementById("add-qty");
+}
 
-console.log(typeof dataRet);
+let getItemss = localStorage.getItem("cartItems");
+let dataRet = JSON.parse(getItemss || "[]");
 
 let display = function () {
   const checkoutLeft = document.querySelector(".checkout-left");
-  let error = "Cart is Empty";
   try {
     for (let i = 0; i < dataRet.length; i++) {
       let cartEle = document.createElement("div");
@@ -41,25 +76,28 @@ let display = function () {
         </div>
       </div>
     </div>
-    <div class="price">${dataRet[i].price}$</div>
+    <div class="price">
+    ${dataRet[i].price}$
+    <input id="qty" type="text" placeholder="QTY..." value="1">
+    <button id="add-qty">Add</button>
+    </div>
     </div>`;
       document.querySelector(".checkout-left").appendChild(cartEle);
     }
   } catch (error) {
     console.log("The Cart Is just Empty Nothing to Show Here");
   }
-
   checkoutLeft.addEventListener("click", (event) => {
     if (event.target.classList.contains("remove")) {
       deleteFunction(event);
     }
   });
 };
+
 display();
 
 let total = document.querySelector(".total-prices");
 let subTotal = document.getElementsByClassName("subTotal");
-console.log(dataRet.price);
 
 function ShowMyPrice() {
   try {
@@ -72,14 +110,21 @@ function ShowMyPrice() {
     let sum = arrPrice.reduce((start, current) => {
       return start + current;
     }, 0);
-
-    document.getElementById("subTotal").innerHTML = `${sum}$`;
+    let quantity = document.getElementById("qty").value;
+    console.log(quantity);
+    let numberQty = parseInt(quantity);
+    console.log(numberQty);
+    let wholeTotal = sum * numberQty;
+    console.log(wholeTotal);
+    document.getElementById("subTotal").innerHTML = `${wholeTotal}$`;
     // console.log(sumPrice(sumValues));
-    let afterTaxes = sum * 0.15;
-    let lastTotal = sum + afterTaxes;
+
+    let afterTaxes = wholeTotal * 0.15;
+    let lastTotal = wholeTotal + afterTaxes;
     let finalTotal = (document.getElementById(
       "total-prices"
     ).innerHTML = `${lastTotal}$`);
+
     return finalTotal;
   } catch (e) {
     e.message;
@@ -88,21 +133,28 @@ function ShowMyPrice() {
 console.log(ShowMyPrice());
 ShowMyPrice();
 
-function couponDis() {
-  let coupon = document.getElementById("coupon").value;
-  if (coupon === "iti50") {
-    document.getElementById("discount").textContent = `50%`;
+async function couponDis() {
+  let couponCode = document.getElementById("coupon").value;
+  if (!couponCode) {
+    return;
+  }
+  const couponRef = ref(db, `coupons/${couponCode}`); // path in db
+  const couponSnapshot = await get(couponRef); // reading snapshot that contains every info about the obj
+  if (!couponSnapshot.exists()) {
+    return console.log("Error Coupon Does not exists");
+  } else {
+    const coupon = couponSnapshot.val();
+    console.log(coupon);
+    document.getElementById("discount").textContent = `${coupon.title}`;
     let totalbefore = parseInt(ShowMyPrice());
     console.log(totalbefore);
-    let totalDisc = parseInt(totalbefore) * 0.5;
+    let totalDisc = parseInt(totalbefore) * coupon.totaldiscount;
     console.log(parseInt(totalDisc));
     let wholeSome = totalbefore - totalDisc;
     console.log(wholeSome);
     document.getElementById("old-price").style.display = "block";
     document.getElementById("old-price").innerHTML = `${totalbefore}$`;
     document.getElementById("total-prices").textContent = `${wholeSome}$`;
-  } else {
-    alert("Error There is No Cupon");
   }
 }
 

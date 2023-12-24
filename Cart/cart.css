@@ -455,3 +455,29 @@ body {
   text-decoration: line-through;
   display: none;
 }
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.price input {
+  display: flex;
+  flex-direction: column;
+  width: 55px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid grey;
+  padding: 0.2rem 1rem;
+  text-align: center;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.price button {
+  color: #0067ff;
+  padding: 0.3rem 0.8rem;
+}
