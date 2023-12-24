@@ -32,15 +32,27 @@ const dbRef = ref(getDatabase());
 let cartItems = [];
 
 let localItems = localStorage.getItem("allproduct");
-let parsedItem = JSON.parse(localItems || "[]");
+let parsedItem = JSON.parse(localItems);
+// console.log(parsedItem[0]);
+console.log(typeof parsedItem);
+// console.log(parsedItem);
 
-console.log(parsedItem);
+let elements = parsedItem.forEach((elemnt) => {
+  return console.log(elemnt);
+});
+console.log(typeof elements);
 
 let addToCart = async function (id) {
   const snapshot = await get(child(dbRef, id)); // btrg3 promise
   const prod = snapshot.val();
-  cartItems.push(parsedItem);
+  let localItems = localStorage.getItem("allproduct");
+  let parsedItem = JSON.parse(localItems);
   cartItems.push(prod);
+
+  parsedItem.forEach((elemnt) => {
+    cartItems.push(elemnt);
+    console.log("itworks");
+  });
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 };
 console.log(cartItems);

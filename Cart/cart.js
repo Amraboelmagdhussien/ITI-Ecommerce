@@ -57,10 +57,10 @@ let display = function () {
       let cartEle = document.createElement("div");
       cartEle.innerHTML = `<div class="product-card-1">
     <div class="img">
-      <img src="${dataRet[i].image}" alt="" />
+      <img src="${dataRet[i].image || dataRet[i].pimg}" alt="" />
       <div class="check-info">
-        <p>${dataRet[i].title}</p>
-        <p class="prod-desc">${dataRet[i].description}</p>
+        <p>${dataRet[i].title || dataRet[i].pname}</p>
+        <p class="prod-desc">${dataRet[i].description || dataRet[i].desc}</p>
         <div class="btns-sAndR">
           <button data-index="${i}" class="remove">Remove</button>
           <button class="sve-for-later">Save For later</button>
