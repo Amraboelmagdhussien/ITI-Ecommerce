@@ -75,9 +75,6 @@ let display = function () {
     </div>`;
       document.querySelector(".checkout-left").appendChild(cartEle);
     }
-
-    let testing = document.querySelectorAll("addQtys");
-    console.log(testing.values());
   } catch (error) {
     console.log("The Cart Is just Empty Nothing to Show Here");
   }
@@ -87,15 +84,6 @@ let display = function () {
     }
   });
 };
-
-function increaseQuantity(index) {
-  // Increase quantity logic for the item at the given index
-  const quantityInput = document.querySelectorAll(".qty")[index];
-  let currentQty = parseInt(quantityInput.value);
-  currentQty++;
-  quantityInput.value = currentQty;
-  // Update your dataRet array or perform any other necessary actions with the increased quantity
-}
 
 display();
 
