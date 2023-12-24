@@ -122,7 +122,7 @@ function register(e) {
     localStorage.setItem("usersData", JSON.stringify(usersArray));
 
     setTimeout(() => {
-      window.location = "login.html";
+      window.location = "..\registeration\registeration.html";
     }, 1000);
   }
 }

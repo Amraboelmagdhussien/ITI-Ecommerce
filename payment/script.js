@@ -48,7 +48,7 @@ function addedToCart(id) {
     badgeDom.innerHTML = uniqueProducts.length;
     displayCartItemsCount();
   } else {
-    window.location = "login.html";
+    window.location = "..\registeration\registeration.html";
   }
 }
 
@@ -59,7 +59,7 @@ function openCartMenu() {
       cartProductsMenu.style.display === "block" ? "none" : "block";
   }
   if (cartProductsDivDom.innerHTML === "") {
-    cartProductsDivDom.innerHTML = "No Item Yet !!";
+    cartProductsDivDom.innerHTML = "No Item Added Yet !!";
   }
 }
 
