@@ -114,12 +114,9 @@ function display_items() {
     // parent
     const dataDiv = document.getElementById("Data");
     // child
-<<<<<<< HEAD
-    const div = document.createElement('div');
-=======
+
     const div = document.createElement("div");
 
->>>>>>> 53a09f8 (Working on LocalStorage)
     const Data = dataDiv.appendChild(div);
     Data.innerHTML += `
                     <div class="product-card-1">
