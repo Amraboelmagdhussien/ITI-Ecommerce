@@ -74,7 +74,7 @@ for (let i = 0; i < 20; i++) {
                <p id="shipping">Free Shipping</p>
                <div class="cart-items">
                  <a href="#">View details</a>
-                 <button>Add To Cart</button>
+                 <button >Add To Cart</button>
                  <i class="fa-regular fa-heart"></i>
                  <i class="fa-solid fa-heart added"></i>
                </div>
@@ -132,11 +132,7 @@ function display_items() {
                       <p id="shipping">Free Shipping</p>
                       <div class="cart-items">
                         <a href="#">View details</a>
-<<<<<<< HEAD
-                        <button >Add To Cart</button>
-=======
-                        <button class="add-to-cart-func">Add To Cart</button>
->>>>>>> 4c34bb39754f2c6168a65d6ba6c001c3649c3081
+                        <button onclick='' class="add-to-cart-func">Add To Cart</button>
                         <i class="fa-regular fa-heart"></i>
                         <i class="fa-solid fa-heart added"></i>
                    
