@@ -145,7 +145,7 @@ get(child(dbRef, `products/${userId}`)).then((snapshot) => {
             <td>${Data.productCatogery}</td>
             <td>${Data.productStock}</td>
             <td><img src="4.png" id="btn_E" alt="" width="40px"></td>
-            <td><img src="8.png" width="40px" id="btn_d" alt=""></td>
+            <td><img src="8.png" width="40px"  id="btn_d" alt=""></td>
      </tr>`;
   } else {
     console.log("No data available");
@@ -217,19 +217,38 @@ a_btn.addEventListener("click",()=>{
 {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{Updata}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
 */
 
+// function Edite_prod(id){
+// get(child(dbRef, `products/${id}`)).then((snapshot) => {
+//   if (snapshot.exists()){
+//     const Data = snapshot.val()
+// document.getElementById("name").value= Data.productName
+// document.getElementById("price").value =Data.productPrice
+// document.getElementById("Category").value =Data.productCatogery
+// document.getElementById("Stock").value =Data.productStock
 
-
-
+//   }
+//   })
+// }
+// document.getElementById("btn_d").addEventListener("click" ,Edite_prod(id))
 
 /*
 {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{Delet}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
 */
-let db = getDatabase();
-function Del_spcificdata(id){
-  let db = getDatabase();
-  db.ref(`products/${id}`).remove();
-}
+// firebase.initializeApp(firebaseConfig);
 
+// // var database = firebase.database();
+// var dataRef = database.ref("/products/1");
+
+// dataRef.remove()
+//   .then(function() {
+//     console.log("Data removed successfully");
+//   })
+//   .catch(function(error) {
+//     console.error("Error removing data:", error);
+//   });
+
+
+  
 // const Re_btn = document.getElementById("btn_d")
 // Re_btn.addEventListener("click",function Remove_item(id){
 //   get(child(dbRef, `products/${userId}`)).then((snapshot) => {
