@@ -3,10 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import {
   getDatabase,
   ref,
-  set,
   get,
-  child,
-  onValue,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -96,8 +93,8 @@ let display = function () {
 
 display();
 
-let total = document.querySelector(".total-prices");
-let subTotal = document.getElementsByClassName("subTotal");
+// let total = document.querySelector(".total-prices");
+// let subTotal = document.getElementsByClassName("subTotal");
 
 function ShowMyPrice() {
   try {
