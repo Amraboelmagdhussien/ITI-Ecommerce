@@ -438,3 +438,20 @@ body {
   border-radius: 5px;
   padding: 0.5rem 1rem;
 }
+
+.total {
+  display: flex;
+  flex-direction: column;
+}
+
+.total .new-Price {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.total .old-price {
+  align-self: flex-end;
+  color: grey;
+  text-decoration: line-through;
+  display: none;
+}

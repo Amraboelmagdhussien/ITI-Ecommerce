@@ -98,7 +98,8 @@ function couponDis() {
     console.log(parseInt(totalDisc));
     let wholeSome = totalbefore - totalDisc;
     console.log(wholeSome);
-
+    document.getElementById("old-price").style.display = "block";
+    document.getElementById("old-price").innerHTML = `${totalbefore}$`;
     document.getElementById("total-prices").textContent = `${wholeSome}$`;
   } else {
     alert("Error There is No Cupon");
@@ -112,6 +113,7 @@ document.getElementById("discountBtn").addEventListener("click", () => {
 function removeDisc() {
   document.getElementById("coupon").value = "";
   document.getElementById("discount").textContent = `0%`;
+  document.getElementById("old-price").style.display = "none";
   ShowMyPrice();
   console.log("Working");
 }
@@ -119,3 +121,7 @@ function removeDisc() {
 document.getElementById("removeCpn").addEventListener("click", () => {
   removeDisc();
 });
+
+document.getElementById(
+  "cart-items-number"
+).textContent = `(${dataRet.length})`;

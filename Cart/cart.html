@@ -119,7 +119,7 @@
     </header>
     <div class="container">
       <h2 class="cart-items">
-        My Cart <span class="cart-items-number">(0)</span>
+        My Cart <span id="cart-items-number">(0)</span>
       </h2>
 
       <div class="cart-components">
@@ -156,7 +156,7 @@
           </div>
 
 
-        <div class="checkout-right">
+        <div id="checkout-right" class="checkout-right">
           <div class="coupon">
             <h2>Have a coupon?</h2>
             <input id="coupon" type="text" placeholder="Enter Your Coupon..">
@@ -182,8 +182,12 @@
           </div>
 
           <div class="total">
-            <h3>Total:</h3>
+            <div class="new-Price">
+              <h3>Total:</h3>
             <h3 id="total-prices" class="total-prices">0$</h3>
+            </div>
+            <h3 id="old-price" class="old-price">0$</h3>
+
         </div>
 
         <button class="procced-to-checkout">Procced to Checkout</button>
