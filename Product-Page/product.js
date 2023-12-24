@@ -121,7 +121,13 @@ for (let i = 0; i < dropList.length; i++) {
 function display_items() {
   var productContainer = JSON.parse(localStorage.getItem("allproduct"));
   for (var i = 0; i < productContainer.length; i++) {
-    document.getElementById("Data").innerHTML += `
+    // parent 
+    const dataDiv = document.getElementById("Data");
+    // child
+    const div = document.createElement('div');
+
+    const Data = dataDiv.appendChild(div);
+    Data.innerHTML += `
                     <div class="product-card-1">
                     <div class="product-image-1">
                       <img src="${productContainer[i].pimg}"   alt="" />
@@ -136,6 +142,7 @@ function display_items() {
                       <div class="cart-items">
                         <a href="#">View details</a>
                         <button>Add To Cart</button>
+                   
                       </div>
                     </div>
                   <br>`;
