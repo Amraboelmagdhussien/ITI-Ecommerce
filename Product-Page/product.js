@@ -87,6 +87,8 @@ for (let i = 0; i < 20; i++) {
                <div class="cart-items">
                  <a href="#">View details</a>
                  <button>Add To Cart</button>
+                 <i class="fa-regular fa-heart"></i>
+                 <i class="fa-solid fa-heart added"></i>
                </div>
              </div>
            </div>
