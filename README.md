@@ -13,3 +13,12 @@ Font used Inter
       // addToCart("0").then((value) => {
       //   console.log(value.val());
       // });
+
+let localItems = localStorage.getItem("allproduct");
+let parsedItem = JSON.parse(localItems);
+
+let localButton = document.getElementsByClassName("add-to-cart-func");
+
+async function pushToLocal() {
+cartItems.push(parsedItem[0]);
+}

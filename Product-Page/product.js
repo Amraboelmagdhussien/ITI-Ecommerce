@@ -33,26 +33,14 @@ let cartItems = [];
 
 let localItems = localStorage.getItem("allproduct");
 let parsedItem = JSON.parse(localItems);
-// console.log(parsedItem[0]);
-console.log(typeof parsedItem);
-// console.log(parsedItem);
-
-let elements = parsedItem.forEach((elemnt) => {
-  return console.log(elemnt);
-});
-console.log(typeof elements);
+console.log(parsedItem);
+cartItems.push(parsedItem[0]);
+let localButton = document.getElementsByClassName("add-to-cart-func");
 
 let addToCart = async function (id) {
   const snapshot = await get(child(dbRef, id)); // btrg3 promise
   const prod = snapshot.val();
-  let localItems = localStorage.getItem("allproduct");
-  let parsedItem = JSON.parse(localItems);
   cartItems.push(prod);
-
-  parsedItem.forEach((elemnt) => {
-    cartItems.push(elemnt);
-    console.log("itworks");
-  });
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 };
 console.log(cartItems);
@@ -123,10 +111,15 @@ for (let i = 0; i < dropList.length; i++) {
 function display_items() {
   var productContainer = JSON.parse(localStorage.getItem("allproduct"));
   for (var i = 0; i < productContainer.length; i++) {
-    // parent 
+    // parent
     const dataDiv = document.getElementById("Data");
     // child
+<<<<<<< HEAD
     const div = document.createElement('div');
+=======
+    const div = document.createElement("div");
+
+>>>>>>> 53a09f8 (Working on LocalStorage)
     const Data = dataDiv.appendChild(div);
     Data.innerHTML += `
                     <div class="product-card-1">
@@ -142,7 +135,7 @@ function display_items() {
                       <p id="shipping">Free Shipping</p>
                       <div class="cart-items">
                         <a href="#">View details</a>
-                        <button>Add To Cart</button>
+                        <button class="add-to-cart-func">Add To Cart</button>
                         <i class="fa-regular fa-heart"></i>
                         <i class="fa-solid fa-heart added"></i>
                    
