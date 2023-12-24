@@ -127,7 +127,6 @@ function display_items() {
     const dataDiv = document.getElementById("Data");
     // child
     const div = document.createElement('div');
-
     const Data = dataDiv.appendChild(div);
     Data.innerHTML += `
                     <div class="product-card-1">
