@@ -24,68 +24,52 @@
     />
     <link rel="stylesheet" href="../loginRegister/headerFooter.css" />
     <style>
-        /* .section-form {
-        margin: 50px auto;
-        width: 40%;
-        text-align: center;
-        background-color: #4942E4;
-        padding: 20px;
-        border-radius: 40px;
-        } */
-
-        @media only screen and (max-width: 767px) {
         .section-form {
-            width: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
-        }
-        
+
         .section-form h2 {
-        font-size: 50px;
-        letter-spacing: 2px;
-        text-align: center;
+            font-size: 50px;
+            letter-spacing: 2px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
         .section-form form input[type="text"],.section-form form input[type="password"]{
-        display: block;
-        width: 80%;
-        margin: 5px auto;
-        height: 40px;
-        padding: 20px;
-        border: 1px solid #127fff;
-        font-family: inherit;
-        outline: none;
-        border-radius: 20px;
-        font-size: large;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
         .section-form form input[type="submit"] {
-        font-size: 30px;
-        text-transform: uppercase;
-        height:50px;
-        cursor: pointer;
-        display: block;
-        width: 50%;
-        margin: 5px auto;
-        border-radius: 20px;
-        font-weight: bolder;
-        background-color: #127fff;
-        color: white;
-        border: 1px solid #127fff;
-
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #127fff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         .section-form form input[type="submit"]:hover {
-        color: 	#ece0d1;
-        
+            background-color: #268afc;
         }
         .section-form form input[type="checkbox"]{
-        width: 17px;
-        height: 17px;
-        margin: 10px;
+            width: 17px;
+            height: 17px;
+            margin: 10px;
         }
         .section-form form span{
-
-        font-weight: bold;
-        font-size: large;
+            font-weight: bold;
+            font-size: large;
         }
     </style>
     <title>Login</title>
@@ -183,8 +167,7 @@
         </div>
     </header>
     <main>
-        <div id="aboutusSearch"></div>
-        <section class="section-form" id="specialLogin">
+        <section class="section-form container" id="specialLogin">
             <h2>Login User</h2>
             <form action="">
             <input type="text" placeholder="Enter username" id="username" />
@@ -257,7 +240,7 @@
         </div>
     </footer>
     <script src="../loginRegister/login.js"></script>
-    <script src="../payment/user.js"></script>
+    <script src="../profile/profile.js"></script>
     <script src="../payment/script.js"></script>
     <script src="../cart-items/home.js"></script>
 </body>

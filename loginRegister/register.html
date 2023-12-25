@@ -26,19 +26,6 @@
     <link rel="stylesheet" href="../loginRegister/headerFooter.css" />
     <link rel="stylesheet" href="../loginRegister/firebase.css" />
     <style>
-      /* .section-form {
-        margin: 50px auto;
-        width: 40%;
-        background-color: #4942E4;
-        padding: 20px;
-        border-radius: 40px;
-        } */
-
-      @media only screen and (max-width: 767px) {
-        .section-form {
-          width: 70%;
-        }
-      }
       .section-form {
         display: flex;
         justify-content: center;
@@ -46,49 +33,36 @@
         flex-direction: column;
       }
 
-      .section-form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
       .section-form h2 {
         font-size: 50px;
         letter-spacing: 2px;
         text-align: center;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
       }
 
       .section-form form input {
-        display: block;
-        width: 80%;
-        margin: 5px auto;
-        height: 40px;
-        padding: 20px;
-        border-radius: 20px;
-        font-size: large;
-        border: 1px solid #127fff;
-        font-family: inherit;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+          width: 100%;
+          padding: 10px;
+          margin: 10px 0;
+          border: 1px solid #ccc;
+          border-radius: 5px;
       }
       .section-form form input[type="submit"] {
-        font-size: 30px;
-        text-transform: uppercase;
-        height: 50px;
-        cursor: pointer;
-        display: block;
-        width: 50%;
-        margin: 5px auto;
-        border-radius: 20px;
-        font-weight: bolder;
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
         background-color: #127fff;
         color: white;
-        border: 1px solid #127fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
       }
 
       .section-form form input[type="submit"]:hover {
-        color: #ece0d1;
+        background-color: #268afc;
       }
 
       .section-form form span {
@@ -297,7 +271,7 @@
       </div>
     </footer>
     <script src="../loginRegister/register.js"></script>
-    <script src="../payment/user.js"></script>
+    <script src="../profile/profile.js"></script>
     <script src="../payment/script.js"></script>
     <script src="../cart-items/home.js"></script>
   </body>
