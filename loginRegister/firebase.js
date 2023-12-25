@@ -94,18 +94,28 @@ signInWithPopup(auth, provider)
 };
 
 // Login using Email/Password
-const loginMail = async () => {
-signInWithEmailAndPassword(auth, inpLoginMail.value, inpLoginPass.value)
-    .then((credentials) => {
-        console.log(credentials);
-        console.log('User Signed in successfully');
-        const user = credentials.user;
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-    });
-};
+const loginMail = evt => {
+    evt.preventDefault();
+    signInWithEmailAndPassword(auth, inpLoginMail.value, inpLoginPass.value)
+        .then((credentials) => {
+            console.log(credentials);
+            console.log('User Signed in successfully');
+            get(child(dbref,'UserAuthList/'+ credentials.user.uid)).then((snapshot)=>{
+                if(snapshot.exist){
+                    sessionStorage.setItem("user-info",JSON.stringify({
+                        username: snapshot.val().username
+                    }))
+                    sessionStorage.setItem("user-info",JSON.stringify(credentials.user))
+                    window.location.href ="../home/homepage.html"
+                }
+            })
+        })
+        .catch((error) => {
+            alert(error.message);
+            console.log(error.code);
+            console.log(error.message);
+        });
+    };
 
 // Register using Email/Password
 const regMail = async () => {
@@ -113,6 +123,9 @@ createUserWithEmailAndPassword(auth, inpRegMail.value, inpRegPass.value)
     .then((credentials) => {
         console.log(credentials);
         console.log('User Registered successfully');
+        set(ref(db,'UserAuthList/'+ credentials.user.uid),{
+            username : inpRegName.value
+        })
     })
     .catch((error) => {
         alert(error.message);
