@@ -117,9 +117,7 @@ function display_items() {
     // parent
     const dataDiv = document.getElementById("Data");
     // child
-
     const div = document.createElement("div");
-
     const Data = dataDiv.appendChild(div);
     Data.innerHTML += `
                     <div class="product-card-1">
@@ -136,8 +134,8 @@ function display_items() {
                       <div class="cart-items">
                         <a href="#">View details</a>
                         <button class="add-to-cart-btn" data-index="${i}">Add To Cart</button>
-                        <i class="fa-regular fa-heart"></i>
-                        <i class="fa-solid fa-heart added"></i>
+                        <i data-index='${i}' class="fa-regular fa-heart"></i>
+                        <i data-index='${i}'  class="fa-solid fa-heart added"></i>
                    
                       </div>
                     </div>
@@ -149,47 +147,27 @@ function display_items() {
     button.addEventListener("click", function (event) {
       const index = event.target.dataset.index;
       addToCartItems(index);
-    });
-  });
+    })});
+
+const addTowishButtons = document.querySelectorAll(".fa-regular");
+addTowishButtons.forEach((button) => {
+  button.addEventListener("click", function (event) {
+    const index = event.target.dataset.index;
+    addToWishlist(index);
+})});
 }
 display_items();
 
 
-// /*  */
-// // const wishbtnremove = document.querySelectorAll("i[data-active='0']");
-// // const wishbtnadd = document.querySelectorAll("i[data-active='1']");
-// // console.log(wishbtnadd);
-// // console.log(wishbtnremove);
-
-// const elements = Array.from(document.querySelectorAll("i[data-active='0']"));
-// const element = Array.from(document.querySelectorAll("i[data-active='1']"));
-// console.log(element)
-// console.log(elements)
-
-
-// // })
-// // for (let i = 0; i < wishbtnadd.length; i++) {
-// //   wishbtnadd[i].addEventListener("click",()=>{
-// //     elment.style.display= "inline";;
-// // })}
-// // for (let i = 0; i < wishbtnremove.length; i++) {
-// //   wishbtnremove[i].addEventListener("click",()=>{
-// //     wishbtnremove.style.display= "inline";;
-// //   // Perform actions on each element
-// // })}
-
-// // elements.forEach((el)=>{
-// //   el.addEventListener("click",()=>{
-// //   console.log(el)
-// //   el.className ="fa-solid fa-heart";
-// // })})
-
-
-
-// element.forEach((ele) => {
-//  ele.addEventListener('click',()=>{
-//   console.log(ele);
-//   ele.className  = 'fa-solid fa-heart added';
-// })})
-
+/*  */
+var wishlistContainer=[]
+var wishlistContainer = JSON.parse(localStorage.getItem('wishlist'))
+let localItems_ = localStorage.getItem("allproduct");
+let parsedItem_ = JSON.parse(localItems);
+function addToWishlist(item){
+  let vaariable = parsedItem_[item];
+  wishlistContainer.push(vaariable);
+  localStorage.setItem('wishlistContainer', JSON.stringify(wishlist));
+}
+console.log(wishlistContainer);
 
