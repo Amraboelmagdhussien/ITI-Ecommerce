@@ -127,6 +127,12 @@ function addToCartItems(indexedId) {
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
 
+function addToWishlistItems(indexedId) {
+  let vaariable = parsedItem[indexedId];
+  wishList.push(vaariable);
+  localStorage.setItem("wishList", JSON.stringify(wishList));
+}
+
 // display
 function display_items() {
   var productContainer = JSON.parse(localStorage.getItem("allproduct"));
@@ -151,8 +157,8 @@ function display_items() {
                       <div class="cart-items">
                         <a href="#">View details</a>
                         <button class="add-to-cart-btn" data-index="${i}">Add To Cart</button>
-                        <i data-index='${i}' class="fa-regular fa-heart"></i>
-                        <i data-index='${i}'  class="fa-solid fa-heart added"></i>
+                        <i data-index='${i}' class="fa-regular fa-heart wishListIcon"></i>
+                        <i  class="fa-solid fa-heart added"></i>
                   
                       </div>
                     </div>
@@ -160,6 +166,17 @@ function display_items() {
   }
 
   const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+  const wishListIcons = document.querySelectorAll(
+    ".fa-regular.fa-heart.wishListIcon"
+  );
+
+  wishListIcons.forEach((icon) => {
+    icon.addEventListener("click", function (event) {
+      const index = event.target.dataset.index;
+      addToWishlistItems(index);
+    });
+  });
+
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", function (event) {
       const index = event.target.dataset.index;

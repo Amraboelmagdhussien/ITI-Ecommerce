@@ -354,3 +354,10 @@ body {
 .cart-items .added {
   display: none;
 }
+
+.cart-items button {
+  color: red;
+  border-radius: 3px;
+  padding: 0.3rem;
+  cursor: pointer;
+}
