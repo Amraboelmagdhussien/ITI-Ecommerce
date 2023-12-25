@@ -134,6 +134,41 @@
         flex-direction: column;
         align-items: center;
       }
+
+      .hiddenIcons {
+        display: none;
+      }
+
+      .header .logo img {
+        height: 40px;
+      }
+
+      .errorShow {
+        height: 770px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: rgba(128, 128, 128, 0.562);
+      }
+
+      .errorShow i {
+        font-size: 190px;
+      }
+
+      #headerLogout {
+        border: 0;
+        border-radius: 8px;
+        height: 2rem;
+        width: 5rem;
+        cursor: pointer;
+        color: white;
+        font-family: "Inter", sans-serif;
+        background: var(
+          --primary-gradient,
+          linear-gradient(180deg, #ff6347 0%, #ff0000 100%)
+        );
+      }
     </style>
     <title>Delivery</title>
   </head>
@@ -143,7 +178,9 @@
         <nav class="header">
           <div class="logo">
             <!-- logo here -->
-            <h1>Store Name</h1>
+            <a href="/home/homepage.html"
+              ><img src="/Logo/1111.svg" alt=""
+            /></a>
           </div>
 
           <div class="postion">
@@ -204,6 +241,9 @@
               <li><a href="/About Us/aboutus.html">About Us</a></li>
               <li><a href="/Find Us/Find Us.html">Find us</a></li>
               <li><a href="/help/help.html">Help</a></li>
+              <li id="loginButton">
+                <a href="/loginRegister/login.html">login/register</a>
+              </li>
             </ul>
           </div>
 
@@ -224,8 +264,13 @@
     </header>
 
     <main>
+      <div id="ifNotLoggedIn" class="container errorShow">
+        <i class="fa-solid fa-xmark"></i>
+        <h1>Nothing To Show here Please Login First</h1>
+      </div>
+
       <div id="aboutusSearch"></div>
-      <section class="section-form" id="specialLogin">
+      <section class="hiddenIcons" id="specialLogin">
         <h2>Delivery Information</h2>
         <form id="dele" action="">
           <div id="option1">
@@ -311,9 +356,7 @@
         </div>
       </div>
     </footer>
-    <script src="../profile/profile.js"></script>
     <script src="delivery.js"></script>
-    <script src="script.js"></script>
-    <script src="../cart-items/home.js"></script>
+    <!-- <script src="script.js"></script> -->
   </body>
 </html>
