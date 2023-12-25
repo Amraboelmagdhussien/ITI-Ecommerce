@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  /* max-width: 1080px; */
+  padding: 2rem 4rem;
+  margin: 0 auto;
+}
+
+.logo {
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+.search-bar {
+  width: 25rem;
+  border-radius: 10px;
+  height: 2rem;
+  padding: 1rem;
+  box-shadow: none;
+  border: 2px solid #127fff;
+  font-family: "Inter", sans-serif;
+}
+
+.search-bar:focus {
+  outline: none; /* Remove default focus outline */
+  border: 2px solid #127fff; /* Change border color when focused */
+  /* Add any additional styling specific to the focused state if needed */
+}
+
+.srch-btn {
+  position: absolute;
+  top: 6%;
+  right: 0;
+  background: var(
+    --primary-gradient,
+    linear-gradient(180deg, #127fff 0%, #0067ff 100%)
+  );
+  border: 0;
+  border-radius: 8px;
+  height: 2rem;
+  width: 5rem;
+  cursor: pointer;
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
+.postion {
+  position: relative;
+}
+
+.icons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.icons i {
+  color: rgba(0, 0, 0, 0.528);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.header .icons div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header .icons div a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.528);
+  font-size: 15px;
+}
+
+.header .icons div:hover i,
+.header .icons div:hover a {
+  color: #127fff;
+}
+.header-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.276);
+  border-top: 1px solid rgba(0, 0, 0, 0.276);
+}
+
+.container .bg-color .part-right .submit-btn {
+  background: var(
+    --primary-gradient,
+    linear-gradient(180deg, #127fff 0%, #0067ff 100%)
+  );
+  border-style: none;
+  border-radius: 5px;
+  color: white;
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+  padding: 0.4rem 2rem;
+  font-size: 16px;
+}
+
+#headerLogout {
+  display: None;
+}
+.hiddenIcons {
+  display: none;
+}
+
+#headerLogout {
+  border: 0;
+  border-radius: 8px;
+  height: 2rem;
+  width: 5rem;
+  cursor: pointer;
+  color: white;
+  font-family: "Inter", sans-serif;
+  background: var(
+    --primary-gradient,
+    linear-gradient(180deg, #ff6347 0%, #ff0000 100%)
+  );
+}
+
+.header .logo img {
+  height: 40px;
+}
+
+.errorShow {
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: rgba(128, 128, 128, 0.562);
+}
+
+.errorShow i {
+  font-size: 190px;
+}
