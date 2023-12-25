@@ -642,4 +642,10 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  color: rgba(128, 128, 128, 0.562);
+}
+
+.errorShow i {
+  font-size: 190px;
 }
