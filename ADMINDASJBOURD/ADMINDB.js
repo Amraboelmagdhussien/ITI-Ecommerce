@@ -1,4 +1,3 @@
-
 const data = localStorage.getItem('usersData');
 const order = localStorage.getItem("cartItems")
 
@@ -10,7 +9,6 @@ if (Userdata) {
 for(i=0;i<Userdata.length;i++){
  console.log(Userdata[i].role == "customer")
 }
-
 } else {
   // Data does not exist in LocalStorage
   console.log('No data found in LocalStorage');
@@ -19,38 +17,52 @@ for(i=0;i<Userdata.length;i++){
 function display_items(){
     let getItemss = localStorage.getItem("cartItems");
     let dataRet = JSON.parse(getItemss || "[]");
+    const dataDiv = document.getElementById("orderItems");
     try {
-      for (var i = 0; i < getItemss.length; i++) {
-        const dataDiv = document.getElementById("orderItems");
- dataDiv.innerHTML += `
- <div class='full-sec'>
- <div class='products'>
-          <div class="product-card-1">
-            <div class="img">
-              <img src="${dataRet[i].image || dataRet[i].pimg}" alt="" />
-              <div class="check-info">
-                <p>${dataRet[i].pname || dataRet[i].title}</p>
-                <p class="prod-desc">${dataRet[i].title || dataRet[i].pname}</p>
-                <div class="btns-sAndR">
-                  <button data-index="${i}" class="remove">Cancel</button>
-                  <button data-index="${i}" class="remove">Aprove</button>
+      for (var i = 0; i < getItemss.length; i++){
+        dataDiv.innerHTML += `
+        <div class='full-sec'>
+        <div class='products'>
+                <div class="product-card-1">
+                    <div class="img">
+                    <img src="${dataRet[i].image || dataRet[i].pimg}" alt="" />
+                    <div class="check-info">
+                        <p>${dataRet[i].pname || dataRet[i].title}</p>
+                        <p class="prod-desc">${dataRet[i].title || dataRet[i].pname}</p>
+                        <div class="btns-sAndR">
+                        <button data-index="${i}" class="remove">Cancel</button>
+                        <button data-index="${i}" class="Aprove">Aprove</button>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="price">${dataRet[i].price}$</div>
                 </div>
-              </div>
+                </div>
             </div>
-            <div class="price">${dataRet[i].price}$</div>
-          </div>
         </div>
-      </div>
-      </div>
-      </div>`;
+        </div> <br>`;
       }
     } catch (e) {
       console.log(e.message);
     }
+    dataDiv.addEventListener("click", (event) => {
+        if (event.target.classList.contains("remove")) {
+          CancelFunction(event);
+          console.log("Working");
+        }
+      });
+
   }
+const Btn = document.getElementById("final");
+Btn.addEventListener('click',  display_items())
 
-  display_items();
-
+function CancelFunction() {
+  const button = event.target;
+  let dataIndex = button.getAttribute("data-index");
+  console.log(dataIndex);
+  dataRet.splice(dataIndex, 1);
+  localStorage.setItem("wishList", JSON.stringify(dataRet));
+}
 
 
 
