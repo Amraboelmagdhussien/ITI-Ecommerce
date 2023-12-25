@@ -108,6 +108,7 @@ let userName = document.getElementById("userName");
 let userPassword = document.getElementById("userPassword");
 let userEmail = document.getElementById("userEmail");
 let profConfig = document.getElementById("pro-config");
+let showPass = document.getElementById("showpassword");
 
 let profile = localStorage.getItem("usersData");
 let parsedProfile = JSON.parse(profile);
@@ -116,8 +117,8 @@ try {
   for (let i = 0; i < parsedProfile.length; i++) {
     if (parsedProfile[i].uName == userData) {
       userName.innerHTML = `${parsedProfile[i].uName}`;
-      userPassword.innerHTML = `${parsedProfile[i].pass}`;
       userEmail.innerHTML = `${parsedProfile[i].mail}`;
+      userPassword.value = `${parsedProfile[i].pass}`;
     } else {
       console.log("Error");
     }
@@ -158,3 +159,28 @@ function handleLogout() {
     window.location = "profile.html";
   }, 1000);
 }
+
+let showFunc = function () {
+  var passValue = document.getElementById("userPassword");
+  if (passValue.type === "password") {
+    passValue.type = "text";
+  } else {
+    passValue.type = "password";
+  }
+};
+
+let revert = function () {
+  var passValue = document.getElementById("userPassword");
+  if (passValue.type === "text") {
+    passValue.type = "password";
+  } else {
+    passValue.type = "text";
+  }
+};
+
+showPass.addEventListener("mouseup", () => {
+  revert();
+});
+showPass.addEventListener("mousedown", () => {
+  showFunc();
+});
