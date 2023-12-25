@@ -31,12 +31,6 @@ const db = getDatabase();
 const dbRef = ref(getDatabase());
 let cartItems = [];
 
-let localItems = localStorage.getItem("allproduct");
-let parsedItem = JSON.parse(localItems);
-console.log(parsedItem);
-cartItems.push(parsedItem[0]);
-let localButton = document.getElementsByClassName("add-to-cart-func");
-
 let addToCart = async function (id) {
   const snapshot = await get(child(dbRef, id)); // btrg3 promise
   const prod = snapshot.val();
@@ -107,6 +101,15 @@ for (let i = 0; i < dropList.length; i++) {
   });
 }
 
+let localItems = localStorage.getItem("allproduct");
+let parsedItem = JSON.parse(localItems);
+
+function addToCartItems(indexedId) {
+  let vaariable = parsedItem[indexedId];
+  cartItems.push(vaariable);
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+}
+
 // display
 function display_items() {
   var productContainer = JSON.parse(localStorage.getItem("allproduct"));
@@ -139,9 +142,16 @@ function display_items() {
                     </div>
                   <br>`;
   }
+
+  const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click", function (event) {
+      const index = event.target.dataset.index;
+      addToCartItems(index);
+    });
+  });
 }
 display_items();
-
 
 /*  */
 // const wishbtnremove = document.querySelectorAll("i[data-active='0']");
@@ -151,9 +161,8 @@ display_items();
 
 const elements = Array.from(document.querySelectorAll("i[data-active='0']"));
 const element = Array.from(document.querySelectorAll("i[data-active='1']"));
-console.log(element)
-console.log(elements)
-
+console.log(element);
+console.log(elements);
 
 // })
 // for (let i = 0; i < wishbtnadd.length; i++) {
@@ -166,18 +175,16 @@ console.log(elements)
 //   // Perform actions on each element
 // })}
 
-elements.forEach((el)=>{
-  el.addEventListener("click",()=>{
-  console.log(el)
-  el.className ="fa-solid fa-heart";
-})})
-
-
+elements.forEach((el) => {
+  el.addEventListener("click", () => {
+    console.log(el);
+    el.className = "fa-solid fa-heart";
+  });
+});
 
 element.forEach((ele) => {
- ele.addEventListener('click',()=>{
-  console.log(ele);
-  ele.className  = 'fa-solid fa-heart added';
-})})
-
-
+  ele.addEventListener("click", () => {
+    console.log(ele);
+    ele.className = "fa-solid fa-heart added";
+  });
+});
