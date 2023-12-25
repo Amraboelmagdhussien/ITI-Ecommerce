@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="products.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,25 +24,25 @@
     />
     <link rel="stylesheet" href="../loginRegister/headerFooter.css" />
     <style>
-        .section-form {
+        /* .section-form {
         margin: 50px auto;
         width: 40%;
         text-align: center;
         background-color: #4942E4;
         padding: 20px;
         border-radius: 40px;
-        }
+        } */
 
         @media only screen and (max-width: 767px) {
         .section-form {
             width: 70%;
         }
         }
+        
         .section-form h2 {
         font-size: 50px;
         letter-spacing: 2px;
-        /* color: #52057b; */
-        color: #11009E;
+        text-align: center;
         }
 
         .section-form form input[type="text"],.section-form form input[type="password"]{
@@ -51,8 +50,8 @@
         width: 80%;
         margin: 5px auto;
         height: 40px;
-        padding: 5px;
-        border: 1px solid #4942E4;
+        padding: 20px;
+        border: 1px solid #127fff;
         font-family: inherit;
         outline: none;
         border-radius: 20px;
@@ -68,14 +67,13 @@
         margin: 5px auto;
         border-radius: 20px;
         font-weight: bolder;
-        background-color: #E6B9DE;
-        color: #11009E;
-        border: 1px solid #4942E4;
+        background-color: #127fff;
+        color: white;
+        border: 1px solid #127fff;
 
         }
 
         .section-form form input[type="submit"]:hover {
-        background-color: #11009E;
         color: 	#ece0d1;
         
         }
@@ -83,10 +81,9 @@
         width: 17px;
         height: 17px;
         margin: 10px;
-        accent-color: #11009E;
         }
         .section-form form span{
-        color: #11009E;
+
         font-weight: bold;
         font-size: large;
         }
@@ -192,7 +189,7 @@
             <form action="">
             <input type="text" placeholder="Enter username" id="username" />
             <input type="password" placeholder="Enter password" id="password" />
-            <span >Remember Me</span>
+            <span>Remember Me</span>
             <input type="checkbox" name="" id="checkbox" value="checked" onclick="remembermefun()" checked>
             <input type="submit" value="Sign in" id="sign_in" />
             <span >Not have acount? </span>
