@@ -27,7 +27,6 @@ function validateInput(inputValue, validationFunction, messageElement, flag) {
   if (inputValue !== "") {
     if (!validationFunction(inputValue)) {
       setInvalidInput(messageElement, flag);
-      alert("Validation failed.");
     } else {
       setValidInput(messageElement, flag);
     }

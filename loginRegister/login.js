@@ -13,7 +13,7 @@ if (localStorage.getItem("rememberme") !== null) {
 }
 
 if (localStorage.getItem("usersData") === null) {
-  const usersData = [{ uName: "osama", mail: "osama@gmail.com", pass: 1 }];
+  const usersData = [{ uName: "Admin", mail: "eraserhint23@gmail.com", pass: 1 }];
   localStorage.setItem("usersData", JSON.stringify(usersData));
 }
 
@@ -45,7 +45,7 @@ loginBtn.addEventListener("click", function (e) {
       }
 
       setTimeout(() => {
-        window.location = "index.html";
+        window.location = "..\home\homepage.html";
       }, 1000);
     } else {
       alert("Wrong username or password.");
