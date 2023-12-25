@@ -4,68 +4,61 @@ var loginBtn = document.getElementById("sign_in");
 var checkbox = document.getElementById("checkbox");
 sessionStorage.clear();
 localStorage.removeItem("productsInCart");
-if(localStorage.getItem("rememberme")!=null){
-  
-  username.value=JSON.parse(localStorage.getItem("rememberme")).name;
- password.value=JSON.parse(localStorage.getItem("rememberme")).pass;
+if (localStorage.getItem("rememberme") != null) {
+  username.value = JSON.parse(localStorage.getItem("rememberme")).name;
+  password.value = JSON.parse(localStorage.getItem("rememberme")).pass;
 }
-if((window.localStorage.getItem("usersData"))==null){
-  var usersData=[{uName:"Admin",mail:"eraserhint23@gmail.com",pass:1,role:"admin"}];
-  window.localStorage.setItem("usersData",JSON.stringify(usersData));
-  };
-
-function remembermefun(){
-  if(checkbox.value=="checked"){
-    checkbox.value="";
-    
-  }
-  else if(checkbox.value==""){
-    checkbox.value="checked";
-  }
+if (window.localStorage.getItem("usersData") == null) {
+  var usersData = [
+    { uName: "Admin", mail: "eraserhint23@gmail.com", pass: 1, role: "admin" },
+  ];
+  window.localStorage.setItem("usersData", JSON.stringify(usersData));
 }
 
+function remembermefun() {
+  if (checkbox.value == "checked") {
+    checkbox.value = "";
+  } else if (checkbox.value == "") {
+    checkbox.value = "checked";
+  }
+}
 
-var userdataa=JSON.parse(window.localStorage.getItem("usersData"));
+var userdataa = JSON.parse(window.localStorage.getItem("usersData"));
 
 loginBtn.addEventListener("click", function (e) {
   e.preventDefault();
   if (username.value === "" || password.value === "") {
     alert("Please, Fill in all data");
-  } 
-  else {
-    var j=-1;
-    for(let i=0;i<(userdataa.length);i++){
-      if(userdataa[i].uName==username.value){
-        j=i;
+  } else {
+    var j = -1;
+    for (let i = 0; i < userdataa.length; i++) {
+      if (userdataa[i].uName == username.value) {
+        j = i;
         break;
       }
     }
-    if (j>=0&&userdataa[j].pass==password.value) 
-    {sessionStorage.setItem("loginStatus","true");
-    sessionStorage.setItem("nameOfUser",userdataa[j].uName);
-    sessionStorage.setItem("role",userdataa[j].role);
-      if(checkbox.value=="checked"){
-        var iiii={name:username.value,pass:password.value};
-        localStorage.setItem("rememberme",JSON.stringify(iiii));
-        
-      }
-      else{
+    if (j >= 0 && userdataa[j].pass == password.value) {
+      sessionStorage.setItem("loginStatus", "true");
+      sessionStorage.setItem("nameOfUser", userdataa[j].uName);
+      sessionStorage.setItem("role", userdataa[j].role);
+      if (checkbox.value == "checked") {
+        var iiii = { name: username.value, pass: password.value };
+        localStorage.setItem("rememberme", JSON.stringify(iiii));
+      } else {
         localStorage.removeItem("rememberme");
       }
       setTimeout(() => {
         console.log(sessionStorage.getItem("role"));
-        if(sessionStorage.getItem("role")=="admin"){
-          window.location = "admin.html"; //crud Mahmoud
-        }else if(sessionStorage.getItem("role")=="customer")
-        window.location = "customer.html"; // Home Amr
+        if (sessionStorage.getItem("role") == "admin") {
+          window.location = "/home/homepage.html"; //crud Mahmoud
+        } else if (sessionStorage.getItem("role") == "customer")
+          window.location = "/home/homepage.html"; // Home Amr
       }, 1000);
-    } 
-    else {
+    } else {
       alert("Wrong user name or Password");
     }
   }
 });
-
 
 // var input = document.getElementById("search");
 
