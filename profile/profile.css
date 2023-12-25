@@ -646,3 +646,9 @@ select {
   color: white;
   font-family: "Inter", sans-serif;
 }
+
+#change-password input {
+  padding: 0.4rem 0.5rem;
+  border-radius: 10px;
+  border: 1px solid grey;
+}

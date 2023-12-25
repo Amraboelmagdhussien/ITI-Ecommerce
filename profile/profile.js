@@ -99,8 +99,6 @@ let discountDate = new Date("Dec 28 2023 9:00:00").getTime();
 let userData = sessionStorage.getItem("nameOfUser");
 let isLoggedIn = sessionStorage.getItem("loginStatus");
 let logoutButton = document.getElementById("headerLogout");
-let loggedIn = document.getElementById("loggedInDiv");
-let loggedOut = document.getElementById("loggedOutDiv");
 let icons = document.getElementById("loggedInIcons");
 let login = document.getElementById("loginButton");
 let ShowsError = document.getElementById("ifNotLoggedIn");
@@ -109,6 +107,9 @@ let userPassword = document.getElementById("userPassword");
 let userEmail = document.getElementById("userEmail");
 let profConfig = document.getElementById("pro-config");
 let showPass = document.getElementById("showpassword");
+let chngPass = document.getElementById("change-password");
+let editbtn = document.getElementById("edit");
+let newVal = document.getElementById("newPassValue").value;
 
 let profile = localStorage.getItem("usersData");
 let parsedProfile = JSON.parse(profile);
@@ -184,3 +185,8 @@ showPass.addEventListener("mouseup", () => {
 showPass.addEventListener("mousedown", () => {
   showFunc();
 });
+
+function changePass() {
+  changePass.style.display = "block";
+  newVal.value;
+}
