@@ -3,265 +3,29 @@
     <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="products.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap"
+        rel="stylesheet"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../loginRegister/headerFooter.css" />
+    <title>Login and Register with Firebase</title>
     <style>
-        * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        }
-        body {
-        font-family: "Inter", sans-serif;
-        }
-
-        .container {
-        /* max-width: 1080px; */
-        padding: 2rem 4rem;
-        margin: 0 auto;
-        }
-
-        .logo {
-        font-weight: 500;
-        font-family: "Inter", sans-serif;
-        }
-
-        .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 1rem;
-        }
-
-        .search-bar {
-        width: 25rem;
-        border-radius: 10px;
-        height: 2rem;
-        padding: 1rem;
-        box-shadow: none;
-        border: 2px solid #127fff;
-        font-family: "Inter", sans-serif;
-        }
-
-        .search-bar:focus {
-        outline: none; /* Remove default focus outline */
-        border: 2px solid #127fff; /* Change border color when focused */
-        /* Add any additional styling specific to the focused state if needed */
-        }
-
-        .srch-btn {
-        position: absolute;
-        top: 6%;
-        right: 0;
-        background: var(
-            --primary-gradient,
-            linear-gradient(180deg, #127fff 0%, #0067ff 100%)
-        );
-        border: 0;
-        border-radius: 8px;
-        height: 2rem;
-        width: 5rem;
-        cursor: pointer;
-        color: white;
-        font-family: "Inter", sans-serif;
-        }
-
-        .postion {
-        position: relative;
-        }
-
-        .icons {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        align-items: center;
-        }
-
-        .icons i {
-        color: rgba(0, 0, 0, 0.528);
-        font-size: 18px;
-        cursor: pointer;
-        }
-
-        .header .icons div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        }
-
-        .header .icons div a {
-        text-decoration: none;
-        color: rgba(0, 0, 0, 0.528);
-        font-size: 15px;
-        }
-
-        .header .icons div:hover i,
-        .header .icons div:hover a {
-        color: #127fff;
-        }
-        .header-2 {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.276);
-        border-top: 1px solid rgba(0, 0, 0, 0.276);
-        }
-
-        .categories-1 ul {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-        }
-
-        .categories-1 ul li:hover a {
-        color: #127fff;
-        }
-
-        .info-1 ul {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-        align-items: center;
-        }
-
-        .info-1 ul li > div {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        }
-
-        .dropDownList {
-        position: relative;
-        cursor: pointer;
-        }
-
-        .dropDownList.showList ul {
-        display: flex;
-        flex-direction: column;
-        }
-
-        .dropDownList ul {
-        display: none;
-        position: absolute;
-        bottom: -1;
-        border-radius: 16px;
-        background: rgba(18, 127, 255, 0.55);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        width: max-content;
-        padding: 2rem 2rem;
-        }
-
-        .dropDownList ul li {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.222);
-        }
-
-        .categories-1 ul li ul.unique-list {
-        display: flex;
-        gap: 0;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        }
-
-        .categories-1 ul li ul.unique-list li {
-        display: flex;
-        padding: 0rem 0.5rem;
-        }
-        .categories-1 ul li a {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-        text-decoration: none;
-        color: black;
-        }
-
-        .imgIcon {
-        height: 32px;
-        }
-
-        .container .sub-container-2 {
-        display: flex;
-        justify-content: space-between;
-        border-top: 1px solid rgba(0, 0, 0, 0.272);
-        padding: 1rem 0rem;
-        }
-
-        .container .sub-container-2 .flexed-div .social-logos a {
-        color: rgba(0, 0, 0, 0.528);
-        text-decoration: none;
-        font-size: 25px;
-        }
-
-        .container .sub-container-2 .flexed-div .social-logos {
-        display: flex;
-        gap: 0.8rem;
-        }
-
-        .container .sub-container-2 .flexed-div .sub-div {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        justify-content: flex-start;
-        }
-
-        .container .sub-container-2 .flexed-div .sub-div .store-info {
-        max-width: 250px;
-        }
-
-        .container .sub-container-2 div ul {
-        list-style: none;
-        text-decoration: none;
-        }
-
-        .container .sub-container-2 .flexed-div .sub-div .logo-brand-store {
-        color: #1281ff7d;
-        font-size: 25px;
-        font-weight: bold;
-        }
-
-        .container .sub-container-2 .flexed-div ul {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        justify-content: flex-start;
-        }
-
-        .container .sub-container-2 .flexed-div .sec-header {
-        font-size: 20px;
-        }
-
-        .container .sub-container-2 div ul li a {
-        text-decoration: none;
-        color: #8b96a5;
-        }
-
-        .container .sub-container-2 div ul li a:hover {
-        text-decoration: underline;
-        }
-
-        .container .sub-container-2 .flexed-div {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        }
-
-        .container .sub-container-2 .flexed-div {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        justify-content: center;
-        align-items: center;
-        }
-
-        .container .sub-container-2 .flexed-div .button-images img {
-        width: 200px;
-        height: 125px;
-        cursor: pointer;
-        }
         form {
             width: 100%;
             padding: 20px;
@@ -548,7 +312,8 @@
             </div>
             </nav>
         </div>
-        </header>
+    </header>
+    <main>
         <div class="cls-div-body">
             <div id="id-div-container">
                 <div class="cls-frm-container" id="id-div-reg-container">
@@ -593,65 +358,66 @@
                 </div>
             </div>
         </div>
-        <footer class="container">
-            <div class="sub-container-2">
-            <div class="flexed-div">
-                <div class="sub-div">
-                <p class="logo-brand-store">Logo here</p>
-                <p class="store-info">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Molestiae facilis obcaecati delectus rem suscipit sint?
-                </p>
-                </div>
-                <div class="social-logos">
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
-                <a href=""><i class="fa-brands fa-facebook"></i></a>
-                <a href=""><i class="fa-brands fa-linkedin"></i></a>
-                </div>
+    </main>
+    <footer class="container">
+        <div class="sub-container-2">
+        <div class="flexed-div">
+            <div class="sub-div">
+            <p class="logo-brand-store">Logo here</p>
+            <p class="store-info">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Molestiae facilis obcaecati delectus rem suscipit sint?
+            </p>
             </div>
-    
-            <div class="flexed-div">
-                <p class="sec-header">About Us</p>
-                <ul>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Find Store</a></li>
-                <li><a href="">Categories</a></li>
-                <li><a href="">Blogs</a></li>
-                </ul>
+            <div class="social-logos">
+            <a href=""><i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-facebook"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin"></i></a>
             </div>
-            <div class="flexed-div">
-                <p class="sec-header">Partnership</p>
-                <ul>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Find Store</a></li>
-                <li><a href="">Categories</a></li>
-                <li><a href="">Blogs</a></li>
-                </ul>
+        </div>
+
+        <div class="flexed-div">
+            <p class="sec-header">About Us</p>
+            <ul>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
+            </ul>
+        </div>
+        <div class="flexed-div">
+            <p class="sec-header">Partnership</p>
+            <ul>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
+            </ul>
+        </div>
+        <div class="flexed-div">
+            <p class="sec-header">Information</p>
+            <ul>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
+            </ul>
+        </div>
+        <div class="flexed-div">
+            <p class="sec-header">For Users</p>
+            <ul>
+            <li><a href="">Login</a></li>
+            <li><a href="">Register</a></li>
+            </ul>
+        </div>
+        <div class="flexed-div">
+            <p>Get App</p>
+            <div class="button-images">
+            <img src="/Utilites/pngegg.png" alt="" />
             </div>
-            <div class="flexed-div">
-                <p class="sec-header">Information</p>
-                <ul>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Find Store</a></li>
-                <li><a href="">Categories</a></li>
-                <li><a href="">Blogs</a></li>
-                </ul>
-            </div>
-            <div class="flexed-div">
-                <p class="sec-header">For Users</p>
-                <ul>
-                <li><a href="">Login</a></li>
-                <li><a href="">Register</a></li>
-                </ul>
-            </div>
-            <div class="flexed-div">
-                <p>Get App</p>
-                <div class="button-images">
-                <img src="/Utilites/pngegg.png" alt="" />
-                </div>
-            </div>
-            </div>
-        </footer>
+        </div>
+        </div>
+    </footer>
         <script type="module">
             // Import the functions you need from the SDKs you need
             import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
@@ -660,28 +426,28 @@
 
             // // Hassan Firebase configuration
             // const firebaseConfig = {
-                const firebaseConfig = {
-                    apiKey: "AIzaSyCc3-wg2QDfafZlvwEA9GfLlnW8mWswET0",
-                    authDomain: "iti-javsascript-r2-python.firebaseapp.com",
-                    databaseURL: "https://iti-javsascript-r2-python-default-rtdb.firebaseio.com",
-                    projectId: "iti-javsascript-r2-python",
-                    storageBucket: "iti-javsascript-r2-python.appspot.com",
-                    messagingSenderId: "1031672503736",
-                    appId: "1:1031672503736:web:d64162faaf749114ec834d",
-                    measurementId: "G-S8C7MPDDKH"
-                    };
+                // const firebaseConfig = {
+                //     apiKey: "AIzaSyCc3-wg2QDfafZlvwEA9GfLlnW8mWswET0",
+                //     authDomain: "iti-javsascript-r2-python.firebaseapp.com",
+                //     databaseURL: "https://iti-javsascript-r2-python-default-rtdb.firebaseio.com",
+                //     projectId: "iti-javsascript-r2-python",
+                //     storageBucket: "iti-javsascript-r2-python.appspot.com",
+                //     messagingSenderId: "1031672503736",
+                //     appId: "1:1031672503736:web:d64162faaf749114ec834d",
+                //     measurementId: "G-S8C7MPDDKH"
+                //     };
 
             // https://firebase.google.com/docs/web/setup#available-libraries
             // Mahmoud Amr Firebase configuration
-            // const firebaseConfig = {
-                // apiKey: "AIzaSyDYDdUx3ZZNAzWL84Ar60fGH7wL_uyd71M",
-                // authDomain: "formal-folder-376913.firebaseapp.com",
-                // databaseURL: "https://formal-folder-376913-default-rtdb.firebaseio.com",
-                // projectId: "formal-folder-376913",
-                // storageBucket: "formal-folder-376913.appspot.com",
-                // messagingSenderId: "975600999814",
-                // appId: "1:975600999814:web:4c0f872050c5c05cc82007"
-            // };
+            const firebaseConfig = {
+                apiKey: "AIzaSyDYDdUx3ZZNAzWL84Ar60fGH7wL_uyd71M",
+                authDomain: "formal-folder-376913.firebaseapp.com",
+                databaseURL: "https://formal-folder-376913-default-rtdb.firebaseio.com",
+                projectId: "formal-folder-376913",
+                storageBucket: "formal-folder-376913.appspot.com",
+                messagingSenderId: "975600999814",
+                appId: "1:975600999814:web:4c0f872050c5c05cc82007"
+            };
 
             // // Production configuration
             // const firebaseConfig = {
@@ -831,5 +597,6 @@
             btnShowLoginForm.addEventListener('click', () => showLoginForm());
             btnShowRegForm.addEventListener('click', () => showRegForm());
         </script>
+        <script src="../cart-items/home.js"></script>
     </body>
 </html>
