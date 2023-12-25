@@ -1,5 +1,8 @@
+// Clear sessionStorage and remove 'productsInCart' from localStorage
 sessionStorage.clear();
 localStorage.removeItem("productsInCart");
+
+// Retrieve HTML elements
 var username = document.getElementById("username");
 var email = document.getElementById("email");
 var password = document.getElementById("password");
@@ -7,15 +10,19 @@ var repeatedPass=document.getElementById("repeatpass");
 var registerBtn = document.getElementById("sign_up");
 var roleSelect = document.getElementById("id-reg-usertype");
 
+// Initialize usersData in localStorage with default admin user if not available
 if((window.localStorage.getItem("usersData"))==null){
 var usersData=[{uName:"Admin",mail:"eraserhint23@gmail.com",pass:1,role:"admin"}];
 window.localStorage.setItem("usersData",JSON.stringify(usersData));
 };
 
+// Flags to check validation status
 var flagNum1=0;
 var flagNum2=0;
 var flagNum3=0;
 var flagNum4=0;
+
+// Function to validate username
 function oldCondition(oldValue){
     if(oldValue.value!="")
     {
@@ -46,6 +53,7 @@ function nameValidation(name)
     else
     return false;
 }
+
 function oldCondition1(oldValue){
     if(oldValue.value!="")
     {
@@ -68,6 +76,8 @@ function oldCondition1(oldValue){
         document.getElementById("mailMsg").innerHTML="<b>Required</b>";
     }
 }
+
+
 function mailValidation(name)
 {
   var visaRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
@@ -164,14 +174,18 @@ function register(e) {
         break;
       }
       else{
+        // Add the new user to usersData
         var yy={uName:"f",mail:"f",pass:1,role:"customer"}
         yy.uName=username.value;
         yy.pass=password.value;
         yy.mail=email.value;
         yy.role=roleSelect.value;
         xx.push(yy);
+        // Save updated usersData to localStorage
         window.localStorage.setItem("usersData",JSON.stringify(xx));
         console.log(localStorage.getItem("usersData"));
+
+        // Redirect to login page after a delay
         setTimeout(() => {
           window.location = "login.html";
         }, 1000);
