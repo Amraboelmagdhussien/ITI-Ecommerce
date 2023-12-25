@@ -5,6 +5,263 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: "Inter", sans-serif;
+        }
+
+        .container {
+        /* max-width: 1080px; */
+        padding: 2rem 4rem;
+        margin: 0 auto;
+        }
+
+        .logo {
+        font-weight: 500;
+        font-family: "Inter", sans-serif;
+        }
+
+        .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 1rem;
+        }
+
+        .search-bar {
+        width: 25rem;
+        border-radius: 10px;
+        height: 2rem;
+        padding: 1rem;
+        box-shadow: none;
+        border: 2px solid #127fff;
+        font-family: "Inter", sans-serif;
+        }
+
+        .search-bar:focus {
+        outline: none; /* Remove default focus outline */
+        border: 2px solid #127fff; /* Change border color when focused */
+        /* Add any additional styling specific to the focused state if needed */
+        }
+
+        .srch-btn {
+        position: absolute;
+        top: 6%;
+        right: 0;
+        background: var(
+            --primary-gradient,
+            linear-gradient(180deg, #127fff 0%, #0067ff 100%)
+        );
+        border: 0;
+        border-radius: 8px;
+        height: 2rem;
+        width: 5rem;
+        cursor: pointer;
+        color: white;
+        font-family: "Inter", sans-serif;
+        }
+
+        .postion {
+        position: relative;
+        }
+
+        .icons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .icons i {
+        color: rgba(0, 0, 0, 0.528);
+        font-size: 18px;
+        cursor: pointer;
+        }
+
+        .header .icons div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .header .icons div a {
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.528);
+        font-size: 15px;
+        }
+
+        .header .icons div:hover i,
+        .header .icons div:hover a {
+        color: #127fff;
+        }
+        .header-2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.276);
+        border-top: 1px solid rgba(0, 0, 0, 0.276);
+        }
+
+        .categories-1 ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        }
+
+        .categories-1 ul li:hover a {
+        color: #127fff;
+        }
+
+        .info-1 ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        align-items: center;
+        }
+
+        .info-1 ul li > div {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+
+        .dropDownList {
+        position: relative;
+        cursor: pointer;
+        }
+
+        .dropDownList.showList ul {
+        display: flex;
+        flex-direction: column;
+        }
+
+        .dropDownList ul {
+        display: none;
+        position: absolute;
+        bottom: -1;
+        border-radius: 16px;
+        background: rgba(18, 127, 255, 0.55);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        width: max-content;
+        padding: 2rem 2rem;
+        }
+
+        .dropDownList ul li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.222);
+        }
+
+        .categories-1 ul li ul.unique-list {
+        display: flex;
+        gap: 0;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        }
+
+        .categories-1 ul li ul.unique-list li {
+        display: flex;
+        padding: 0rem 0.5rem;
+        }
+        .categories-1 ul li a {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        text-decoration: none;
+        color: black;
+        }
+
+        .imgIcon {
+        height: 32px;
+        }
+
+        .container .sub-container-2 {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid rgba(0, 0, 0, 0.272);
+        padding: 1rem 0rem;
+        }
+
+        .container .sub-container-2 .flexed-div .social-logos a {
+        color: rgba(0, 0, 0, 0.528);
+        text-decoration: none;
+        font-size: 25px;
+        }
+
+        .container .sub-container-2 .flexed-div .social-logos {
+        display: flex;
+        gap: 0.8rem;
+        }
+
+        .container .sub-container-2 .flexed-div .sub-div {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: flex-start;
+        }
+
+        .container .sub-container-2 .flexed-div .sub-div .store-info {
+        max-width: 250px;
+        }
+
+        .container .sub-container-2 div ul {
+        list-style: none;
+        text-decoration: none;
+        }
+
+        .container .sub-container-2 .flexed-div .sub-div .logo-brand-store {
+        color: #1281ff7d;
+        font-size: 25px;
+        font-weight: bold;
+        }
+
+        .container .sub-container-2 .flexed-div ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: flex-start;
+        }
+
+        .container .sub-container-2 .flexed-div .sec-header {
+        font-size: 20px;
+        }
+
+        .container .sub-container-2 div ul li a {
+        text-decoration: none;
+        color: #8b96a5;
+        }
+
+        .container .sub-container-2 div ul li a:hover {
+        text-decoration: underline;
+        }
+
+        .container .sub-container-2 .flexed-div {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        }
+
+        .container .sub-container-2 .flexed-div {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .container .sub-container-2 .flexed-div .button-images img {
+        width: 200px;
+        height: 125px;
+        cursor: pointer;
+        }
         form {
             width: 100%;
             padding: 20px;
@@ -35,7 +292,7 @@
             margin: 0;
         }
 
-        .cls-div-container {
+        #id-div-container {
             position: relative;
             background-color: #fff;
             border-radius: 10px;
@@ -128,12 +385,12 @@
             background-color: #f0f0f0;
         }
 
-        .cls-div-login-overlay-left {
+        #id-div-login-overlay-left {
             background: linear-gradient(to right, #ff416c, #ff4b2b);
             color: white;
         }
 
-        .cls-div-reg-overlay-right {
+        #id-div-reg-overlay-right {
             background: linear-gradient(to right, #0288d1, #0288d1);
             color: white;
         }
@@ -178,74 +435,223 @@
             box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
         }
 
-        .cls-btn-login-reg-google:active {
+        /* .cls-btn-login-reg-google:active {
             background-color: #eeeeee;
-        }
+        } */
 
-        .cls-btn-login-reg-google:active {
+        /* .cls-btn-login-reg-google:active {
             outline: none;
             box-shadow:
                 0 -1px 0 rgba(0, 0, 0, .04),
                 0 2px 4px rgba(0, 0, 0, .25),
                 0 0 0 3px #c8dafc;
-        }
+        } */
 
-        .cls-btn-login-reg-google:disabled {
+        /* .cls-btn-login-reg-google:disabled {
             filter: grayscale(100%);
             background-color: #ebebeb;
             box-shadow: 
                 0 -1px 0 rgba(0, 0, 0, .04),
                 0 1px 1px rgba(0, 0, 0, .25);
             cursor: not-allowed;
-        }
+        } */
     </style>
     </head>
-
     <body>
-    <div class="cls-div-body">
-        <div class="cls-div-container">
-        <div class="cls-frm-container cls-div-reg-container">
-            <form id="id-frm-registration">
-            <h1 class="id-h1">Register New Account</h1>
-            <input class="cls-inp" type="text" id="id-reg-name" placeholder="Please, Enter Your Username here" required>
-            <input class="cls-inp" type="email" id="id-reg-email" placeholder="Please, Enter Your Email here" required>
-            <input class="cls-inp" type="password" id="id-reg-pass" placeholder="Please, Enter Your Password here" required>
-            <select id="id-reg-usertype" required>
-                <option value="admin">Admin</option>
-                <option value="customer">Customer</option>
-            </select>
-            <button class="cls-btn" id="id-btn-reg-mail">Register</button>
-            </form>
-        </div>
-        <div class="cls-frm-container cls-div-login-container">
-            <form id="id-frm-login">
-            <h1 class="id-h1">Login</h1>
-            <input class="cls-inp" type="email" id="id-login-email" placeholder="Please, Enter Your Email here" required>
-            <input class="cls-inp" type="password" id="id-login-pass" placeholder="Please, Enter Your Password here" required>
-            <button class="cls-btn" id="id-btn-login-mail">Login</button>
-            </form>
-        </div>
-        <div class="cls-div-overlay-container">
-            <div class="cls-div-all-overlay">
-            <div class="cls-div-overlay-panel cls-div-login-overlay-left">
-                <h1>Welcome Back!</h1>
-                <p>To keep connected with us please login with your personal info</p>
-                <button class="cls-btn-overlay" id="id-btn-show-login-form">Login</button>
-                <button type="button" class="cls-btn-login-reg-google" id="id-btn-login-reg-google1">Sign in with Google</button>
-                <button class="cls-btn-overlay cls-btn-signout" id="id-btn-signout1">Sign Out</button>
-                <p id="id-p-message">You have signed in as: <span id="id-span-username"></span> with Email: <span id="id-span-useremail"></span></p>
+    <header>
+        <div class="container">
+            <nav class="header">
+            <div class="logo">
+                <!-- logo here -->
+                <h1>Store Name</h1>
             </div>
-            <div class="cls-div-overlay-panel cls-div-reg-overlay-right">
-                <h1>Hello, Friend!</h1>
-                <p>Enter your personal details and start journey with us</p>
-                <button class="cls-btn-overlay" id="id-btn-show-reg-form">Register</button>
-                <button type="button" class="cls-btn-login-reg-google" id="id-btn-login-reg-google2">Register in with Google</button>
-                <button class="cls-btn-overlay cls-btn-signout" id="id-btn-signout2">Sign Out</button>
+
+            <div class="postion">
+                <!-- Search here-->
+                <input class="search-bar" type="text" placeholder="Search..." />
+                <button class="srch-btn">Search</button>
             </div>
+
+            <div class="icons">
+                <!--Icons -->
+                <div class="iconLay">
+                <i class="fa-solid fa-user"></i>
+                <a href="#">Profile</a>
+                </div>
+
+                <div class="iconLay">
+                <i class="fa-regular fa-message"></i>
+                <a href="#">Message</a>
+                </div>
+
+                <div class="iconeLay">
+                <i class="fa-solid fa-heart"></i>
+                <a href="#">My Orders</a>
+                </div>
+                <div class="iconLay">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <a href="#">My Cart</a>
+                </div>
+            </div>
+            </nav>
+
+            <nav class="header-2">
+            <div class="categories-1">
+                <ul>
+                <li class="dropDownList">
+                    <div>
+                    <i class="fa-solid fa-list test"></i>
+                    <span>All Category</span>
+                    </div>
+                    <ul>
+                    <li>Cate 1 Cate 1 Cate 1 Cate 1 Cate 1s</li>
+                    <li>Cate 1</li>
+                    <li>Cate 1</li>
+                    <li>Cate 1</li>
+                    <li>Cate 1</li>
+                    </ul>
+                </li>
+                <li><a href="#">Hot offers</a></li>
+                <li><a href="#">Gift Boxes</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Menu Item</a></li>
+                <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+
+            <div class="info-1">
+                <ul>
+                <li>English, USD <i class="fa-solid fa-caret-down"></i></li>
+
+                <li id="shipmentSelector" class="dropDownList">
+                    <div>
+                    <span>Ship To</span>
+                    <img class="imgIcon" src="/Flags/EG.png" alt="EG" />
+                    <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                    <ul>
+                    <li>
+                        <span>EG </span>
+                        <img class="imgIcon" src="/Flags/EG.png" alt="EG" />
+                    </li>
+                    <li>
+                        <span>DE</span
+                        ><img class="imgIcon" src="/Flags/DE.png" alt="DE" />
+                    </li>
+                    <li>
+                        <span>USA</span
+                        ><img class="imgIcon" src="/Flags/US.png" alt="USA" />
+                    </li>
+                    </ul>
+                </li>
+                </ul>
+            </div>
+            </nav>
+        </div>
+        </header>
+        <div class="cls-div-body">
+            <div id="id-div-container">
+                <div class="cls-frm-container" id="id-div-reg-container">
+                    <form id="id-frm-registration">
+                    <h1 class="id-h1">Register New Account</h1>
+                    <input class="cls-inp" type="text" id="id-reg-name" placeholder="Please, Enter Your Username here" required>
+                    <input class="cls-inp" type="email" id="id-reg-email" placeholder="Please, Enter Your Email here" required>
+                    <input class="cls-inp" type="password" id="id-reg-pass" placeholder="Please, Enter Your Password here" required>
+                    <select id="id-reg-usertype" required>
+                        <option value="admin">Admin</option>
+                        <option value="customer">Customer</option>
+                    </select>
+                    <button class="cls-btn" id="id-btn-reg-mail">Register</button>
+                    </form>
+                </div>
+                <div class="cls-frm-container" id="id-div-login-container">
+                    <form id="id-frm-login">
+                    <h1 class="id-h1">Login</h1>
+                    <input class="cls-inp" type="email" id="id-login-email" placeholder="Please, Enter Your Email here" required>
+                    <input class="cls-inp" type="password" id="id-login-pass" placeholder="Please, Enter Your Password here" required>
+                    <button class="cls-btn" id="id-btn-login-mail">Login</button>
+                    </form>
+                </div>
+                <div class="cls-div-overlay-container">
+                    <div class="cls-div-all-overlay">
+                    <div class="cls-div-overlay-panel" id="id-div-login-overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="cls-btn-overlay" id="id-btn-show-login-form">Login</button>
+                        <button type="button" class="cls-btn-login-reg-google" id="id-btn-login-reg-google1">Sign in with Google</button>
+                        <button class="cls-btn-overlay cls-btn-signout" id="id-btn-signout1">Sign Out</button>
+                        <p id="id-p-message">You have signed in as: <span id="id-span-username"></span> with Email: <span id="id-span-useremail"></span></p>
+                    </div>
+                    <div class="cls-div-overlay-panel" id="id-div-reg-overlay-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+                        <button class="cls-btn-overlay" id="id-btn-show-reg-form">Register</button>
+                        <button type="button" class="cls-btn-login-reg-google" id="id-btn-login-reg-google2">Register in with Google</button>
+                        <button class="cls-btn-overlay cls-btn-signout" id="id-btn-signout2">Sign Out</button>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
+        <footer class="container">
+            <div class="sub-container-2">
+            <div class="flexed-div">
+                <div class="sub-div">
+                <p class="logo-brand-store">Logo here</p>
+                <p class="store-info">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Molestiae facilis obcaecati delectus rem suscipit sint?
+                </p>
+                </div>
+                <div class="social-logos">
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+    
+            <div class="flexed-div">
+                <p class="sec-header">About Us</p>
+                <ul>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Find Store</a></li>
+                <li><a href="">Categories</a></li>
+                <li><a href="">Blogs</a></li>
+                </ul>
+            </div>
+            <div class="flexed-div">
+                <p class="sec-header">Partnership</p>
+                <ul>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Find Store</a></li>
+                <li><a href="">Categories</a></li>
+                <li><a href="">Blogs</a></li>
+                </ul>
+            </div>
+            <div class="flexed-div">
+                <p class="sec-header">Information</p>
+                <ul>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Find Store</a></li>
+                <li><a href="">Categories</a></li>
+                <li><a href="">Blogs</a></li>
+                </ul>
+            </div>
+            <div class="flexed-div">
+                <p class="sec-header">For Users</p>
+                <ul>
+                <li><a href="">Login</a></li>
+                <li><a href="">Register</a></li>
+                </ul>
+            </div>
+            <div class="flexed-div">
+                <p>Get App</p>
+                <div class="button-images">
+                <img src="/Utilites/pngegg.png" alt="" />
+                </div>
+            </div>
+            </div>
+        </footer>
         <script type="module">
             // Import the functions you need from the SDKs you need
             import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
@@ -323,10 +729,10 @@
             const userEmail = document.getElementById("id-span-useremail");
 
             // Div References
-            const signInContainer = document.getElementsByClassName('cls-div-login-container')[0];
-            const signUpContainer = document.getElementsByClassName('cls-div-reg-container')[0];
-            const signInForm = document.getElementsByClassName('cls-div-login-overlay-left')[0];
-            const signUpForm = document.getElementsByClassName('cls-div-reg-overlay-right')[0];
+            const signInContainer = document.getElementById('id-div-login-container');
+            const signUpContainer = document.getElementById('id-div-reg-container');
+            const signInForm = document.getElementById('id-div-login-overlay-left');
+            const signUpForm = document.getElementById('id-div-reg-overlay-right');
 
             // Login/Register using Google
             const loginRegGoogle = async () => {
@@ -383,17 +789,19 @@
             };
 
             // Switch between login and registration forms
-            function switchForm(formType) {
-                const container = document.getElementById('container');
-                const forms = document.querySelectorAll('.form-container');
-
-                forms.forEach(form => form.classList.remove('active'));
-
-                const activeForm = document.querySelector(`.${formType}`);
-                activeForm.classList.add('active');
-                container.classList.toggle('sign-up-mode', formType === 'cls-div-reg-container');
+            function showRegForm(){
+                signUpContainer.style.display = "block";
+                signInContainer.style.display = "none";
+                signInForm.style.display = "none";
+                signUpForm.style.display = "block";
             }
 
+            function showLoginForm(){
+                signUpContainer.style.display = "none";
+                signInContainer.style.display = "block";
+                signInForm.style.display = "block";
+                signUpForm.style.display = "none";
+            }
             // Auth state change listener
             onAuthStateChanged(auth, (user) => {
                 if (user) {
@@ -414,15 +822,14 @@
             });
 
             // Event Listeners
-            btnShowLoginForm.addEventListener('click', () => switchForm("cls-div-login-container"));
-            btnShowRegForm.addEventListener('click', () => switchForm("cls-div-reg-container"));
             btnLoginMail.addEventListener('click', loginMail);
             btnRegMail.addEventListener('click', regMail);
             btnLoginRegGoogle1.addEventListener('click', loginRegGoogle);
             btnSignout1.addEventListener('click', signOutUser);
             btnLoginRegGoogle2.addEventListener('click', loginRegGoogle);
             btnSignout2.addEventListener('click', signOutUser);
-
+            btnShowLoginForm.addEventListener('click', () => showLoginForm());
+            btnShowRegForm.addEventListener('click', () => showRegForm());
         </script>
     </body>
 </html>
