@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/home/home.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Homepage</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav class="header">
+          <div class="logo">
+            <!-- logo here -->
+            <h1>Store Name</h1>
+          </div>
+
+          <div class="postion">
+            <!-- Search here-->
+            <input
+              id="searchInput"
+              class="search-bar"
+              type="text"
+              placeholder="Search..."
+            />
+            <button class="srch-btn" onclick="performSearch()">Search</button>
+          </div>
+
+          <div id="loggedInIcons" class="hiddenIcons">
+            <!--Icons -->
+            <div class="iconLay">
+              <i class="fa-solid fa-user"></i>
+              <a href="#">Profile</a>
+            </div>
+
+            <div class="iconLay">
+              <i class="fa-regular fa-message"></i>
+              <a href="#">Message</a>
+            </div>
+
+            <div class="iconeLay">
+              <i class="fa-solid fa-heart"></i>
+              <a href="/WishList/wishlist.html">Wishlist</a>
+            </div>
+            <div class="iconLay">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <a href="/Cart/cart.html">My Cart</a>
+            </div>
+
+            <div class="iconLay">
+              <button id="headerLogout">Logout</button>
+            </div>
+          </div>
+        </nav>
+
+        <nav class="header-2">
+          <div class="categories-1">
+            <ul>
+              <li class="dropDownList">
+                <div>
+                  <i class="fa-solid fa-list test"></i>
+                  <span>All Category</span>
+                </div>
+                <ul>
+                  <li>Cate 1 Cate 1 Cate 1 Cate 1 Cate 1s</li>
+                  <li>Cate 1</li>
+                  <li>Cate 1</li>
+                  <li>Cate 1</li>
+                  <li>Cate 1</li>
+                </ul>
+              </li>
+              <li><a href="/Product-Page/products.html">Products</a></li>
+              <li><a href="/About Us/aboutus.html">About Us</a></li>
+              <li><a href="/Find Us/Find Us.html">Find us</a></li>
+              <li><a href="/help/help.html">Help</a></li>
+            </ul>
+          </div>
+
+          <div class="info-1">
+            <ul>
+              <li>English, USD</li>
+
+              <li id="shipmentSelector" class="dropDownList">
+                <div>
+                  <span>Ship To</span>
+                  <img class="imgIcon" src="/Flags/EG.png" alt="EG" />
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="container">
+      <div class="sub-container">
+        <div class="subCategories">
+          <ul>
+            <li>
+              <a class="active" href="/home/homepage.html"> Home Wear </a>
+            </li>
+            <li><a href="#"> Computer And Tech</a></li>
+            <li><a href="#"> Sports And Outdoor</a></li>
+            <li><a href="#"> Animals and Pets</a></li>
+            <li><a href="#"> Tools And Equipment</a></li>
+          </ul>
+        </div>
+        <div class="coursel"><h1>Shopping Experince is ELEVATED</h1></div>
+        <div class="uiArea">
+          <div id="loggedOutDiv" class="userArea">
+            <div class="userinfo">
+              <img src="/Utilites/person-icon-8.png" alt="" />
+              <p>
+                Hey There
+                <br />
+                Let's Get Started
+              </p>
+            </div>
+            <button class="login">
+              <a href="/loginRegister/login.html">Login</a>
+            </button>
+            <button class="joinus">
+              <a href="/loginRegister/register.html">Join Us</a>
+            </button>
+          </div>
+          <div id="loggedInDiv" class="userinfo">
+            <h2>welcome <span id="uName">Username</span></h2>
+          </div>
+          <div class="discounts">
+            <p>Shop Now and Get 10% Offer</p>
+          </div>
+
+          <div class="supplierPrefrence">
+            <p>Supplier prefrence Here</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="container-3">
+        <div class="countdown">
+          <div class="offersSlogan">
+            <h1>Deals and offers</h1>
+            <h3>Hygiene equipments</h3>
+          </div>
+          <div class="subCountDown">
+            <div class="card">
+              <p id="days" class="number"></p>
+              <p>Days</p>
+            </div>
+            <div class="card">
+              <p id="hours" class="number"></p>
+              <p>Hours</p>
+            </div>
+            <div class="card">
+              <p id="min" class="number"></p>
+              <p>Min</p>
+            </div>
+            <div class="card">
+              <p id="sec" class="number"></p>
+              <p>Sec</p>
+            </div>
+          </div>
+        </div>
+        <div class="featuredProducts">
+          <div class="fp">
+            <img src="/home/FP/Headset.jpg" alt="Headset" />
+            <p>Hyper X Headset</p>
+            <p class="discountRate">-25%</p>
+          </div>
+
+          <div class="fp">
+            <img src="/home/FP/Iphone.jpg" alt="Iphone15" />
+            <p>Iphone 15 ProMax</p>
+            <p class="discountRate">-25%</p>
+          </div>
+
+          <div class="fp">
+            <img src="/home/FP/Laptops.jpg" alt="Macbook" />
+            <p>Macbook</p>
+            <p class="discountRate">-25%</p>
+          </div>
+
+          <div class="fp">
+            <img src="/home/FP/Monitor.jpg" alt="Samsung Monitor" />
+            <p>Samsung G5 Odyessy</p>
+            <p class="discountRate">-25%</p>
+          </div>
+
+          <div class="fp">
+            <img src="/home/FP/Smart Watch.png" alt="SmartWatch" />
+            <p>Samrt Watch</p>
+            <p class="discountRate">-25%</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container flex-container-2">
+      <div class="flex-container">
+        <div class="grid-container">
+          <div class="grid-item grid-item-1">
+            <p></p>
+          </div>
+        </div>
+
+        <div class="grid-container-2">
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Mens's Clothing</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img
+                src="https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/710Apfl+y6L._AC_SL1500_.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Mens's Clothing</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img
+                src="https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/41/564572/1.jpg?3030"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Mens's Clothing</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img
+                src="https://houseoflb.co.za/wp-content/uploads/2022/05/DSCF4549.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Mens's Clothing</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img
+                src="https://pbx2-pbww-prod-pbww-cdn.getprintbox.com/media/productimage/e925de22-44e0-4276-bb92-0b4101f5f834/Blank%20Jacket_thumb_900x900?mt=1583407059.733"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Mens's Clothing</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img
+                src="https://www.dhresource.com/0x0/f2/albu/g9/M00/75/59/rBVaWF6Y_9GAO1dQAAHhDY44IX8987.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Mens's Clothing</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img
+                src="https://cdn1.polaris.com/globalassets/pga/snowmobile/shop/apparel/womens-apparel2/jackets/2864520.jpg?v=b6cf157d&format=webp&height=300"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Mens's Clothing</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img
+                src="https://us.carhartt-wip.com/cdn/shop/files/I029524_1CM_GD-ST-01_800x.jpg?v=1696010708"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Mens's Clothing</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img
+                src="https://powersports.in/cdn/shop/files/EdgeFl.yellow1_7a3f1483-e32e-4b0f-808e-f6aaf24bb7fd_1800x1800.jpg?v=1695122021"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-container">
+        <div class="grid-container">
+          <div class="grid-item grid-item-3">
+            <p></p>
+          </div>
+        </div>
+
+        <div id="grid-container" class="grid-container-2">
+          <!-- <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Soft Chairs</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img class="imagesss" src="/home/FP/Soft Chair.jpg" alt="" />
+            </div>
+          </div>
+
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Soft Chairs</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img src="/home/FP/Soft Chair.jpg" alt="" />
+            </div>
+          </div>
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Soft Chairs</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img src="/home/FP/Soft Chair.jpg" alt="" />
+            </div>
+          </div>
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Soft Chairs</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img src="/home/FP/Soft Chair.jpg" alt="" />
+            </div>
+          </div>
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Soft Chairs</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img src="/home/FP/Soft Chair.jpg" alt="" />
+            </div>
+          </div>
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Soft Chairs</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img src="/home/FP/Soft Chair.jpg" alt="" />
+            </div>
+          </div>
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Soft Chairs</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img src="/home/FP/Soft Chair.jpg" alt="" />
+            </div>
+          </div>
+          <div class="grid-item grid-item-2">
+            <div class="productsInformation">
+              <h4>Soft Chairs</h4>
+              <p class="price-info">
+                From <br />
+                <span class="price">19 USD</span>
+              </p>
+            </div>
+
+            <div class="imgProducts">
+              <img src="/home/FP/Soft Chair.jpg" alt="" />
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="bg-color">
+        <div class="part-left">
+          <h2>An easy way to send</h2>
+          <h2>requests to all suppliers</h2>
+
+          <p>Our Customer Service is online 24/7</p>
+          <p>Get in Touch Now</p>
+        </div>
+
+        <div class="part-right">
+          <h2>Sent Inquiry to Our Customer Service</h2>
+          <label for="question">What is you Inquiry?</label>
+          <textarea
+            name="question"
+            id="question"
+            rows="3"
+            placeholder="Enter Your inquiry"
+          ></textarea>
+          <div class="question-selector">
+            <label for="options">Inquiry Type</label>
+            <select name="options" id="options">
+              <option value="dummy" disabled selected>
+                Select Your Question
+              </option>
+              <option value="AM">Account Managment</option>
+              <option value="AM">Shipping options</option>
+              <option value="AM">Sell with us</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container">
+      <div class="sub-container-2">
+        <div class="flexed-div">
+          <div class="sub-div">
+            <p class="logo-brand-store">Logo here</p>
+            <p class="store-info">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Molestiae facilis obcaecati delectus rem suscipit sint?
+            </p>
+          </div>
+          <div class="social-logos">
+            <a href=""><i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-facebook"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="flexed-div">
+          <p class="sec-header">About Us</p>
+          <ul>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="flexed-div">
+          <p class="sec-header">Partnership</p>
+          <ul>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="flexed-div">
+          <p class="sec-header">Information</p>
+          <ul>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="flexed-div">
+          <p class="sec-header">For Users</p>
+          <ul>
+            <li><a href="/loginRegister/login.html">Login</a></li>
+            <li><a href="/loginRegister/register.html">Register</a></li>
+          </ul>
+        </div>
+        <div class="flexed-div">
+          <p>Get App</p>
+          <div class="button-images">
+            <img src="/Utilites/pngegg.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="home.js" type="module"></script>
+  </body>
+</html>
