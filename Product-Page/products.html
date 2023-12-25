@@ -36,7 +36,7 @@
 
           <div class="postion">
             <!-- Search here-->
-            <input class="search-bar" type="text" placeholder="Search..." />
+            <input class="search-bar" type="text" id="Search"  onkeyup="searchProdctss()" placeholder="Search..." />
             <button class="srch-btn">Search</button>
           </div>
 
@@ -117,6 +117,9 @@
         </nav>
       </div>
     </header>
+    <div id="data">
+
+    </div>
     <div class="container">
       <div class="full-sec">
         <div class="widget-parent">
@@ -124,23 +127,23 @@
             <p>Category</p>
             <div class="filter-cat">
               <div class="checkboxes">
-                <input id="f1" type="checkbox" />
-                <label for="">Electronics</label>
+                <input id="f1" class='category-checkbox' data-category="category 1"  type="checkbox" />
+                <label for="">category 1</label>
               </div>
 
               <div class="checkboxes">
-                <input type="checkbox" />
-                <label for="">Electronics</label>
+                <input type="checkbox" value="category 1"  class='category-checkbox'/>
+                <label for="">category 1</label>
               </div>
 
               <div class="checkboxes">
-                <input type="checkbox" />
-                <label for="">Electronics</label>
+                <input type="checkbox" value="category 1" class='category-checkbox' />
+                <label for="">category 1</label>
               </div>
 
               <div class="checkboxes">
-                <input type="checkbox" />
-                <label for="">Electronics</label>
+                <input type="checkbox" value="category 1" class='category-checkbox' />
+                <label for="">category 1</label>
               </div>
             </div>
           </div>
@@ -149,7 +152,7 @@
             <p>Category</p>
             <div class="filter-cat">
               <div class="checkboxes">
-                <input type="checkbox" />
+                <input type="checkbox"  class='category-checkbox'/>
                 <label for="">Electronics</label>
               </div>
 

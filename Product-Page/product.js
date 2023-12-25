@@ -192,4 +192,60 @@ function display_items() {
   //     });
   //   });
 }
-display_items();
+// display_items();
+
+    display_items();
+
+
+// Get all the checkboxes and products
+// const checkboxes = document.getElementsByClassName('category-checkbox').cheeked;
+// // Function to filter products based on selected checkboxes
+// function filterProducts(checkboxes){
+//   var products = JSON.parse(localStorage.getItem('allproduct'));
+//   const productCategory = JSON.parse(localStorage.getItem('categories'))
+//   if (productCategory.includes(products.productCategory)){
+//   } else{
+//    console.log("dddddddddddddd");
+//   }
+// }
+
+// Attach event listeners to checkboxes
+// checkboxes.forEach(checkbox => {
+//   checkbox.addEventListener('change', filterProducts);
+// });
+
+
+// search
+function searchProdct(){
+  const searchValue =document.getElementById("Search");
+  var productContainer = JSON.parse(localStorage.getItem('allproduct'))
+  for(var i =0 ; i<productContainer.length;i++){
+    if(productContainer[i].pname.toLowerCase().includes(searchValue.value.toLowerCase()) )
+    {
+      const dataDiv = document.getElementById("data");
+    dataDiv.innerHTML += `
+                    <div class="product-card-1">
+                    <div class="product-image-1">
+                      <img src="${productContainer[i].pimg}"   alt="" />
+                    </div>
+                    <div class="product-info-1">
+                      <p class="data-name">${productContainer[i].pname}</p>
+                      <p id="price">${productContainer[i].price}$</p>
+                      <p>
+                        ${productContainer[i].desc}
+                      </p>
+                      <p id="shipping">Free Shipping</p>
+                      <div class="cart-items">
+                        <a href="#">View details</a>
+                        <button class="add-to-cart-btn" data-index="${i}">Add To Cart</button>
+                        <i data-index='${i}' class="fa-regular fa-heart wishListIcon"></i>
+                        <i  class="fa-solid fa-heart added"></i>
+                  
+                      </div>
+                    </div>
+                  <br>`
+      
+    }
+  
+  }
+  }
