@@ -30,6 +30,7 @@ if (app) {
 const db = getDatabase();
 const dbRef = ref(getDatabase());
 let cartItems = [];
+let wishList = [];
 
 let addToCart = async function (id) {
   const snapshot = await get(child(dbRef, id)); // btrg3 promise
@@ -37,7 +38,14 @@ let addToCart = async function (id) {
   cartItems.push(prod);
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 };
-console.log(cartItems);
+
+let addToWishList = async function (id) {
+  const snapshot = await get(child(dbRef, id)); // btrg3 promise
+  const prod = snapshot.val();
+  wishList.push(prod);
+  localStorage.setItem("wishList", JSON.stringify(wishList));
+};
+
 // read Data from firebse
 
 const postId = 1;
@@ -69,16 +77,25 @@ for (let i = 0; i < 20; i++) {
                <div class="cart-items">
                  <a href="#">View details</a>
                  <button >Add To Cart</button>
-                 <i class="fa-regular fa-heart"></i>
+                 <i class="fa-regular fa-heart WishListIcon"></i>
                  <i class="fa-solid fa-heart added"></i>
                </div>
              </div>
            </div>
  `;
+
         prodEle.querySelector("button").addEventListener("click", async () => {
           await addToCart(userId + "");
           console.log(cartItems);
         });
+
+        prodEle
+          .querySelector(".fa-regular.fa-heart.WishListIcon")
+          .addEventListener("click", async () => {
+            await addToWishList(userId + "");
+            console.log(wishList);
+          });
+
         document.getElementById("Data").appendChild(prodEle);
       } else {
         console.log("No data available");
@@ -147,27 +164,15 @@ function display_items() {
     button.addEventListener("click", function (event) {
       const index = event.target.dataset.index;
       addToCartItems(index);
-    })});
+    });
+  });
 
-const addTowishButtons = document.querySelectorAll(".fa-regular");
-addTowishButtons.forEach((button) => {
-  button.addEventListener("click", function (event) {
-    const index = event.target.dataset.index;
-    addToWishlist(index);
-})});
+  const addTowishButtons = document.querySelectorAll(".fa-regular");
+  addTowishButtons.forEach((button) => {
+    button.addEventListener("click", function (event) {
+      const index = event.target.dataset.index;
+      addToWishlist(index);
+    });
+  });
 }
 display_items();
-
-
-/*  */
-var wishlistContainer=[]
-var wishlistContainer = JSON.parse(localStorage.getItem('wishlist'))
-let localItems_ = localStorage.getItem("allproduct");
-let parsedItem_ = JSON.parse(localItems);
-function addToWishlist(item){
-  let vaariable = parsedItem_[item];
-  wishlistContainer.push(vaariable);
-  localStorage.setItem('wishlistContainer', JSON.stringify(wishlist));
-}
-console.log(wishlistContainer);
-
