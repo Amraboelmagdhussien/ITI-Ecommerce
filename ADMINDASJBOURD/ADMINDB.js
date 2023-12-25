@@ -1,8 +1,105 @@
 
-let userData = sessionStorage.getItem("nameOfUser");
-let isLoggedIn = sessionStorage.getItem("loginStatus");
-console.log(userData)
-console.log(isLoggedIn)
+const data = localStorage.getItem('usersData');
+const order = localStorage.getItem("cartItems")
+
+const Userdata = JSON.parse(data);
+const Orderdta = JSON.parse(order);
+console.log(Orderdta)
+// Check if data exists
+if (Userdata) {
+for(i=0;i<Userdata.length;i++){
+ console.log(Userdata[i].role == "customer")
+}
+
+} else {
+  // Data does not exist in LocalStorage
+  console.log('No data found in LocalStorage');
+}
+
+function display_items(){
+    let getItemss = localStorage.getItem("cartItems");
+    let dataRet = JSON.parse(getItemss || "[]");
+    try {
+      for (var i = 0; i < getItemss.length; i++) {
+        const dataDiv = document.getElementById("orderItems");
+ dataDiv.innerHTML += `
+ <div class='full-sec'>
+ <div class='products'>
+          <div class="product-card-1">
+            <div class="img">
+              <img src="${dataRet[i].image || dataRet[i].pimg}" alt="" />
+              <div class="check-info">
+                <p>${dataRet[i].pname || dataRet[i].title}</p>
+                <p class="prod-desc">${dataRet[i].title || dataRet[i].pname}</p>
+                <div class="btns-sAndR">
+                  <button data-index="${i}" class="remove">Cancel</button>
+                  <button data-index="${i}" class="remove">Aprove</button>
+                </div>
+              </div>
+            </div>
+            <div class="price">${dataRet[i].price}$</div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>`;
+      }
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+
+  display_items();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//     if (j >= 0 && userdataa[j].pass == password.value) {
+//       sessionStorage.setItem("loginStatus", "true");
+//       sessionStorage.setItem("nameOfUser", userdataa[j].uName);
+//       sessionStorage.setItem("role", userdataa[j].role);
+//       if (checkbox.value == "checked") {
+//         var iiii = { name: username.value, pass: password.value };
+//         localStorage.setItem("rememberme", JSON.stringify(iiii));
+//       } else {
+//         localStorage.removeItem("rememberme");
+//       }
+//       setTimeout(() => {
+//         console.log(sessionStorage.getItem("role"));
+//         if (sessionStorage.getItem("role") == "admin") {
+//           window.location = "/ITI-Ecommerce/home/homepage.html"; //crud Mahmoud
+//         } else if (sessionStorage.getItem("role") == "customer")
+//           window.location = "/ITI-Ecommerce/home/homepage.html"; // Home Amr
+//       }, 1000);
+//     } else {
+//       alert("Wrong user name or Password");
+//     }
+//   }
+// });
 
 
 
@@ -32,39 +129,3 @@ console.log(isLoggedIn)
 
 
 
-
-
-// let logoutButton = document.getElementById("headerLogout");
-// let loggedIn = document.getElementById("loggedInDiv");
-// let loggedOut = document.getElementById("loggedOutDiv");
-// let icons = document.getElementById("loggedInIcons");
-// console.log(icons.innerHTML);
-// console.log(isLoggedIn);
-// if (isLoggedIn != null) {
-//   // means i logged in
-//   icons.classList.add("icons");
-//   icons.classList.remove("hiddenIcons");
-//   logoutButton.style.display = "block";
-//   loggedOut.style.display = "none";
-//   loggedIn.style.display = "block";
-
-//   document.getElementById("uName").innerHTML = userData;
-// }
-
-// console.log(typeof isLoggedIn);
-
-// console.log(userData);
-// // alert("Hello");
-
-// // Event listener for logout button
-// logoutButton.addEventListener("click", handleLogout);
-
-// function handleLogout() {
-//   // Clear session storage and remove a specific item from local storage
-//   sessionStorage.clear();
-
-//   // Set a timeout before redirecting to the index page
-//   setTimeout(() => {
-//     window.location = "/home/homepage.html";
-//   }, 1000);
-// }
