@@ -1,174 +1,240 @@
-// Clear session storage and remove a specific item from local storage
 sessionStorage.clear();
 localStorage.removeItem("productsInCart");
+var username = document.getElementById("username");
+var email = document.getElementById("email");
+var password = document.getElementById("password");
+var repeatedPass=document.getElementById("repeatpass");
+var registerBtn = document.getElementById("sign_up");
 
-// Get DOM elements
-const usernameInput = document.getElementById("username");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const repeatedPassInput = document.getElementById("repeatpass");
-const registerBtn = document.getElementById("sign_up");
+if((window.localStorage.getItem("usersData"))==null){
+var usersData=[{uName:"Admin",mail:"eraserhint23@gmail.com",pass:1}];
+window.localStorage.setItem("usersData",JSON.stringify(usersData));
+};
 
-// Check if 'usersData' is null, initialize it with a default user
-if (localStorage.getItem("usersData") === null) {
-  const defaultUser = { uName: "Admin", mail: "eraserhint23@yahoo.com@gmail.com", pass: 1 };
-  const usersData = [defaultUser];
-  localStorage.setItem("usersData", JSON.stringify(usersData));
+var flagNum1=0;
+var flagNum2=0;
+var flagNum3=0;
+var flagNum4=0;
+function oldCondition(oldValue){
+    if(oldValue.value!="")
+    {
+        if(!nameValidation(oldValue.value)){
+            oldValue.style.background="lightpink";
+            document.getElementById("nameMsg").innerHTML="<b>Not valid</b>";
+            flagNum1=0;
+            alert("username can be alphanumeric & underscore with 5 digit minimum length");
+        }
+        else
+        {
+            document.getElementById("nameMsg").innerHTML="<b>valid</b>";
+            oldValue.style.background="palegreen";
+            flagNum1=1;
+        }
+    }
+    else{
+        oldValue.style.background="white";
+        flagNum1=0;
+        document.getElementById("nameMsg").innerHTML="<b>Required</b>";
+    }
+}
+function nameValidation(name)
+{
+    var reg=/^[\w]{5,}$/g;
+    if(reg.test(name))
+    return true;
+    else
+    return false;
+}
+function oldCondition1(oldValue){
+    if(oldValue.value!="")
+    {
+        if(!mailValidation(oldValue.value)){
+            oldValue.style.background="lightpink";
+            document.getElementById("mailMsg").innerHTML="<b>Not valid</b>";
+            flagNum2=0;
+            alert("please enter valid email adress");
+        }
+        else
+        {
+            document.getElementById("mailMsg").innerHTML="<b>valid</b>";
+            oldValue.style.background="palegreen";
+            flagNum2=1;
+        }
+    }
+    else{
+        oldValue.style.background="white";
+        flagNum2=0;
+        document.getElementById("mailMsg").innerHTML="<b>Required</b>";
+    }
+}
+function mailValidation(name)
+{
+  var visaRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    
+    if(visaRegEx.test(name))
+    return true;
+    else
+    return false;
 }
 
-// Flags to track input validity
-let flagNum1 = 0;
-let flagNum2 = 0;
-let flagNum3 = 0;
-let flagNum4 = 0;
-
-// Validation functions
-function validateInput(inputValue, validationFunction, messageElement, flag) {
-  if (inputValue !== "") {
-    if (!validationFunction(inputValue)) {
-      setInvalidInput(messageElement, flag);
-    } else {
-      setValidInput(messageElement, flag);
+function oldCondition2(oldValue){
+  
+  if(oldValue.value!="")
+    {   
+        if(!passValidation(oldValue.value)){
+            oldValue.style.background="lightpink";
+            document.getElementById("passMsg").innerHTML="<b>Not valid</b>";
+            flagNum3=0;
+            alert("Password must have at least 8 digits");
+            
+        }
+        else
+        {
+            document.getElementById("passMsg").innerHTML="<b>valid</b>";
+            oldValue.style.background="palegreen";
+            flagNum3=1;
+        }
     }
-  } else {
-    setEmptyInput(messageElement, flag);
+    else{
+        oldValue.style.background="white";
+        flagNum3=0;
+        document.getElementById("passMsg").innerHTML="<b>Required</b>";
+    }
+}
+function passValidation(name)
+{
+   
+    if(name.length>=8)
+    return true;
+    else
+    return false;
+}
+function oldCondition3(oldValue){
+  if(oldValue.value!="")
+  {
+      if(!repeatValidation(oldValue.value)){
+          oldValue.style.background="lightpink";
+          document.getElementById("repeatMsg").innerHTML="<b>Not valid</b>";
+          flagNum4=0;
+          alert("Password Not match");
+          
+      }
+      else
+      {
+          document.getElementById("repeatMsg").innerHTML="<b>valid</b>";
+          oldValue.style.background="palegreen";
+          flagNum4=1;
+      }
+  }
+  else{
+      oldValue.style.background="white";
+      flagNum4=0;
+      document.getElementById("repeatMsg").innerHTML="<b>Required</b>";
   }
 }
-
-function setValidInput(messageElement, flag) {
-  messageElement.innerHTML = "<b>Valid</b>";
-  flag = 1;
+function repeatValidation(name)
+{
+ 
+  if(name==password.value)
+  return true;
+  else
+  return false;
 }
 
-function setInvalidInput(messageElement, flag) {
-  messageElement.innerHTML = "<b>Not valid</b>";
-  flag = 0;
-  alert("Validation failed.");
-}
 
-function setEmptyInput(messageElement, flag) {
-  messageElement.innerHTML = "<b>Required</b>";
-  flag = 0;
-}
-
-// Validation functions for username, email, password, and repeated password
-function nameValidation(name) {
-  const reg = /^[\w]{5,}$/g;
-  return reg.test(name);
-}
-
-function mailValidation(email) {
-  const visaRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-  return visaRegEx.test(email);
-}
-
-function passValidation(password) {
-  return password.length >= 8;
-}
-
-function repeatValidation(repeatedPassword) {
-  return repeatedPassword === passwordInput.value;
-}
-
-// Event listeners for input validation
-usernameInput.addEventListener("input", () =>
-  validateInput(usernameInput.value, nameValidation, document.getElementById("nameMsg"), flagNum1)
-);
-
-emailInput.addEventListener("input", () =>
-  validateInput(emailInput.value, mailValidation, document.getElementById("mailMsg"), flagNum2)
-);
-
-passwordInput.addEventListener("input", () =>
-  validateInput(passwordInput.value, passValidation, document.getElementById("passMsg"), flagNum3)
-);
-
-repeatedPassInput.addEventListener("input", () =>
-  validateInput(
-    repeatedPassInput.value,
-    repeatValidation,
-    document.getElementById("repeatMsg"),
-    flagNum4
-  )
-);
-
-// Event listener for registration
 registerBtn.addEventListener("click", register);
-
 function register(e) {
   e.preventDefault();
 
-  if (usernameInput.value === "" || emailInput.value === "" || passwordInput.value === "" || repeatedPassInput.value === "") {
-    alert("Please fill in all required fields.");
-  } else if (flagNum1 === 0 || flagNum2 === 0 || flagNum3 === 0 || flagNum4 === 0 || !repeatValidation(repeatedPassInput.value)) {
-    alert("Please enter valid data.");
-  } else {
-    const usersArray = JSON.parse(localStorage.getItem("usersData"));
+  if (username.value === "" || email.value === "" || password.value === ""||repeatedPass.value==="") {
+    alert("Please fill required data");
+  } else if (flagNum1==0||flagNum2==0||flagNum3==0||flagNum4==0||!repeatValidation(repeatedPass.value)) {
+    alert("Please enter valid data");
+  } 
+  else {
+    var xx=JSON.parse(localStorage.getItem("usersData"));
+    for(let i=0;i<xx.length;i++){
+      if(xx[i].uName==username.value){
+        alert("this user name already exisit");
+        break;
+      }
+      else if(xx[i].mail==email.value){
+        alert("this email already exisit");
+        break;
+      }
+      else{
+        var yy={uName:"f",mail:"f",pass:1}
+        yy.uName=username.value;
+        yy.pass=password.value;
+        yy.mail=email.value;
+        xx.push(yy);
+        window.localStorage.setItem("usersData",JSON.stringify(xx));
 
-    for (const user of usersArray) {
-      if (user.uName === usernameInput.value) {
-        alert("This username already exists.");
-        return;
-      } else if (user.mail === emailInput.value) {
-        alert("This email already exists.");
-        return;
+        setTimeout(() => {
+          window.location = "login.html";
+        }, 1000);
+        break;
       }
     }
-
-    const newUser = { uName: usernameInput.value, mail: emailInput.value, pass: passwordInput.value };
-    usersArray.push(newUser);
-
-    localStorage.setItem("usersData", JSON.stringify(usersArray));
-
-    setTimeout(() => {
-      window.location = "..\registeration\registeration.html";
-    }, 1000);
+    
   }
 }
 
-// Event listener for search input
-const searchInput = document.getElementById("search");
 
-searchInput.addEventListener("keyup", function (e) {
-  const contactSpecial = document.getElementById("contactSpecial");
-  contactSpecial.style.display = "none";
 
-  const aboutusSearch = document.getElementById("aboutusSearch");
-  aboutusSearch.innerHTML = `<section class="home">
-    <div class="container">
-      <div class="products" id="products"></div>
-    </div>
+var input = document.getElementById("search");
+
+input.addEventListener("keyup", function (e) {
+  // document.getElementById("contactSpecial").innerHTML='<div></div>';
+  document.getElementById("contactSpecial").style.display="none";
+  document.getElementById("aboutusSearch").innerHTML=`<section class="home">
+  <div class="container">
+    <div class="products" id="products"></div>
+  </div>
   </section>`;
-
   search(e.target.value, JSON.parse(localStorage.getItem("products")));
-
-  if (e.target.value.trim() === "") {
-    aboutusSearch.innerHTML = '<div></div>';
-    contactSpecial.style.display = "block";
-  }
+  if (e.target.value.trim() === ""){
+    document.getElementById("aboutusSearch").innerHTML = '<div></div>';
+    document.getElementById("contactSpecial").style.display="block";
+    // document.getElementById("contactSpecial").innerHTML = 
+    // `<h2>Contact Us</h2>
+    // <form action="" novalidate>
+    //   <input type="text" placeholder="Enter name" id="username" />
+    //   <input type="email" placeholder="Enter Email" id="email" />
+    //   <!-- <input type="password" placeholder="Enter password" id="password" /> -->
+    //   <textarea placeholder="Enter your message"></textarea>
+    //   <input type="submit" value="Send Message" id="sign_up" />
+    // </form>`
+}
 });
 
-// Function to filter products based on search
-function search(title, productsArray) {
-  const filteredProducts = productsArray.filter(
-    (item) => item.title.toLowerCase().includes(title.toLowerCase())
+function search(title, myArray) {
+  let arr = myArray.filter(
+    (item) => item.title.toLowerCase().indexOf(title.toLowerCase()) !== -1
   );
-  drawProductsUI(filteredProducts);
+  drawProductsUi(arr);
 }
+var products = JSON.parse(localStorage.getItem("products"));
 
-const productsArray = JSON.parse(localStorage.getItem("products"));
+//!!!!!!!!! Display  Products !!!!!!!!!//
 
-// Function to draw product UI
-const drawProductsUI = (products) => {
-  const productsUI = products.map(
+var drawProductsUi = (products) => {
+  var productsUi = products.map(
     (item) => `
     <div class="card">
       <img src="${item.image}" alt="">
       <div class="content">
-        <h3>${item.title}</h3>
-        <p>Price: ${item.price} LE</p>
-        <p>Category: ${item.category}</p>
-        <p>Ingredients: ${item.description}</p>
+      <!--onclick="saveItemData(${item.id})"-->
+        <h3 >${item.title}</h3>
+        <p>
+          Price: ${item.price} LE
+        </p>
+        <p>
+          Category: ${item.category}
+        </p>
+        <p>
+        Ingrediants: ${item.description}
+        </p>
       </div>
       <div class="info">
         <button class="add-to-cart" onclick="addedToCart(${item.id})">Add to cart</button>
@@ -176,5 +242,5 @@ const drawProductsUI = (products) => {
     </div>
   `
   );
-  document.getElementById("products").innerHTML = productsUI.join("");
+  document.getElementById("products").innerHTML = productsUi.join("");
 };

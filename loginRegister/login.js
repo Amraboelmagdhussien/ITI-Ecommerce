@@ -1,98 +1,119 @@
-const usernameInput = document.getElementById("username");
-const passwordInput = document.getElementById("password");
-const loginBtn = document.getElementById("sign_in");
-const checkbox = document.getElementById("checkbox");
-
+var username = document.getElementById("username");
+var password = document.getElementById("password");
+var loginBtn = document.getElementById("sign_in");
+var checkbox = document.getElementById("checkbox");
 sessionStorage.clear();
 localStorage.removeItem("productsInCart");
+// var iiii={name:"",pass:""}
+// localStorage.removeItem("rememberme")
+if(localStorage.getItem("rememberme")!=null){
+  
+  username.value=JSON.parse(localStorage.getItem("rememberme")).name;
+ password.value=JSON.parse(localStorage.getItem("rememberme")).pass;
+}
+if((window.localStorage.getItem("usersData"))==null){
+  var usersData=[{uName:"Admin",mail:"eraserhint23@gmail.com",pass:1}];
+  window.localStorage.setItem("usersData",JSON.stringify(usersData));
+  };
 
-if (localStorage.getItem("rememberme") !== null) {
-  const rememberMeData = JSON.parse(localStorage.getItem("rememberme"));
-  usernameInput.value = rememberMeData.name;
-  passwordInput.value = rememberMeData.pass;
+function remembermefun(){
+  if(checkbox.value=="checked"){
+    checkbox.value="";
+    
+  }
+  else if(checkbox.value==""){
+    checkbox.value="checked";
+  }
 }
 
-if (localStorage.getItem("usersData") === null) {
-  const usersData = [{ uName: "Admin", mail: "eraserhint23@gmail.com", pass: 1 }];
-  localStorage.setItem("usersData", JSON.stringify(usersData));
-}
 
-function rememberMeFunc() {
-  checkbox.value = checkbox.value === "checked" ? "" : "checked";
-}
-
-const usersDataArray = JSON.parse(localStorage.getItem("usersData"));
+var userdataa=JSON.parse(window.localStorage.getItem("usersData"));
 
 loginBtn.addEventListener("click", function (e) {
   e.preventDefault();
-
-  if (usernameInput.value === "" || passwordInput.value === "") {
-    alert("Please fill in all fields.");
-  } else {
-    const userIndex = usersDataArray.findIndex(
-      (user) => user.uName === usernameInput.value && user.pass == passwordInput.value
-    );
-
-    if (userIndex >= 0) {
-      sessionStorage.setItem("loginStatus", "5true");
-      sessionStorage.setItem("nameOfUser", usersDataArray[userIndex].uName);
-
-      if (checkbox.value === "checked") {
-        const rememberMeData = { name: usernameInput.value, pass: passwordInput.value };
-        localStorage.setItem("rememberme", JSON.stringify(rememberMeData));
-      } else {
+  if (username.value === "" || password.value === "") {
+    alert("please Fill Data");
+  } 
+  else {
+    var j=-1;
+    for(let i=0;i<(userdataa.length);i++){
+      if(userdataa[i].uName==username.value){
+        j=i;
+        break;
+      }
+    }
+    if (j>=0&&userdataa[j].pass==password.value) 
+    {sessionStorage.setItem("loginStatus","5true");
+      sessionStorage.setItem("nameOfUser",userdataa[j].uName)
+      if(checkbox.value=="checked"){
+        var iiii={name:username.value,pass:password.value};
+        localStorage.setItem("rememberme",JSON.stringify(iiii));
+        
+      }
+      else{
         localStorage.removeItem("rememberme");
       }
-
       setTimeout(() => {
         window.location = "..\home\homepage.html";
       }, 1000);
-    } else {
-      alert("Wrong username or password.");
+    } 
+    else {
+      alert("Wrong user name or Password");
     }
   }
 });
 
-const searchInput = document.getElementById("search");
 
-searchInput.addEventListener("keyup", function (e) {
-  const specialLogin = document.getElementById("specialLogin");
-  specialLogin.style.display = "none";
+var input = document.getElementById("search");
 
-  const aboutusSearch = document.getElementById("aboutusSearch");
-  aboutusSearch.innerHTML = `<section class="home">
-    <div class="container">
-      <div class="products" id="products"></div>
-    </div>
+input.addEventListener("keyup", function (e) {
+  document.getElementById("specialLogin").style.display="none";
+  document.getElementById("aboutusSearch").innerHTML=`<section class="home">
+  <div class="container">
+    <div class="products" id="products"></div>
+  </div>
   </section>`;
-
   search(e.target.value, JSON.parse(localStorage.getItem("products")));
-
-  if (e.target.value.trim() === "") {
-    aboutusSearch.innerHTML = '<div></div>';
-    specialLogin.style.display = "block";
-  }
+  if (e.target.value.trim() === ""){
+    document.getElementById("aboutusSearch").innerHTML = '<div></div>';
+    document.getElementById("specialLogin").style.display="block";
+    // `<h2>Login User</h2>
+    // <form action="">
+    //   <input type="text" placeholder="Enter username" id="username" />
+    //   <input type="password" placeholder="Enter password" id="password" />
+    //   <input type="submit" value="Sign in" id="sign_in" />
+    //   Not have acount? <a href="./register.html">Register</a>
+    // </form>`
+}
 });
 
-function search(title, productsArray) {
-  const filteredProducts = productsArray.filter(
-    (item) => item.title.toLowerCase().includes(title.toLowerCase())
+function search(title, myArray) {
+  let arr = myArray.filter(
+    (item) => item.title.toLowerCase().indexOf(title.toLowerCase()) !== -1
   );
-  drawProductsUI(filteredProducts);
+  drawProductsUi(arr);
 }
+var products = JSON.parse(localStorage.getItem("products"));
 
-const productsArray = JSON.parse(localStorage.getItem("products"));
+//!!!!!!!!! Display  Products !!!!!!!!!//
 
-const drawProductsUI = (products) => {
-  const productsUI = products.map(
+var drawProductsUi = (products) => {
+  var productsUi = products.map(
     (item) => `
     <div class="card">
       <img src="${item.image}" alt="">
       <div class="content">
-        <h3>${item.title}</h3>
-        <p>Price: ${item.price} LE</p>
-        <p>Category: ${item.category}</p>
-        <p>Ingredients: ${item.description}</p>
+      <!--onclick="saveItemData(${item.id})"-->
+        <h3 >${item.title}</h3>
+        <p>
+          Price: ${item.price} LE
+        </p>
+        <p>
+          Category: ${item.category}
+        </p>
+        <p>
+        Ingrediants: ${item.description}
+        </p>
       </div>
       <div class="info">
         <button class="add-to-cart" onclick="addedToCart(${item.id})">Add to cart</button>
@@ -100,5 +121,5 @@ const drawProductsUI = (products) => {
     </div>
   `
   );
-  document.getElementById("products").innerHTML = productsUI.join("");
+  document.getElementById("products").innerHTML = productsUi.join("");
 };
