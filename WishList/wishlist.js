@@ -108,7 +108,6 @@ function deleteFunction() {
   location.reload();
 }
 
-
 // function display_itemsofLocal() {
 //   let getItemss = localStorage.getItem("wishList");
 //   let dataRet = JSON.parse(getItemss);
@@ -119,10 +118,10 @@ function deleteFunction() {
 //       <div class="checkout-left">
 //         <div class="product-card-1">
 //           <div class="img">
-//             <img src="${   dataRet[i].pimg}" alt="" />
+//             <img src="${dataRet[i].pimg}" alt="" />
 //             <div class="check-info">
-//               <p>${   dataRet[i].pname}</p>
-//               <p class="prod-desc">${   dataRet[i].desc}</p>
+//               <p>${dataRet[i].pname}</p>
+//               <p class="prod-desc">${dataRet[i].desc}</p>
 //               <div class="btns-sAndR">
 //                 <button data-index="${i}" class="remove">Remove</button>
 //               </div>
@@ -136,11 +135,5 @@ function deleteFunction() {
 //   } catch (e) {
 //     console.log(e.message);
 //   }
-//   dataDiv.addEventListener("click", (event) => {
-//     if (event.target.classList.contains("remove")) {
-//       deleteFunction(event);
-//       console.log("Working");
-//     }
-//   });
 // }
 // display_itemsofLocal();
