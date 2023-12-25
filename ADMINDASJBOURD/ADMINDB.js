@@ -3,17 +3,12 @@ const order = localStorage.getItem("cartItems")
 
 const Userdata = JSON.parse(data);
 const Orderdta = JSON.parse(order);
-console.log(Orderdta)
+// console.log(Orderdta)
 // Check if data exists
 if (Userdata) {
 for(i=0;i<Userdata.length;i++){
- console.log(Userdata[i].role == "customer")
-}
-} else {
-  // Data does not exist in LocalStorage
-  console.log('No data found in LocalStorage');
-}
-
+//  console.log(Userdata[i].role == "customer")
+if(Userdata[i].role != "customer"){
 function display_items(){
     let getItemss = localStorage.getItem("cartItems");
     let dataRet = JSON.parse(getItemss || "[]");
@@ -40,7 +35,7 @@ function display_items(){
                 </div>
             </div>
         </div>
-        </div> <br>`;
+        </div><br>`;
       }
     } catch (e) {
       console.log(e.message);
@@ -48,21 +43,39 @@ function display_items(){
     dataDiv.addEventListener("click", (event) => {
         if (event.target.classList.contains("remove")) {
           CancelFunction(event);
-          console.log("Working");
+
+        //   console.log("Cans");
         }
       });
-
   }
-const Btn = document.getElementById("final");
-Btn.addEventListener('click',  display_items())
-
+}
+}
+} else {
+  // Data does not exist in LocalStorage
+  console.log('No data found in LocalStorage');
+}
+// s
 function CancelFunction() {
   const button = event.target;
   let dataIndex = button.getAttribute("data-index");
-  console.log(dataIndex);
+//   console.log(dataIndex);
   dataRet.splice(dataIndex, 1);
   localStorage.setItem("wishList", JSON.stringify(dataRet));
 }
+/*
+
+// */
+for (let i = 0; i < Userdata.length; i++){
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+    let User = localStorage.getItem('usersData');
+  if (isLoggedIn == 'true'  && Userdata[i].role == 'customer') {
+    console.log(` Hello my user your order is aprove ${User[i].uName}`);
+    console.log(variable );
+  }else{
+    console.log("Notfound ...");
+  }
+}
+
 
 
 
