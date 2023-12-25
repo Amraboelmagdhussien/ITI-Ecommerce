@@ -1,5 +1,3 @@
-const cardNumInput = getElementById("creditNum");
-const cardTypeImg = getElementById("cardImg");
 
 function displayCredit(){
     document.getElementById("option1").style.display="block";
@@ -156,6 +154,8 @@ function cvvValidation(name)
      }
 })
 
+const cardNumInput = getElementById("creditNum");
+const cardTypeImg = getElementById("cardImg");
 // Show Image of Card Type
 cardNumInput.addEventListener("blur", function(){
     if(cardNumInput.value[0]==4){
