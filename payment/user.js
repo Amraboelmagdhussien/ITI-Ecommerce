@@ -21,7 +21,7 @@ function handleLogout() {
 
   // Set a timeout before redirecting to the index page
   setTimeout(() => {
-    window.location = "index.html";
+    window.location = "..\home\homepage.html";
   }, 1000);
 }
 

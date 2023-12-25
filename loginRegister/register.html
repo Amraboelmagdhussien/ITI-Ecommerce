@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="products.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap"
+    rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap"
+    rel="stylesheet"
+    />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../loginRegister/headerFooter.css" />
+    <link rel="stylesheet" href="../loginRegister/firebase.css" />
+    <style>
+        .section-form {
+        margin: 50px auto;
+        width: 40%;
+        /* text-align: center; */
+        background-color: #4942E4;
+        padding: 20px;
+        border-radius: 40px;
+        }
+
+        @media only screen and (max-width: 767px) {
+        .section-form {
+            width: 70%;
+        }
+        }
+
+        .section-form h2 {
+        font-size: 50px;
+        letter-spacing: 2px;
+        /* color: #52057b; */
+        color: #11009E;
+        text-align: center;
+        
+        }
+
+        .section-form form input {
+        display: inline-block;
+            width: 70%;
+            margin :8px 1px 8px 50px;
+            height: 40px;
+            padding: 5px;
+            border: 1px solid #4942E4;
+            font-family: inherit;
+            outline: none;
+            border-radius: 20px;
+            font-size: large;
+        }
+        .section-form form input[type="submit"] {
+        font-size: 30px;
+        text-transform: uppercase;
+        height: auto;
+        width: 50%;
+        margin-left: 25%;
+        cursor: pointer;
+        background-color: #E6B9DE;
+        color: #11009E;
+        font-weight: bolder;
+        
+        
+        }
+
+        .section-form form input[type="submit"]:hover {
+        background-color: #11009E;
+        color: 	#ece0d1;
+        }
+
+        .section-form form span{
+        color: #11009E;
+        font-weight: bold;
+        font-size: large;
+        
+        }
+        .section-form form a{
+        font-weight: bold;
+        font-size: large;
+        }
+    </style>
+    <title>Register</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="header">
+            <div class="logo">
+                <!-- logo here -->
+                <h1>Store Name</h1>
+            </div>
+
+            <div class="postion">
+                <!-- Search here-->
+                <input class="search-bar" type="text" placeholder="Search..." />
+                <button class="srch-btn">Search</button>
+            </div>
+
+            <div class="icons">
+                <!--Icons -->
+                <div class="iconLay">
+                <i class="fa-solid fa-user"></i>
+                <a href="#">Profile</a>
+                </div>
+
+                <div class="iconLay">
+                <i class="fa-regular fa-message"></i>
+                <a href="#">Message</a>
+                </div>
+
+                <div class="iconeLay">
+                <i class="fa-solid fa-heart"></i>
+                <a href="#">My Orders</a>
+                </div>
+                <div class="iconLay">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <a href="#">My Cart</a>
+                </div>
+            </div>
+            </nav>
+
+            <nav class="header-2">
+            <div class="categories-1">
+                <ul>
+                <li class="dropDownList">
+                    <div>
+                    <i class="fa-solid fa-list test"></i>
+                    <span>All Category</span>
+                    </div>
+                    <ul>
+                    <li>Cate 1 Cate 1 Cate 1 Cate 1 Cate 1s</li>
+                    <li>Cate 1</li>
+                    <li>Cate 1</li>
+                    <li>Cate 1</li>
+                    <li>Cate 1</li>
+                    </ul>
+                </li>
+                <li><a href="#">Hot offers</a></li>
+                <li><a href="#">Gift Boxes</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Menu Item</a></li>
+                <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+
+            <div class="info-1">
+                <ul>
+                <li>English, USD <i class="fa-solid fa-caret-down"></i></li>
+
+                <li id="shipmentSelector" class="dropDownList">
+                    <div>
+                    <span>Ship To</span>
+                    <img class="imgIcon" src="/Flags/EG.png" alt="EG" />
+                    <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                    <ul>
+                    <li>
+                        <span>EG </span>
+                        <img class="imgIcon" src="/Flags/EG.png" alt="EG" />
+                    </li>
+                    <li>
+                        <span>DE</span
+                        ><img class="imgIcon" src="/Flags/DE.png" alt="DE" />
+                    </li>
+                    <li>
+                        <span>USA</span
+                        ><img class="imgIcon" src="/Flags/US.png" alt="USA" />
+                    </li>
+                    </ul>
+                </li>
+                </ul>
+            </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div id="aboutusSearch"></div>
+        <section class="section-form" id="contactSpecial">
+            <h2>Register User</h2>
+            <form action="" novalidate>
+            <input type="text" placeholder="Enter username" id="username" onblur="oldCondition(this)"/>
+            <span id="nameMsg"><span class="star">Required</span></span>
+            <input type="email" placeholder="Enter Email" id="email" onblur="oldCondition1(this)"/>
+            <span id="mailMsg"><span class="star">Required</span></span>
+            <input type="password" placeholder="Enter password" id="password" onblur="oldCondition2(this)"/>
+            <span id="passMsg"><span class="star">Required</span></span>
+            <input type="password" placeholder="Repeat your password" id="repeatpass" onblur="oldCondition3(this)"/>
+            <span id="repeatMsg"><span class="star">Required</span></span>
+            <input type="submit" value="Sign up" id="sign_up" /><br>
+            <div style="text-align: center;"><span>Have acount?</span> <a href="./login.html">LogIn</a></div>
+            </form>
+        </section>
+    </main>
+    <footer class="container">
+        <div class="sub-container-2">
+        <div class="flexed-div">
+            <div class="sub-div">
+            <p class="logo-brand-store">Logo here</p>
+            <p class="store-info">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Molestiae facilis obcaecati delectus rem suscipit sint?
+            </p>
+            </div>
+            <div class="social-logos">
+            <a href=""><i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-facebook"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+
+        <div class="flexed-div">
+            <p class="sec-header">About Us</p>
+            <ul>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
+            </ul>
+        </div>
+        <div class="flexed-div">
+            <p class="sec-header">Partnership</p>
+            <ul>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
+            </ul>
+        </div>
+        <div class="flexed-div">
+            <p class="sec-header">Information</p>
+            <ul>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
+            </ul>
+        </div>
+        <div class="flexed-div">
+            <p class="sec-header">For Users</p>
+            <ul>
+            <li><a href="">Login</a></li>
+            <li><a href="">Register</a></li>
+            </ul>
+        </div>
+        <div class="flexed-div">
+            <p>Get App</p>
+            <div class="button-images">
+            <img src="/Utilites/pngegg.png" alt="" />
+            </div>
+        </div>
+        </div>
+    </footer>
+    <script src="../loginRegister/register.js"></script>
+    <script src="../payment/user.js"></script>
+    <script src="../payment/script.js"></script>
+    <script src="../cart-items/home.js"></script>
+</body>
+</html>

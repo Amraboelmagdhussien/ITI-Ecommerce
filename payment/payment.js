@@ -84,12 +84,12 @@ checkoutBtn.addEventListener("click", function (e) {
     e.preventDefault();
     if (flagSpecial === 1) {
         if (flagNum1 === 1 && flagNum2 === 1 && flagNum3 === 1) {
-            window.location.href = "delvirey.html";
+            window.location.href = "..\payment\delivery.html";
         } else {
             alert("Some data are missing or invalid");
         }
     } else if (flagSpecial === 0) {
-        window.location.href = "delvirey.html";
+        window.location.href = "..\payment\delivery.html";
     }
 });
 
