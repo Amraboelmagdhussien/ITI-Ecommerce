@@ -69,7 +69,7 @@ for (let i = 0; i < Userdata.length; i++){
     const isLoggedIn = sessionStorage.getItem('isLoggedIn');
     let User = localStorage.getItem('usersData');
   if (isLoggedIn == 'true'  && Userdata[i].role == 'customer') {
-    console.log(` Hello my user your order is aprove ${User[i].uName}`);
+    console.log(` Hello  ${User[i].uName} your order is aproved `);
     console.log(variable );
   }else{
     console.log("Notfound ...");
