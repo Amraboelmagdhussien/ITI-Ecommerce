@@ -75,7 +75,7 @@ for (let i = 0; i < dropList.length; i++) {
   });
 }
 
-let discountDate = new Date("Dec 25 2023 9:00:00").getTime();
+let discountDate = new Date("Dec 28 2023 9:00:00").getTime();
 
 let countDown = function () {
   setInterval(function () {

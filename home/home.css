@@ -494,6 +494,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto auto;
+  width: 1240px;
 }
 .grid-container-2 .grid-item-2 .imgProducts img {
   width: 150px;
