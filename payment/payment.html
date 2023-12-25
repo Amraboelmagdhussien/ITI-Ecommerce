@@ -116,184 +116,188 @@
   <body>
     <header>
       <div class="container">
-          <nav class="header">
+        <nav class="header">
           <div class="logo">
-              <!-- logo here -->
-              <h1>Store Name</h1>
+            <!-- logo here -->
+            <a href="/home/homepage.html"
+              ><img src="/Logo/1111.svg" alt=""
+            /></a>
           </div>
 
           <div class="postion">
-              <!-- Search here-->
-              <input class="search-bar" type="text" placeholder="Search..." />
-              <button class="srch-btn">Search</button>
+            <!-- Search here-->
+            <input
+              id="searchInput"
+              class="search-bar"
+              type="text"
+              placeholder="Search..."
+            />
+            <button class="srch-btn" onclick="performSearch()">Search</button>
           </div>
 
-          <div class="icons">
-              <!--Icons -->
-              <div class="iconLay">
+          <div id="loggedInIcons" class="hiddenIcons">
+            <!--Icons -->
+            <div class="iconLay">
               <i class="fa-solid fa-user"></i>
-              <a href="#">Profile</a>
-              </div>
+              <a href="/profile/profile.html">Profile</a>
+            </div>
 
-              <div class="iconLay">
+            <div class="iconLay">
               <i class="fa-regular fa-message"></i>
               <a href="#">Message</a>
-              </div>
+            </div>
 
-              <div class="iconeLay">
+            <div class="iconeLay">
               <i class="fa-solid fa-heart"></i>
-              <a href="#">My Orders</a>
-              </div>
-              <div class="iconLay">
+              <a href="/WishList/wishlist.html">Wishlist</a>
+            </div>
+            <div class="iconLay">
               <i class="fa-solid fa-cart-shopping"></i>
-              <a href="#">My Cart</a>
-              </div>
-          </div>
-          </nav>
+              <a href="/Cart/cart.html">My Cart</a>
+            </div>
 
-          <nav class="header-2">
+            <div class="iconLay">
+              <button id="headerLogout">Logout</button>
+            </div>
+          </div>
+        </nav>
+
+        <nav class="header-2">
           <div class="categories-1">
-              <ul>
+            <ul>
               <li class="dropDownList">
-                  <div>
+                <div>
                   <i class="fa-solid fa-list test"></i>
                   <span>All Category</span>
-                  </div>
-                  <ul>
+                </div>
+                <ul>
                   <li>Cate 1 Cate 1 Cate 1 Cate 1 Cate 1s</li>
                   <li>Cate 1</li>
                   <li>Cate 1</li>
                   <li>Cate 1</li>
                   <li>Cate 1</li>
-                  </ul>
+                </ul>
               </li>
-              <li><a href="#">Hot offers</a></li>
-              <li><a href="#">Gift Boxes</a></li>
-              <li><a href="#">Projects</a></li>
-              <li><a href="#">Menu Item</a></li>
-              <li><a href="#">Help</a></li>
-              </ul>
+              <li><a href="/Product-Page/products.html">Products</a></li>
+              <li><a href="/About Us/aboutus.html">About Us</a></li>
+              <li><a href="/Find Us/Find Us.html">Find us</a></li>
+              <li><a href="/help/help.html">Help</a></li>
+              <li id="loginButton">
+                <a href="/loginRegister/login.html">login/register</a>
+              </li>
+            </ul>
           </div>
 
           <div class="info-1">
-              <ul>
-              <li>English, USD <i class="fa-solid fa-caret-down"></i></li>
+            <ul>
+              <li>English, USD</li>
 
               <li id="shipmentSelector" class="dropDownList">
-                  <div>
+                <div>
                   <span>Ship To</span>
                   <img class="imgIcon" src="/Flags/EG.png" alt="EG" />
-                  <i class="fa-solid fa-caret-down"></i>
-                  </div>
-                  <ul>
-                  <li>
-                      <span>EG </span>
-                      <img class="imgIcon" src="/Flags/EG.png" alt="EG" />
-                  </li>
-                  <li>
-                      <span>DE</span
-                      ><img class="imgIcon" src="/Flags/DE.png" alt="DE" />
-                  </li>
-                  <li>
-                      <span>USA</span
-                      ><img class="imgIcon" src="/Flags/US.png" alt="USA" />
-                  </li>
-                  </ul>
+                </div>
               </li>
-              </ul>
+            </ul>
           </div>
-          </nav>
+        </nav>
       </div>
-  </header>
-  <main>
-    <div id="aboutusSearch"></div>
-    <section class="section-form" id="specialLogin">
-      <h2>Payment Information</h2>
-      <form action="#" id="jjjj" >
-        <div class="spaceDiv">
-          <input type="radio" name="payoption" value="x" onclick="displayCredit2()" checked  >
-          <span class="star1">Cash On Delivery (COD)</span><br>
-        </div>
-        <div class="spaceDiv">
-          <input type="radio" name="payoption" value="y" id="radio1" onclick="displayCredit()" checked  >
-          <span class="star1">Pay by CreditCard</span>
-        </div>
-        <br>
-        <div id="option1">
-        <input type="text" placeholder="Name" id="username" onblur="oldCondition(this)"/>
-        <span id="nameMsg"><span class="star"></span></span>
-        <input type="text" placeholder="Credit Card Number" id="creditNum" onblur="oldCondition1(this)"/>
-        <span id="creditMsg"><span class="star"></span></span>
-        <img id="cardImg" src="/ITI-Ecommerce/Utilites/generic.svg" alt="CreditCard" height="50">
-        <input type="text" placeholder="CVV" id="CVV" onblur="oldCondition2(this)"/>
-        <span id="cvvMsg"><span class="star"></span></span>
-        
-        </div>
-        
+    </header>
 
-        <button id="final"></button>
-        
-      </form>
-    </section>
-  </main>
-  <footer class="container">
-    <div class="sub-container-2">
-    <div class="flexed-div">
-        <div class="sub-div">
-        <p class="logo-brand-store">Logo here</p>
-        <p class="store-info">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Molestiae facilis obcaecati delectus rem suscipit sint?
-        </p>
+    <main>
+      <div id="aboutusSearch"></div>
+      <section class="section-form" id="specialLogin">
+        <h2>Payment Information</h2>
+        <form action="#" id="jjjj" >
+          <div class="spaceDiv">
+            <input type="radio" name="payoption" value="x" onclick="displayCredit2()" checked  >
+            <span class="star1">Cash On Delivery (COD)</span><br>
+          </div>
+          <div class="spaceDiv">
+            <input type="radio" name="payoption" value="y" id="radio1" onclick="displayCredit()" checked  >
+            <span class="star1">Pay by CreditCard</span>
+          </div>
+          <br>
+          <div id="option1">
+          <input type="text" placeholder="Name" id="username" onblur="oldCondition(this)"/>
+          <span id="nameMsg"><span class="star"></span></span>
+          <input type="text" placeholder="Credit Card Number" id="creditNum" onblur="oldCondition1(this)"/>
+          <span id="creditMsg"><span class="star"></span></span>
+          <img id="cardImg" src="/ITI-Ecommerce/Utilites/generic.svg" alt="CreditCard" height="50">
+          <input type="text" placeholder="CVV" id="CVV" onblur="oldCondition2(this)"/>
+          <span id="cvvMsg"><span class="star"></span></span>
+          
+          </div>
+          
+
+          <button id="final"></button>
+          
+        </form>
+      </section>
+    </main>
+
+    <footer class="container">
+      <div class="sub-container-2">
+        <div class="flexed-div">
+          <div class="sub-div">
+            <a href="/home/homepage.html"
+              ><img src="/Logo/1111.svg" alt=""
+            /></a>
+            <p class="store-info">
+              Group of 3 Men Started Their E-commerce Enterprise to Elevate
+              Shopping Experince To Whole new Level
+            </p>
+          </div>
+          <div class="social-logos">
+            <a href=""><i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-facebook"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin"></i></a>
+          </div>
         </div>
-        <div class="social-logos">
-        <a href=""><i class="fa-brands fa-instagram"></i></a>
-        <a href=""><i class="fa-brands fa-facebook"></i></a>
-        <a href=""><i class="fa-brands fa-linkedin"></i></a>
-        </div>
-    </div>
-      <div class="flexed-div">
+
+        <div class="flexed-div">
           <p class="sec-header">About Us</p>
           <ul>
-          <li><a href="">About Us</a></li>
-          <li><a href="">Find Store</a></li>
-          <li><a href="">Categories</a></li>
-          <li><a href="">Blogs</a></li>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
           </ul>
-      </div>
-      <div class="flexed-div">
+        </div>
+        <div class="flexed-div">
           <p class="sec-header">Partnership</p>
           <ul>
-          <li><a href="">About Us</a></li>
-          <li><a href="">Find Store</a></li>
-          <li><a href="">Categories</a></li>
-          <li><a href="">Blogs</a></li>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
           </ul>
-      </div>
-      <div class="flexed-div">
+        </div>
+        <div class="flexed-div">
           <p class="sec-header">Information</p>
           <ul>
-          <li><a href="">About Us</a></li>
-          <li><a href="">Find Store</a></li>
-          <li><a href="">Categories</a></li>
-          <li><a href="">Blogs</a></li>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
           </ul>
-      </div>
-      <div class="flexed-div">
+        </div>
+        <div class="flexed-div">
           <p class="sec-header">For Users</p>
           <ul>
-          <li><a href="">Login</a></li>
-          <li><a href="">Register</a></li>
+            <li><a href="/loginRegister/login.html">Login</a></li>
+            <li><a href="/loginRegister/register.html">Register</a></li>
           </ul>
-      </div>
-      <div class="flexed-div">
+        </div>
+        <div class="flexed-div">
           <p>Get App</p>
           <div class="button-images">
-          <img src="/Utilites/pngegg.png" alt="" />
+            <img src="/Utilites/pngegg.png" alt="" />
           </div>
+        </div>
       </div>
-      </div>
-  </footer>
+    </footer>
+    
     <script src="user.js"></script>
     <script src="payment.js"></script>
     <script src="script.js"></script>

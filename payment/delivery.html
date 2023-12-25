@@ -135,7 +135,7 @@
         align-items: center;
       }
     </style>
-    <title>Payment</title>
+    <title>Delivery</title>
   </head>
   <body>
     <header>
@@ -148,15 +148,20 @@
 
           <div class="postion">
             <!-- Search here-->
-            <input class="search-bar" type="text" placeholder="Search..." />
-            <button class="srch-btn">Search</button>
+            <input
+              id="searchInput"
+              class="search-bar"
+              type="text"
+              placeholder="Search..."
+            />
+            <button class="srch-btn" onclick="performSearch()">Search</button>
           </div>
 
-          <div class="icons">
+          <div id="loggedInIcons" class="hiddenIcons">
             <!--Icons -->
             <div class="iconLay">
               <i class="fa-solid fa-user"></i>
-              <a href="#">Profile</a>
+              <a href="/profile/profile.html">Profile</a>
             </div>
 
             <div class="iconLay">
@@ -166,11 +171,15 @@
 
             <div class="iconeLay">
               <i class="fa-solid fa-heart"></i>
-              <a href="#">My Orders</a>
+              <a href="/WishList/wishlist.html">Wishlist</a>
             </div>
             <div class="iconLay">
               <i class="fa-solid fa-cart-shopping"></i>
-              <a href="#">My Cart</a>
+              <a href="/Cart/cart.html">My Cart</a>
+            </div>
+
+            <div class="iconLay">
+              <button id="headerLogout">Logout</button>
             </div>
           </div>
         </nav>
@@ -191,38 +200,22 @@
                   <li>Cate 1</li>
                 </ul>
               </li>
-              <li><a href="#">Hot offers</a></li>
-              <li><a href="#">Gift Boxes</a></li>
-              <li><a href="#">Projects</a></li>
-              <li><a href="#">Menu Item</a></li>
-              <li><a href="#">Help</a></li>
+              <li><a href="/Product-Page/products.html">Products</a></li>
+              <li><a href="/About Us/aboutus.html">About Us</a></li>
+              <li><a href="/Find Us/Find Us.html">Find us</a></li>
+              <li><a href="/help/help.html">Help</a></li>
             </ul>
           </div>
 
           <div class="info-1">
             <ul>
-              <li>English, USD <i class="fa-solid fa-caret-down"></i></li>
+              <li>English, USD</li>
 
               <li id="shipmentSelector" class="dropDownList">
                 <div>
                   <span>Ship To</span>
                   <img class="imgIcon" src="/Flags/EG.png" alt="EG" />
-                  <i class="fa-solid fa-caret-down"></i>
                 </div>
-                <ul>
-                  <li>
-                    <span>EG </span>
-                    <img class="imgIcon" src="/Flags/EG.png" alt="EG" />
-                  </li>
-                  <li>
-                    <span>DE</span
-                    ><img class="imgIcon" src="/Flags/DE.png" alt="DE" />
-                  </li>
-                  <li>
-                    <span>USA</span
-                    ><img class="imgIcon" src="/Flags/US.png" alt="USA" />
-                  </li>
-                </ul>
               </li>
             </ul>
           </div>
@@ -256,14 +249,17 @@
         </form>
       </section>
     </main>
+
     <footer class="container">
       <div class="sub-container-2">
         <div class="flexed-div">
           <div class="sub-div">
-            <p class="logo-brand-store">Logo here</p>
+            <a href="/home/homepage.html"
+              ><img src="/Logo/1111.svg" alt=""
+            /></a>
             <p class="store-info">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Molestiae facilis obcaecati delectus rem suscipit sint?
+              Group of 3 Men Started Their E-commerce Enterprise to Elevate
+              Shopping Experince To Whole new Level
             </p>
           </div>
           <div class="social-logos">
@@ -272,11 +268,12 @@
             <a href=""><i class="fa-brands fa-linkedin"></i></a>
           </div>
         </div>
+
         <div class="flexed-div">
           <p class="sec-header">About Us</p>
           <ul>
-            <li><a href="">About Us</a></li>
-            <li><a href="">Find Store</a></li>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
             <li><a href="">Categories</a></li>
             <li><a href="">Blogs</a></li>
           </ul>
@@ -284,8 +281,8 @@
         <div class="flexed-div">
           <p class="sec-header">Partnership</p>
           <ul>
-            <li><a href="">About Us</a></li>
-            <li><a href="">Find Store</a></li>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
             <li><a href="">Categories</a></li>
             <li><a href="">Blogs</a></li>
           </ul>
@@ -293,8 +290,8 @@
         <div class="flexed-div">
           <p class="sec-header">Information</p>
           <ul>
-            <li><a href="">About Us</a></li>
-            <li><a href="">Find Store</a></li>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
             <li><a href="">Categories</a></li>
             <li><a href="">Blogs</a></li>
           </ul>
@@ -302,8 +299,8 @@
         <div class="flexed-div">
           <p class="sec-header">For Users</p>
           <ul>
-            <li><a href="">Login</a></li>
-            <li><a href="">Register</a></li>
+            <li><a href="/loginRegister/login.html">Login</a></li>
+            <li><a href="/loginRegister/register.html">Register</a></li>
           </ul>
         </div>
         <div class="flexed-div">
@@ -314,7 +311,7 @@
         </div>
       </div>
     </footer>
-    <script src="user.js"></script>
+    <script src="../profile/profile.js"></script>
     <script src="delivery.js"></script>
     <script src="script.js"></script>
     <script src="../cart-items/home.js"></script>
