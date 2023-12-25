@@ -1,3 +1,5 @@
+const cardNumInput = getElementById("creditNum");
+const cardTypeImg = getElementById("cardImg");
 
 function displayCredit(){
     document.getElementById("option1").style.display="block";
@@ -156,8 +158,6 @@ function cvvValidation(name)
 
 // Show Image of Card Type
 cardNumInput.addEventListener("blur", function(){
-    const cardNumInput = getElementById("creditNum");
-    const cardTypeImg = getElementById("cardImg");
     if(cardNumInput.value[0]==4){
         cardTypeImg.src='/ITI-Ecommerce/Utilites/visa.svg';
     }else if(cardNumInput.value[0]==5){
