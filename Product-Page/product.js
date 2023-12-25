@@ -153,7 +153,7 @@ function display_items() {
                         <button class="add-to-cart-btn" data-index="${i}">Add To Cart</button>
                         <i data-index='${i}' class="fa-regular fa-heart"></i>
                         <i data-index='${i}'  class="fa-solid fa-heart added"></i>
-                   
+                  
                       </div>
                     </div>
                   <br>`;
@@ -167,19 +167,12 @@ function display_items() {
     });
   });
 
-//   const addTowishButtons = document.querySelectorAll(".fa-regular");
-//   addTowishButtons.forEach((button) => {
-//     button.addEventListener("click", function (event) {
-//       const index = event.target.dataset.index;
-//       addToWishlist(index);
-//     });
-//   });
+  //   const addTowishButtons = document.querySelectorAll(".fa-regular");
+  //   addTowishButtons.forEach((button) => {
+  //     button.addEventListener("click", function (event) {
+  //       const index = event.target.dataset.index;
+  //       addToWishlist(index);
+  //     });
+  //   });
 }
 display_items();
-
-
-
-
-
-
-
