@@ -600,3 +600,22 @@ select {
 .errorShow i {
   font-size: 190px;
 }
+
+.prof-config {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 760px;
+  gap: 2rem;
+}
+
+.name-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.headOf {
+  font-weight: 500;
+}
