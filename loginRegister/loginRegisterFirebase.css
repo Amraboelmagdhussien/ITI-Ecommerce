@@ -13,13 +13,6 @@ select {
     border-radius: 5px;
 }
 
-
-.id-h1 {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
 .cls-div-body {
     background-color: #f6f5f7;
     display: flex;
@@ -40,6 +33,23 @@ select {
     height: 400px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+
+.cls-frm-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    display: none;
+    position: relative;
+}
+
+.id-h1 {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 
@@ -77,7 +87,7 @@ select {
     z-index: 100;
 }
 
-.cls-div-all-overlay {
+/* .cls-div-all-overlay {
     position: relative;
     width: 200%;
     height: 100%;
@@ -85,7 +95,7 @@ select {
     display: grid;
     grid-template-columns: 1fr 1fr;
     transition: transform 0.6s ease-in-out;
-    }
+    } */
 
 .cls-div-overlay-panel {
     display: flex;
@@ -132,16 +142,6 @@ select {
     color: white;
 }
 
-.cls-frm-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-    display: none;
-    position: relative;
-}
 
 .cls-frm-container.active {
     display: flex;
