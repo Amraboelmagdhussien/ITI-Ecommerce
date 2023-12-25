@@ -38,7 +38,7 @@ for (let i = 0; i < 8; i++) {
     .then((snapshot) => {
       if (snapshot.exists()) {
         var Data = snapshot.val();
-        console.log(Data);
+        // console.log(Data);
         document.getElementById(
           "grid-container"
         ).innerHTML += `<div class="grid-item grid-item-2">
@@ -104,9 +104,27 @@ let loggedOut = document.getElementById("loggedOutDiv");
 let icons = document.getElementById("loggedInIcons");
 let login = document.getElementById("loginButton");
 let ShowsError = document.getElementById("ifNotLoggedIn");
+let userName = document.getElementById("userName");
+let userPassword = document.getElementById("userPassword");
+let userEmail = document.getElementById("userEmail");
 
-console.log(icons.innerHTML);
-console.log(isLoggedIn);
+let profile = localStorage.getItem("usersData");
+let parsedProfile = JSON.parse(profile);
+
+try {
+  for (let i = 0; i < parsedProfile.length; i++) {
+    if (parsedProfile[i].uName == userData) {
+      userName.innerHTML = `${parsedProfile[i].uName}`;
+      userPassword.innerHTML = `${parsedProfile[i].pass}`;
+      userEmail.innerHTML = `${parsedProfile[i].mail}`;
+    } else {
+      console.log("Error");
+    }
+  }
+} catch (error) {
+  error.message;
+}
+
 if (isLoggedIn != null) {
   // means i logged in
   login.style.display = "none";
@@ -121,9 +139,6 @@ if (isLoggedIn != null) {
   // document.getElementById("uName").innerHTML = userData;
 }
 
-console.log(typeof isLoggedIn);
-
-console.log(userData);
 // alert("Hello");
 
 // Event listener for logout button
@@ -136,6 +151,6 @@ function handleLogout() {
 
   // Set a timeout before redirecting to the index page
   setTimeout(() => {
-    window.location = "/home/homepage.html";
+    window.location = "profile.html";
   }, 1000);
 }
