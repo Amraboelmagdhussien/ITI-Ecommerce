@@ -31,12 +31,6 @@ const db = getDatabase();
 const dbRef = ref(getDatabase());
 let cartItems = [];
 
-let localItems = localStorage.getItem("allproduct");
-let parsedItem = JSON.parse(localItems);
-console.log(parsedItem);
-cartItems.push(parsedItem[0]);
-let localButton = document.getElementsByClassName("add-to-cart-func");
-
 let addToCart = async function (id) {
   const snapshot = await get(child(dbRef, id)); // btrg3 promise
   const prod = snapshot.val();
@@ -75,8 +69,8 @@ for (let i = 0; i < 20; i++) {
                <div class="cart-items">
                  <a href="#">View details</a>
                  <button >Add To Cart</button>
-                 <i  data-active='0' class="fa-regular fa-heart"></i>
-                 <i  data-active='1' class="fa-solid fa-heart added"></i>
+                 <i class="fa-regular fa-heart"></i>
+                 <i class="fa-solid fa-heart added"></i>
                </div>
              </div>
            </div>
@@ -107,6 +101,15 @@ for (let i = 0; i < dropList.length; i++) {
   });
 }
 
+let localItems = localStorage.getItem("allproduct");
+let parsedItem = JSON.parse(localItems);
+
+function addToCartItems(indexedId) {
+  let vaariable = parsedItem[indexedId];
+  cartItems.push(vaariable);
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+}
+
 // display
 function display_items() {
   var productContainer = JSON.parse(localStorage.getItem("allproduct"));
@@ -132,52 +135,21 @@ function display_items() {
                       <p id="shipping">Free Shipping</p>
                       <div class="cart-items">
                         <a href="#">View details</a>
-                        <button onclick='' class="add-to-cart-func">Add To Cart</button>
-                        <i data-active='0' class="fa-regular fa-heart"></i>
-                        <i data-active='1'  class="fa-solid fa-heart added"></i>
+                        <button class="add-to-cart-btn" data-index="${i}">Add To Cart</button>
+                        <i class="fa-regular fa-heart"></i>
+                        <i class="fa-solid fa-heart added"></i>
+                   
                       </div>
                     </div>
                   <br>`;
   }
+
+  const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click", function (event) {
+      const index = event.target.dataset.index;
+      addToCartItems(index);
+    });
+  });
 }
 display_items();
-
-
-/*  */
-// const wishbtnremove = document.querySelectorAll("i[data-active='0']");
-// const wishbtnadd = document.querySelectorAll("i[data-active='1']");
-// console.log(wishbtnadd);
-// console.log(wishbtnremove);
-
-// const elements = Array.from(document.querySelectorAll("i[data-active='0']"));
-// const element = Array.from(document.querySelectorAll("i[data-active='1']"));
-// console.log(element)
-// console.log(elements)
-
-
-// })
-// for (let i = 0; i < wishbtnadd.length; i++) {
-//   wishbtnadd[i].addEventListener("click",()=>{
-//     elment.style.display= "inline";;
-// })}
-// for (let i = 0; i < wishbtnremove.length; i++) {
-//   wishbtnremove[i].addEventListener("click",()=>{
-//     wishbtnremove.style.display= "inline";;
-//   // Perform actions on each element
-// })}
-
-// elements.forEach((el)=>{
-//   el.addEventListener("click",()=>{
-//   console.log(el)
-//   el.className ="fa-solid fa-heart";
-// })})
-
-
-
-// element.forEach((ele) => {
-//  ele.addEventListener('click',()=>{
-//   console.log(ele);
-//   ele.className  = 'fa-solid fa-heart added';
-// })})
-
-
