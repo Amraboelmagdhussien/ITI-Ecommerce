@@ -632,3 +632,14 @@ select {
     linear-gradient(180deg, #ff6347 0%, #ff0000 100%)
   );
 }
+
+.header .logo img {
+  height: 40px;
+}
+
+.errorShow {
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

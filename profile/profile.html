@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="profile.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Profile</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav class="header">
+          <div class="logo">
+            <!-- logo here -->
+            <a href="/home/homepage.html"
+              ><img src="/Logo/1111.svg" alt=""
+            /></a>
+          </div>
+
+          <div class="postion">
+            <!-- Search here-->
+            <input
+              id="searchInput"
+              class="search-bar"
+              type="text"
+              placeholder="Search..."
+            />
+            <button class="srch-btn" onclick="performSearch()">Search</button>
+          </div>
+
+          <div id="loggedInIcons" class="hiddenIcons">
+            <!--Icons -->
+            <div class="iconLay">
+              <i class="fa-solid fa-user"></i>
+              <a href="/profile/profile.html">Profile</a>
+            </div>
+
+            <div class="iconLay">
+              <i class="fa-regular fa-message"></i>
+              <a href="#">Message</a>
+            </div>
+
+            <div class="iconeLay">
+              <i class="fa-solid fa-heart"></i>
+              <a href="/WishList/wishlist.html">Wishlist</a>
+            </div>
+            <div class="iconLay">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <a href="/Cart/cart.html">My Cart</a>
+            </div>
+
+            <div class="iconLay">
+              <button id="headerLogout">Logout</button>
+            </div>
+          </div>
+        </nav>
+
+        <nav class="header-2">
+          <div class="categories-1">
+            <ul>
+              <li class="dropDownList">
+                <div>
+                  <i class="fa-solid fa-list test"></i>
+                  <span>All Category</span>
+                </div>
+                <ul>
+                  <li>Cate 1 Cate 1 Cate 1 Cate 1 Cate 1s</li>
+                  <li>Cate 1</li>
+                  <li>Cate 1</li>
+                  <li>Cate 1</li>
+                  <li>Cate 1</li>
+                </ul>
+              </li>
+              <li><a href="/Product-Page/products.html">Products</a></li>
+              <li><a href="/About Us/aboutus.html">About Us</a></li>
+              <li><a href="/Find Us/Find Us.html">Find us</a></li>
+              <li><a href="/help/help.html">Help</a></li>
+              <li id="loginButton">
+                <a href="/loginRegister/login.html">login/register</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-1">
+            <ul>
+              <li>English, USD</li>
+
+              <li id="shipmentSelector" class="dropDownList">
+                <div>
+                  <span>Ship To</span>
+                  <img class="imgIcon" src="/Flags/EG.png" alt="EG" />
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <div id="ifNotLoggedIn" class="container errorShow">
+      <h1>Nothing To Show here Please Login First</h1>
+    </div>
+
+    <div class="prof-config container"></div>
+    <footer class="container">
+      <div class="sub-container-2">
+        <div class="flexed-div">
+          <div class="sub-div">
+            <a href="/home/homepage.html"
+              ><img src="/Logo/1111.svg" alt=""
+            /></a>
+            <p class="store-info">
+              Group of 3 Men Started Their E-commerce Enterprise to Elevate
+              Shopping Experince To Whole new Level
+            </p>
+          </div>
+          <div class="social-logos">
+            <a href=""><i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-facebook"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="flexed-div">
+          <p class="sec-header">About Us</p>
+          <ul>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="flexed-div">
+          <p class="sec-header">Partnership</p>
+          <ul>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="flexed-div">
+          <p class="sec-header">Information</p>
+          <ul>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="flexed-div">
+          <p class="sec-header">For Users</p>
+          <ul>
+            <li><a href="/loginRegister/login.html">Login</a></li>
+            <li><a href="/loginRegister/register.html">Register</a></li>
+          </ul>
+        </div>
+        <div class="flexed-div">
+          <p>Get App</p>
+          <div class="button-images">
+            <img src="/Utilites/pngegg.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="profile.js" type="module"></script>
+  </body>
+</html>
