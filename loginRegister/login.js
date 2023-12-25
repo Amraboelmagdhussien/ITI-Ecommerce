@@ -1,121 +1,78 @@
-var username = document.getElementById("username");
-var password = document.getElementById("password");
-var loginBtn = document.getElementById("sign_in");
-var checkbox = document.getElementById("checkbox");
+// Retrieve HTML elements
+const username = document.getElementById("username");
+const password = document.getElementById("password");
+const loginBtn = document.getElementById("sign_in");
+const checkbox = document.getElementById("checkbox");
+
+// Clear sessionStorage and remove 'productsInCart' from localStorage
 sessionStorage.clear();
 localStorage.removeItem("productsInCart");
+
+// Check if 'rememberme' data is stored in localStorage and set the values if available
 if (localStorage.getItem("rememberme") != null) {
-  username.value = JSON.parse(localStorage.getItem("rememberme")).name;
-  password.value = JSON.parse(localStorage.getItem("rememberme")).pass;
+  const rememberMeData = JSON.parse(localStorage.getItem("rememberme"));
+  username.value = rememberMeData.name;
+  password.value = rememberMeData.pass;
 }
-if (window.localStorage.getItem("usersData") == null) {
-  var usersData = [
+
+// Initialize usersData in localStorage if not available
+if (localStorage.getItem("usersData") == null) {
+  const usersData = [
     { uName: "Admin", mail: "eraserhint23@gmail.com", pass: 1, role: "admin" },
   ];
-  window.localStorage.setItem("usersData", JSON.stringify(usersData));
+  localStorage.setItem("usersData", JSON.stringify(usersData));
 }
 
-function remembermefun() {
-  if (checkbox.value == "checked") {
-    checkbox.value = "";
-  } else if (checkbox.value == "") {
-    checkbox.value = "checked";
-  }
+// Function to handle 'Remember Me' checkbox
+function rememberMeFunc() {
+  checkbox.value = checkbox.value === "checked" ? "" : "checked";
 }
 
-var userdataa = JSON.parse(window.localStorage.getItem("usersData"));
+// Retrieve usersData from localStorage
+const userData = JSON.parse(localStorage.getItem("usersData"));
 
+// Event listener for login button
 loginBtn.addEventListener("click", function (e) {
   e.preventDefault();
+
+  // Validate username and password
   if (username.value === "" || password.value === "") {
-    alert("Please, Fill in all data");
+    alert("Please fill in all data");
   } else {
-    var j = -1;
-    for (let i = 0; i < userdataa.length; i++) {
-      if (userdataa[i].uName == username.value) {
-        j = i;
+    let userIndex = -1;
+
+    // Check if the user exists in usersData
+    for (let i = 0; i < userData.length; i++) {
+      if (userData[i].uName == username.value) {
+        userIndex = i;
         break;
       }
     }
-    if (j >= 0 && userdataa[j].pass == password.value) {
+
+    // If the user exists and the password matches, set session and localStorage data
+    if (userIndex >= 0 && userData[userIndex].pass == password.value) {
       sessionStorage.setItem("loginStatus", "true");
-      sessionStorage.setItem("nameOfUser", userdataa[j].uName);
-      sessionStorage.setItem("role", userdataa[j].role);
+      sessionStorage.setItem("nameOfUser", userData[userIndex].uName);
+      sessionStorage.setItem("role", userData[userIndex].role);
+
+      // Set 'rememberme' data in localStorage if the checkbox is checked
       if (checkbox.value == "checked") {
-        var iiii = { name: username.value, pass: password.value };
-        localStorage.setItem("rememberme", JSON.stringify(iiii));
+        const rememberMeData = { name: username.value, pass: password.value };
+        localStorage.setItem("rememberme", JSON.stringify(rememberMeData));
       } else {
         localStorage.removeItem("rememberme");
       }
+
+      // Redirect based on user role after a delay
       setTimeout(() => {
-        console.log(sessionStorage.getItem("role"));
         if (sessionStorage.getItem("role") == "admin") {
-          window.location = "/ADMINDASJBOURD/ADMINDB.html"; //crud Mahmoud
-        } else if (sessionStorage.getItem("role") == "customer")
-          window.location = "/home/homepage.html"; // Home Amr
+          window.location = "/ADMINDASJBOURD/homepage.html"; // Admin homepage (CRUD)
+        } else if (sessionStorage.getItem("role") == "customer") {
+          window.location = "/home/homepage.html"; // Regular user homepage
+        }
       }, 1000);
     } else {
-      alert("Wrong user name or Password");
+      alert("Wrong username or password");
     }
   }
 });
-
-// var input = document.getElementById("search");
-
-// input.addEventListener("keyup", function (e) {
-//   document.getElementById("specialLogin").style.display="none";
-//   document.getElementById("aboutusSearch").innerHTML=`<section class="home">
-//   <div class="container">
-//     <div class="products" id="products"></div>
-//   </div>
-//   </section>`;
-//   search(e.target.value, JSON.parse(localStorage.getItem("products")));
-//   if (e.target.value.trim() === ""){
-//     document.getElementById("aboutusSearch").innerHTML = '<div></div>';
-//     document.getElementById("specialLogin").style.display="block";
-//     // `<h2>Login User</h2>
-//     // <form action="">
-//     //   <input type="text" placeholder="Enter username" id="username" />
-//     //   <input type="password" placeholder="Enter password" id="password" />
-//     //   <input type="submit" value="Sign in" id="sign_in" />
-//     //   Not have acount? <a href="./register.html">Register</a>
-//     // </form>`
-// }
-// });
-
-// function search(title, myArray) {
-//   let arr = myArray.filter(
-//     (item) => item.title.toLowerCase().indexOf(title.toLowerCase()) !== -1
-//   );
-//   drawProductsUi(arr);
-// }
-// var products = JSON.parse(localStorage.getItem("products"));
-
-// //!!!!!!!!! Display  Products !!!!!!!!!//
-
-// var drawProductsUi = (products) => {
-//   var productsUi = products.map(
-//     (item) => `
-//     <div class="card">
-//       <img src="${item.image}" alt="">
-//       <div class="content">
-//       <!--onclick="saveItemData(${item.id})"-->
-//         <h3 >${item.title}</h3>
-//         <p>
-//           Price: ${item.price} LE
-//         </p>
-//         <p>
-//           Category: ${item.category}
-//         </p>
-//         <p>
-//         Ingrediants: ${item.description}
-//         </p>
-//       </div>
-//       <div class="info">
-//         <button class="add-to-cart" onclick="addedToCart(${item.id})">Add to cart</button>
-//       </div>
-//     </div>
-//   `
-//   );
-//   document.getElementById("products").innerHTML = productsUi.join("");
-// };
