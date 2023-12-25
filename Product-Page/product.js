@@ -167,12 +167,12 @@ function display_items() {
     });
   });
 
-  const addTowishButtons = document.querySelectorAll(".fa-regular");
-  addTowishButtons.forEach((button) => {
-    button.addEventListener("click", function (event) {
-      const index = event.target.dataset.index;
-      addToWishlist(index);
-    });
-  });
+//   const addTowishButtons = document.querySelectorAll(".fa-regular");
+//   addTowishButtons.forEach((button) => {
+//     button.addEventListener("click", function (event) {
+//       const index = event.target.dataset.index;
+//       addToWishlist(index);
+//     });
+//   });
 }
 display_items();
