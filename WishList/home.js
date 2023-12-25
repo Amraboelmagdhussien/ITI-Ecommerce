@@ -53,3 +53,40 @@ let countDown = function () {
 };
 
 countDown();
+
+/*
+
+*/
+function display_items() {
+  var productContainer = JSON.parse(localStorage.getItem("allproduct"));
+  for (var i = 0; i < productContainer.length; i++) {
+    // parent
+    const dataDiv = document.getElementById("Item_wishlist");
+    // child
+    const div = document.createElement("div");
+
+    const Data = dataDiv.appendChild(div);
+    Data.innerHTML += `
+                    <div class="product-card-1">
+                    <div class="product-image-1">
+                      <img src="${productContainer[i].pimg}"   alt="" />
+                    </div>
+                    <div class="product-info-1">
+                      <p class="data-name">${productContainer[i].pname}</p>
+                      <p id="price">${productContainer[i].price}$</p>
+                      <p>
+                        ${productContainer[i].desc}
+                      </p>
+                      <p id="shipping">Free Shipping</p>
+                      <div class="cart-items">
+                        <a href="#">View details</a>
+                        <button onclick='' class="add-to-cart-func">Add To Cart</button>
+                        <i data-active='0' class="fa-regular fa-heart"></i>
+                        <i data-active='1'  class="fa-solid fa-heart added"></i>
+                      </div>
+                    </div>
+                  <br>`;
+  }
+}
+display_items();
+
