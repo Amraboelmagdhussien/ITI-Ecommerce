@@ -615,7 +615,34 @@ select {
   gap: 1rem;
   align-items: flex-start;
 }
+.parentRela {
+  position: relative;
+}
 
-.headOf {
-  font-weight: 500;
+.parentRela input {
+  padding: 0.4rem 0.5rem;
+  border-radius: 10px;
+  border: 1px solid grey;
+}
+
+.childAbs {
+  position: absolute;
+  top: 15%;
+  left: 60%;
+  color: grey;
+  cursor: pointer;
+}
+
+#edit {
+  background: var(
+    --primary-gradient,
+    linear-gradient(180deg, #127fff 0%, #0067ff 100%)
+  );
+  border: 0;
+  border-radius: 8px;
+  height: 2rem;
+  width: 5rem;
+  cursor: pointer;
+  color: white;
+  font-family: "Inter", sans-serif;
 }

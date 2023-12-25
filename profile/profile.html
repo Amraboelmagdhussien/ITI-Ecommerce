@@ -124,14 +124,24 @@
     <div id="pro-config" class="hiddenIcons">
       <div class="name-columns">
         <h2 class="headOf">Username:</h2>
-        <h2 class="headOf">Password:</h2>
         <h2 class="headOf">Email:</h2>
+        <h2 class="headOf">Password:</h2>
       </div>
 
       <div class="name-columns">
         <h2 id="userName"></h2>
-        <h2 id="userPassword"></h2>
+
         <h2 id="userEmail"></h2>
+
+        <div class="showPass parentRela">
+          <input id="userPassword" type="password" value="" />
+          <button id="edit">Edit</button>
+          <div class="childAbs">
+            <i onm id="showpassword" class="fa-solid fa-eye-low-vision"></i>
+          </div>
+        </div>
+
+        <div class="chngPassword"></div>
       </div>
     </div>
 

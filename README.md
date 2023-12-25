@@ -1,24 +1,9 @@
 # ITI-Ecommerce
 
-Font used Inter
+Font used in the whole Website: Inter
 
-      async function test() {
-        await addToCart("0");
-        await addToCart("1");
-        await addToCart("2");
+## We Faced Problem Due Using Type Module While Declaring any Function inside Script file type module because any function in Module aren't Accessed Global they are accesbe within module thats why we have to use Add Event Listener
 
-        console.log(cartItems);
-      }
+## Solution as per Stackover Flow
 
-      // addToCart("0").then((value) => {
-      //   console.log(value.val());
-      // });
-
-let localItems = localStorage.getItem("allproduct");
-let parsedItem = JSON.parse(localItems);
-
-let localButton = document.getElementsByClassName("add-to-cart-func");
-
-async function pushToLocal() {
-cartItems.push(parsedItem[0]);
-}
+https://stackoverflow.com/questions/57942951/function-not-defined-javascript-onclick
