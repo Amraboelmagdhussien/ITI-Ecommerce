@@ -1,7 +1,19 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-import { getDatabase, set, ref } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getDatabase,
+  set,
+  ref,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 // // Hassan Firebase configuration
 // const firebaseConfig = {
@@ -19,13 +31,13 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChang
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Mahmoud Amr Firebase configuration
 const firebaseConfig = {
-apiKey: "AIzaSyDYDdUx3ZZNAzWL84Ar60fGH7wL_uyd71M",
-authDomain: "formal-folder-376913.firebaseapp.com",
-databaseURL: "https://formal-folder-376913-default-rtdb.firebaseio.com",
-projectId: "formal-folder-376913",
-storageBucket: "formal-folder-376913.appspot.com",
-messagingSenderId: "975600999814",
-appId: "1:975600999814:web:4c0f872050c5c05cc82007"
+  apiKey: "AIzaSyDYDdUx3ZZNAzWL84Ar60fGH7wL_uyd71M",
+  authDomain: "formal-folder-376913.firebaseapp.com",
+  databaseURL: "https://formal-folder-376913-default-rtdb.firebaseio.com",
+  projectId: "formal-folder-376913",
+  storageBucket: "formal-folder-376913.appspot.com",
+  messagingSenderId: "975600999814",
+  appId: "1:975600999814:web:4c0f872050c5c05cc82007",
 };
 
 // // Production configuration
@@ -74,95 +86,105 @@ const userName = document.getElementById("id-span-username");
 const userEmail = document.getElementById("id-span-useremail");
 
 // Div References
-const signInContainer = document.getElementById('id-div-login-container');
-const signUpContainer = document.getElementById('id-div-reg-container');
-const signInForm = document.getElementById('id-div-login-overlay-left');
-const signUpForm = document.getElementById('id-div-reg-overlay-right');
+const signInContainer = document.getElementById("id-div-login-container");
+const signUpContainer = document.getElementById("id-div-reg-container");
+const signInForm = document.getElementById("id-div-login-overlay-left");
+const signUpForm = document.getElementById("id-div-reg-overlay-right");
 
 // Login/Register using Google
 const loginRegGoogle = async () => {
-signInWithPopup(auth, provider)
+  signInWithPopup(auth, provider)
     .then((result) => {
-        const user = result.user;
-        console.log(user);
-        console.log('User logged in successfully');
+      const user = result.user;
+      console.log(user);
+      console.log("User logged in successfully");
     })
     .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+      const errorCode = error.code;
+      const errorMessage = error.message;
     });
 };
 
 // Login using Email/Password
-const loginMail = evt => {
-    evt.preventDefault();
-    signInWithEmailAndPassword(auth, inpLoginMail.value, inpLoginPass.value)
-        .then((credentials) => {
-            console.log(credentials);
-            console.log('User Signed in successfully');
-            get(child(dbref,'UserAuthList/'+ credentials.user.uid)).then((snapshot)=>{
-                if(snapshot.exist){
-                    sessionStorage.setItem("user-info",JSON.stringify({
-                        username: snapshot.val().username
-                    }))
-                    sessionStorage.setItem("user-info",JSON.stringify(credentials.user))
-                    window.location.href ="../home/homepage.html"
-                }
-            })
-        })
-        .catch((error) => {
-            alert(error.message);
-            console.log(error.code);
-            console.log(error.message);
-        });
-    };
+const loginMail = (evt) => {
+  evt.preventDefault();
+  signInWithEmailAndPassword(auth, inpLoginMail.value, inpLoginPass.value)
+    .then((credentials) => {
+      console.log(credentials);
+      console.log("User Signed in successfully");
+      get(child(dbref, "UserAuthList/" + credentials.user.uid)).then(
+        (snapshot) => {
+          if (snapshot.exist) {
+            sessionStorage.setItem(
+              "user-info",
+              JSON.stringify({
+                username: snapshot.val().username,
+              })
+            );
+            sessionStorage.setItem(
+              "user-info",
+              JSON.stringify(credentials.user)
+            );
+            window.location.href = "../home/homepage.html";
+          }
+        }
+      );
+    })
+    .catch((error) => {
+      alert(error.message);
+      console.log(error.code);
+      console.log(error.message);
+    });
+};
 
 // Register using Email/Password
 const regMail = async () => {
-createUserWithEmailAndPassword(auth, inpRegMail.value, inpRegPass.value)
+  createUserWithEmailAndPassword(auth, inpRegMail.value, inpRegPass.value)
     .then((credentials) => {
-        console.log(credentials);
-        console.log('User Registered successfully');
-        set(ref(db,'UserAuthList/'+ credentials.user.uid),{
-            username : inpRegName.value
-        })
+      console.log(credentials);
+      console.log("User Registered successfully");
+      set(ref(db, "UserAuthList/" + credentials.user.uid), {
+        username: inpRegName.value,
+      });
     })
     .catch((error) => {
-        alert(error.message);
-        console.log(error.code);
-        console.log(error.message);
+      alert(error.message);
+      console.log(error.code);
+      console.log(error.message);
     });
 };
 
 // Logout user
 const signOutUser = async () => {
-signOut(auth)
+  signOut(auth)
     .then(() => {
-        console.log('User logged out successfully');
+      console.log("User logged out successfully");
     })
     .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+      const errorCode = error.code;
+      const errorMessage = error.message;
     });
 };
 
 // Switch between login and registration forms
-function showRegForm(){
-signUpContainer.style.display = "block";
-signInContainer.style.display = "none";
-signInForm.style.display = "none";
-signUpForm.style.display = "block";
+function showRegForm() {
+  signUpContainer.style.display = "block";
+  signInContainer.style.display = "none";
+  signInForm.style.display = "none";
+  signUpForm.style.display = "block";
+  console.log("Working");
 }
 
-function showLoginForm(){
-signUpContainer.style.display = "none";
-signInContainer.style.display = "block";
-signInForm.style.display = "block";
-signUpForm.style.display = "none";
+function showLoginForm() {
+  signUpContainer.style.display = "none";
+  signInContainer.style.display = "block";
+  signInForm.style.display = "block";
+  signUpForm.style.display = "none";
+  console.log("Working");
 }
 // Auth state change listener
 onAuthStateChanged(auth, (user) => {
-if (user) {
+  if (user) {
     btnLoginRegGoogle1.style.display = "none";
     btnSignout1.style.display = "block";
     messageLogin.style.display = "block";
@@ -170,21 +192,21 @@ if (user) {
     btnSignout2.style.display = "block";
     userName.innerHTML = user.displayName;
     userEmail.innerHTML = user.email;
-} else {
+  } else {
     btnLoginRegGoogle1.style.display = "block";
     btnSignout1.style.display = "none";
     messageLogin.style.display = "none";
     btnLoginRegGoogle2.style.display = "block";
     btnSignout2.style.display = "none";
-}
+  }
 });
 
 // Event Listeners
-btnLoginMail.addEventListener('click', loginMail);
-btnRegMail.addEventListener('click', regMail);
-btnLoginRegGoogle1.addEventListener('click', loginRegGoogle);
-btnSignout1.addEventListener('click', signOutUser);
-btnLoginRegGoogle2.addEventListener('click', loginRegGoogle);
-btnSignout2.addEventListener('click', signOutUser);
-btnShowLoginForm.addEventListener('click', () => showLoginForm());
-btnShowRegForm.addEventListener('click', () => showRegForm());
+btnLoginMail.addEventListener("click", loginMail);
+btnRegMail.addEventListener("click", regMail);
+btnLoginRegGoogle1.addEventListener("click", loginRegGoogle);
+btnSignout1.addEventListener("click", signOutUser);
+btnLoginRegGoogle2.addEventListener("click", loginRegGoogle);
+btnSignout2.addEventListener("click", signOutUser);
+btnShowLoginForm.addEventListener("click", () => showLoginForm());
+btnShowRegForm.addEventListener("click", () => showRegForm());
