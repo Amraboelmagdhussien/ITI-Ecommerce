@@ -153,3 +153,16 @@ function cvvValidation(name)
 
      }
 })
+
+// Show Image of Card Type
+cardNumInput.addEventListener("blur", function(){
+    const cardNumInput = getElementById("creditNum");
+    const cardTypeImg = getElementById("cardImg");
+    if(cardNumInput.value[0]==4){
+        cardTypeImg.src='/ITI-Ecommerce/Utilites/visa.svg';
+    }else if(cardNumInput.value[0]==5){
+        cardTypeImg.src='/ITI-Ecommerce/Utilites/mastercard.svg';
+    }else{
+        cardTypeImg.src='/ITI-Ecommerce/Utilites/generic.svg';
+    }
+});
