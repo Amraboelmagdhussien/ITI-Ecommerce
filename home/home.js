@@ -97,6 +97,7 @@ let countDown = function () {
 };
 
 countDown();
+
 let userData = sessionStorage.getItem("nameOfUser");
 let isLoggedIn = sessionStorage.getItem("loginStatus");
 let logoutButton = document.getElementById("headerLogout");

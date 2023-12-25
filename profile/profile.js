@@ -107,6 +107,7 @@ let ShowsError = document.getElementById("ifNotLoggedIn");
 let userName = document.getElementById("userName");
 let userPassword = document.getElementById("userPassword");
 let userEmail = document.getElementById("userEmail");
+let profConfig = document.getElementById("pro-config");
 
 let profile = localStorage.getItem("usersData");
 let parsedProfile = JSON.parse(profile);
@@ -136,6 +137,9 @@ if (isLoggedIn != null) {
   ShowsError.classList.remove("errorShow");
   ShowsError.classList.add("hiddenIcons");
 
+  profConfig.classList.add("prof-config");
+  profConfig.classList.add("container");
+  profConfig.classList.remove("hiddenIcons");
   // document.getElementById("uName").innerHTML = userData;
 }
 
