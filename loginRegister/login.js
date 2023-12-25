@@ -50,9 +50,9 @@ loginBtn.addEventListener("click", function (e) {
       setTimeout(() => {
         console.log(sessionStorage.getItem("role"));
         if (sessionStorage.getItem("role") == "admin") {
-          window.location = "/ITI-Ecommerce/home/homepage.html"; //crud Mahmoud
+          window.location = "/ADMINDASJBOURD/ADMINDB.html"; //crud Mahmoud
         } else if (sessionStorage.getItem("role") == "customer")
-          window.location = "/ITI-Ecommerce/home/homepage.html"; // Home Amr
+          window.location = "/home/homepage.html"; // Home Amr
       }, 1000);
     } else {
       alert("Wrong user name or Password");
