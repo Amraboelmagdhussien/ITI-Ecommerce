@@ -5,9 +5,10 @@ var email = document.getElementById("email");
 var password = document.getElementById("password");
 var repeatedPass=document.getElementById("repeatpass");
 var registerBtn = document.getElementById("sign_up");
+var roleSelect = document.getElementById("id-reg-usertype");
 
 if((window.localStorage.getItem("usersData"))==null){
-var usersData=[{uName:"Admin",mail:"eraserhint23@gmail.com",pass:1}];
+var usersData=[{uName:"Admin",mail:"eraserhint23@gmail.com",pass:1,role:"admin"}];
 window.localStorage.setItem("usersData",JSON.stringify(usersData));
 };
 
@@ -163,13 +164,14 @@ function register(e) {
         break;
       }
       else{
-        var yy={uName:"f",mail:"f",pass:1}
+        var yy={uName:"f",mail:"f",pass:1,role:"customer"}
         yy.uName=username.value;
         yy.pass=password.value;
         yy.mail=email.value;
+        yy.role=roleSelect.value;
         xx.push(yy);
         window.localStorage.setItem("usersData",JSON.stringify(xx));
-
+        console.log(localStorage.getItem("usersData"));
         setTimeout(() => {
           window.location = "login.html";
         }, 1000);
@@ -182,65 +184,56 @@ function register(e) {
 
 
 
-var input = document.getElementById("search");
+// var input = document.getElementById("search");
 
-input.addEventListener("keyup", function (e) {
-  // document.getElementById("contactSpecial").innerHTML='<div></div>';
-  document.getElementById("contactSpecial").style.display="none";
-  document.getElementById("aboutusSearch").innerHTML=`<section class="home">
-  <div class="container">
-    <div class="products" id="products"></div>
-  </div>
-  </section>`;
-  search(e.target.value, JSON.parse(localStorage.getItem("products")));
-  if (e.target.value.trim() === ""){
-    document.getElementById("aboutusSearch").innerHTML = '<div></div>';
-    document.getElementById("contactSpecial").style.display="block";
-    // document.getElementById("contactSpecial").innerHTML = 
-    // `<h2>Contact Us</h2>
-    // <form action="" novalidate>
-    //   <input type="text" placeholder="Enter name" id="username" />
-    //   <input type="email" placeholder="Enter Email" id="email" />
-    //   <!-- <input type="password" placeholder="Enter password" id="password" /> -->
-    //   <textarea placeholder="Enter your message"></textarea>
-    //   <input type="submit" value="Send Message" id="sign_up" />
-    // </form>`
-}
-});
+// input.addEventListener("keyup", function (e) {
+//   // document.getElementById("contactSpecial").innerHTML='<div></div>';
+//   document.getElementById("contactSpecial").style.display="none";
+//   document.getElementById("aboutusSearch").innerHTML=`<section class="home">
+//   <div class="container">
+//     <div class="products" id="products"></div>
+//   </div>
+//   </section>`;
+//   search(e.target.value, JSON.parse(localStorage.getItem("products")));
+//   if (e.target.value.trim() === ""){
+//     document.getElementById("aboutusSearch").innerHTML = '<div></div>';
+//     document.getElementById("contactSpecial").style.display="block";
+// }
+// });
 
-function search(title, myArray) {
-  let arr = myArray.filter(
-    (item) => item.title.toLowerCase().indexOf(title.toLowerCase()) !== -1
-  );
-  drawProductsUi(arr);
-}
-var products = JSON.parse(localStorage.getItem("products"));
+// function search(title, myArray) {
+//   let arr = myArray.filter(
+//     (item) => item.title.toLowerCase().indexOf(title.toLowerCase()) !== -1
+//   );
+//   drawProductsUi(arr);
+// }
+// var products = JSON.parse(localStorage.getItem("products"));
 
-//!!!!!!!!! Display  Products !!!!!!!!!//
+// //!!!!!!!!! Display  Products !!!!!!!!!//
 
-var drawProductsUi = (products) => {
-  var productsUi = products.map(
-    (item) => `
-    <div class="card">
-      <img src="${item.image}" alt="">
-      <div class="content">
-      <!--onclick="saveItemData(${item.id})"-->
-        <h3 >${item.title}</h3>
-        <p>
-          Price: ${item.price} LE
-        </p>
-        <p>
-          Category: ${item.category}
-        </p>
-        <p>
-        Ingrediants: ${item.description}
-        </p>
-      </div>
-      <div class="info">
-        <button class="add-to-cart" onclick="addedToCart(${item.id})">Add to cart</button>
-      </div>
-    </div>
-  `
-  );
-  document.getElementById("products").innerHTML = productsUi.join("");
-};
+// var drawProductsUi = (products) => {
+//   var productsUi = products.map(
+//     (item) => `
+//     <div class="card">
+//       <img src="${item.image}" alt="">
+//       <div class="content">
+//       <!--onclick="saveItemData(${item.id})"-->
+//         <h3 >${item.title}</h3>
+//         <p>
+//           Price: ${item.price} LE
+//         </p>
+//         <p>
+//           Category: ${item.category}
+//         </p>
+//         <p>
+//         Ingrediants: ${item.description}
+//         </p>
+//       </div>
+//       <div class="info">
+//         <button class="add-to-cart" onclick="addedToCart(${item.id})">Add to cart</button>
+//       </div>
+//     </div>
+//   `
+//   );
+//   document.getElementById("products").innerHTML = productsUi.join("");
+// };
