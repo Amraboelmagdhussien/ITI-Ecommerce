@@ -149,10 +149,10 @@ display_items();
 // console.log(wishbtnadd);
 // console.log(wishbtnremove);
 
-const elements = Array.from(document.querySelectorAll("i[data-active='0']"));
-const element = Array.from(document.querySelectorAll("i[data-active='1']"));
-console.log(element)
-console.log(elements)
+// const elements = Array.from(document.querySelectorAll("i[data-active='0']"));
+// const element = Array.from(document.querySelectorAll("i[data-active='1']"));
+// console.log(element)
+// console.log(elements)
 
 
 // })
@@ -166,18 +166,18 @@ console.log(elements)
 //   // Perform actions on each element
 // })}
 
-elements.forEach((el)=>{
-  el.addEventListener("click",()=>{
-  console.log(el)
-  el.className ="fa-solid fa-heart";
-})})
+// elements.forEach((el)=>{
+//   el.addEventListener("click",()=>{
+//   console.log(el)
+//   el.className ="fa-solid fa-heart";
+// })})
 
 
 
-element.forEach((ele) => {
- ele.addEventListener('click',()=>{
-  console.log(ele);
-  ele.className  = 'fa-solid fa-heart added';
-})})
+// element.forEach((ele) => {
+//  ele.addEventListener('click',()=>{
+//   console.log(ele);
+//   ele.className  = 'fa-solid fa-heart added';
+// })})
 
 
