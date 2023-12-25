@@ -40,7 +40,7 @@ function oldCondition(oldValue){
 }
 function nameValidation(name)
 {
-    var reg=/^[\w]{5,}$/g;
+    var reg=/^[\w]{3,}$/g;
     if(reg.test(name))
     return true;
     else
