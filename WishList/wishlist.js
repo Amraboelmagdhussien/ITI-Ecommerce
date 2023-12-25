@@ -71,12 +71,12 @@ function display_items() {
       <div class="checkout-left">
         <div class="product-card-1">
           <div class="img">
-            <img src="${dataRet[i].pimg || dataRet[i].image}" alt="" />
+            <img src="${dataRet[i].image || dataRet[i].pimg}" alt="" />
             <div class="check-info">
-              <p>Product Name</p>
-              <p class="prod-desc">${dataRet[i].desc || dataRet[i].title}</p>
+              <p>${dataRet[i].pname || dataRet[i].title}</p>
+              <p class="prod-desc">${dataRet[i].title || dataRet[i].pname}</p>
               <div class="btns-sAndR">
-                <button data-index="${i}"  class="remove">Remove</button>
+                <button data-index="${i}" class="remove">Remove</button>
               </div>
             </div>
           </div>
@@ -108,12 +108,39 @@ function deleteFunction() {
   location.reload();
 }
 
-// const btn = document.getElementsByClassName("remove");
-// btn.addEventListener('click' ,(item)=> {
-//   const wishlist = localStorage.getItem("wishList");
-//   const index = wishlist.indexOf(item);
-//   if (index !== -1) {
-//       wishlist.splice(index, 1);
-//       localStorage.setItem('wishList', JSON.stringify(wishlist));
+
+// function display_itemsofLocal() {
+//   let getItemss = localStorage.getItem("wishList");
+//   let dataRet = JSON.parse(getItemss);
+//   try {
+//     for (var i = 0; i < getItemss.length; i++) {
+//       const dataDiv = document.getElementById("Item_wishlist");
+//       dataDiv.innerHTML += `<div id="Item_wishlist" class="container">
+//       <div class="checkout-left">
+//         <div class="product-card-1">
+//           <div class="img">
+//             <img src="${   dataRet[i].pimg}" alt="" />
+//             <div class="check-info">
+//               <p>${   dataRet[i].pname}</p>
+//               <p class="prod-desc">${   dataRet[i].desc}</p>
+//               <div class="btns-sAndR">
+//                 <button data-index="${i}" class="remove">Remove</button>
+//               </div>
+//             </div>
+//           </div>
+//           <div class="price">${dataRet[i].price}$</div>
+//         </div>
+//       </div>
+//     </div>`;
+//     }
+//   } catch (e) {
+//     console.log(e.message);
 //   }
-// })
+//   dataDiv.addEventListener("click", (event) => {
+//     if (event.target.classList.contains("remove")) {
+//       deleteFunction(event);
+//       console.log("Working");
+//     }
+//   });
+// }
+// display_itemsofLocal();
