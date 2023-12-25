@@ -153,3 +153,43 @@ function display_items() {
   });
 }
 display_items();
+
+
+// /*  */
+// // const wishbtnremove = document.querySelectorAll("i[data-active='0']");
+// // const wishbtnadd = document.querySelectorAll("i[data-active='1']");
+// // console.log(wishbtnadd);
+// // console.log(wishbtnremove);
+
+// const elements = Array.from(document.querySelectorAll("i[data-active='0']"));
+// const element = Array.from(document.querySelectorAll("i[data-active='1']"));
+// console.log(element)
+// console.log(elements)
+
+
+// // })
+// // for (let i = 0; i < wishbtnadd.length; i++) {
+// //   wishbtnadd[i].addEventListener("click",()=>{
+// //     elment.style.display= "inline";;
+// // })}
+// // for (let i = 0; i < wishbtnremove.length; i++) {
+// //   wishbtnremove[i].addEventListener("click",()=>{
+// //     wishbtnremove.style.display= "inline";;
+// //   // Perform actions on each element
+// // })}
+
+// // elements.forEach((el)=>{
+// //   el.addEventListener("click",()=>{
+// //   console.log(el)
+// //   el.className ="fa-solid fa-heart";
+// // })})
+
+
+
+// element.forEach((ele) => {
+//  ele.addEventListener('click',()=>{
+//   console.log(ele);
+//   ele.className  = 'fa-solid fa-heart added';
+// })})
+
+
