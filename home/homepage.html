@@ -45,11 +45,11 @@
             <button class="srch-btn" onclick="performSearch()">Search</button>
           </div>
 
-          <div class="icons">
+          <div id="loggedInIcons" class="hiddenIcons">
             <!--Icons -->
             <div class="iconLay">
               <i class="fa-solid fa-user"></i>
-              <a href="#">Profile</a>
+              <a href="/profile/profile.html">Profile</a>
             </div>
 
             <div class="iconLay">
@@ -59,11 +59,15 @@
 
             <div class="iconeLay">
               <i class="fa-solid fa-heart"></i>
-              <a href="#">My Orders</a>
+              <a href="/WishList/wishlist.html">Wishlist</a>
             </div>
             <div class="iconLay">
               <i class="fa-solid fa-cart-shopping"></i>
-              <a href="#">My Cart</a>
+              <a href="/Cart/cart.html">My Cart</a>
+            </div>
+
+            <div class="iconLay">
+              <button id="headerLogout">Logout</button>
             </div>
           </div>
         </nav>
@@ -86,7 +90,7 @@
               </li>
               <li><a href="/Product-Page/products.html">Products</a></li>
               <li><a href="/About Us/aboutus.html">About Us</a></li>
-              <li><a href="#">Wishlist</a></li>
+              <li><a href="/Find Us/Find Us.html">Find us</a></li>
               <li><a href="/help/help.html">Help</a></li>
             </ul>
           </div>
@@ -120,9 +124,9 @@
             <li><a href="#"> Tools And Equipment</a></li>
           </ul>
         </div>
-        <div class="coursel"><h1>test2</h1></div>
+        <div class="coursel"><h1>Shopping Experince is ELEVATED</h1></div>
         <div class="uiArea">
-          <div class="userArea">
+          <div id="loggedOutDiv" class="userArea">
             <div class="userinfo">
               <img src="/Utilites/person-icon-8.png" alt="" />
               <p>
@@ -131,10 +135,16 @@
                 Let's Get Started
               </p>
             </div>
-            <button class="login"><a href="#">Login</a></button>
-            <button class="joinus"><a href="#">Join Us</a></button>
+            <button class="login">
+              <a href="/loginRegister/login.html">Login</a>
+            </button>
+            <button class="joinus">
+              <a href="/loginRegister/register.html">Join Us</a>
+            </button>
           </div>
-
+          <div id="loggedInDiv" class="userinfo">
+            <h2>welcome <span id="uName">Username</span></h2>
+          </div>
           <div class="discounts">
             <p>Shop Now and Get 10% Offer</p>
           </div>
@@ -547,8 +557,8 @@
         <div class="flexed-div">
           <p class="sec-header">For Users</p>
           <ul>
-            <li><a href="">Login</a></li>
-            <li><a href="">Register</a></li>
+            <li><a href="/loginRegister/login.html">Login</a></li>
+            <li><a href="/loginRegister/register.html">Register</a></li>
           </ul>
         </div>
         <div class="flexed-div">

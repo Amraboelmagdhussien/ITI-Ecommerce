@@ -98,10 +98,10 @@ const loginRegGoogle = async () => {
       const user = result.user;
       console.log(user);
       console.log("User logged in successfully");
+      window.location.href = "/ITI-Ecommerce/home/homepage.html";
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      console.log(`${error.code}: ${error.message}`);
     });
 };
 
@@ -125,7 +125,7 @@ const loginMail = (evt) => {
               "user-info",
               JSON.stringify(credentials.user)
             );
-            window.location.href = "../home/homepage.html";
+            window.location.href = "/ITI-Ecommerce/home/homepage.html";
           }
         }
       );
@@ -161,29 +161,29 @@ const signOutUser = async () => {
       console.log("User logged out successfully");
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      console.log(`${error.code}: ${error.message}`);
     });
 };
 
 // Switch between login and registration forms
 function showRegForm() {
-  signUpContainer.style.display = "block";
+  signUpContainer.style.display = "flex";
   signInContainer.style.display = "none";
   signInForm.style.display = "none";
-  signUpForm.style.display = "block";
-  console.log("Working");
+  signUpForm.style.display = "flex";
+  console.log("WorkingReg");
 }
 
 function showLoginForm() {
   signUpContainer.style.display = "none";
-  signInContainer.style.display = "block";
-  signInForm.style.display = "block";
+  signInContainer.style.display = "flex";
+  signInForm.style.display = "flex";
   signUpForm.style.display = "none";
-  console.log("Working");
+  console.log("WorkingForm");
 }
 // Auth state change listener
 onAuthStateChanged(auth, (user) => {
+  console.log(user);
   if (user) {
     btnLoginRegGoogle1.style.display = "none";
     btnSignout1.style.display = "block";

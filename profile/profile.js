@@ -38,7 +38,7 @@ for (let i = 0; i < 8; i++) {
     .then((snapshot) => {
       if (snapshot.exists()) {
         var Data = snapshot.val();
-        console.log(Data);
+        // console.log(Data);
         document.getElementById(
           "grid-container"
         ).innerHTML += `<div class="grid-item grid-item-2">
@@ -77,48 +77,68 @@ let dropList = document.querySelectorAll(".dropDownList");
 
 let discountDate = new Date("Dec 28 2023 9:00:00").getTime();
 
-let countDown = function () {
-  setInterval(function () {
-    let currentDate = new Date();
-    let coolDown = discountDate - currentDate;
+// let countDown = function () {
+//   setInterval(function () {
+//     let currentDate = new Date();
+//     let coolDown = discountDate - currentDate;
 
-    let days = Math.floor(coolDown / (1000 * 60 * 60 * 24));
-    let hours = Math.floor(
-      (coolDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    let minutes = Math.floor((coolDown % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((coolDown % (1000 * 60)) / 1000);
+//     let days = Math.floor(coolDown / (1000 * 60 * 60 * 24));
+//     let hours = Math.floor(
+//       (coolDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+//     );
+//     let minutes = Math.floor((coolDown % (1000 * 60 * 60)) / (1000 * 60));
+//     let seconds = Math.floor((coolDown % (1000 * 60)) / 1000);
 
-    document.getElementById("days").innerHTML = days;
-    document.getElementById("hours").innerHTML = hours;
-    document.getElementById("min").innerHTML = minutes;
-    document.getElementById("sec").innerHTML = seconds;
-  }, 1000);
-};
+//     document.getElementById("days").innerHTML = days;
+//     document.getElementById("hours").innerHTML = hours;
+//     document.getElementById("min").innerHTML = minutes;
+//     document.getElementById("sec").innerHTML = seconds;
+//   }, 1000);
+// };
 
-countDown();
 let userData = sessionStorage.getItem("nameOfUser");
 let isLoggedIn = sessionStorage.getItem("loginStatus");
 let logoutButton = document.getElementById("headerLogout");
 let loggedIn = document.getElementById("loggedInDiv");
 let loggedOut = document.getElementById("loggedOutDiv");
 let icons = document.getElementById("loggedInIcons");
-console.log(icons.innerHTML);
-console.log(isLoggedIn);
+let login = document.getElementById("loginButton");
+let ShowsError = document.getElementById("ifNotLoggedIn");
+let userName = document.getElementById("userName");
+let userPassword = document.getElementById("userPassword");
+let userEmail = document.getElementById("userEmail");
+
+let profile = localStorage.getItem("usersData");
+let parsedProfile = JSON.parse(profile);
+
+try {
+  for (let i = 0; i < parsedProfile.length; i++) {
+    if (parsedProfile[i].uName == userData) {
+      userName.innerHTML = `${parsedProfile[i].uName}`;
+      userPassword.innerHTML = `${parsedProfile[i].pass}`;
+      userEmail.innerHTML = `${parsedProfile[i].mail}`;
+    } else {
+      console.log("Error");
+    }
+  }
+} catch (error) {
+  error.message;
+}
+
 if (isLoggedIn != null) {
   // means i logged in
+  login.style.display = "none";
   icons.classList.add("icons");
   icons.classList.remove("hiddenIcons");
   logoutButton.style.display = "block";
-  loggedOut.style.display = "none";
-  loggedIn.style.display = "block";
+  // loggedOut.style.display = "none";
+  // loggedIn.style.display = "block";
+  ShowsError.classList.remove("errorShow");
+  ShowsError.classList.add("hiddenIcons");
 
-  document.getElementById("uName").innerHTML = userData;
+  // document.getElementById("uName").innerHTML = userData;
 }
 
-console.log(typeof isLoggedIn);
-
-console.log(userData);
 // alert("Hello");
 
 // Event listener for logout button
@@ -127,9 +147,10 @@ logoutButton.addEventListener("click", handleLogout);
 function handleLogout() {
   // Clear session storage and remove a specific item from local storage
   sessionStorage.clear();
+  console.log("clicked");
 
   // Set a timeout before redirecting to the index page
   setTimeout(() => {
-    window.location = "/home/homepage.html";
+    window.location = "profile.html";
   }, 1000);
 }

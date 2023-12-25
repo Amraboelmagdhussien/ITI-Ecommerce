@@ -1,105 +1,169 @@
-// Get DOM elements
-const option1 = document.getElementById("option1");
-const checkoutBtn = document.getElementById("final");
-const nameMsg = document.getElementById("nameMsg");
-const creditMsg = document.getElementById("creditMsg");
-const cvvMsg = document.getElementById("cvvMsg");
-const nameInput = document.getElementById("name");
-const cardNumInput =document.getElementById("creditCradNum");
-const ccvInput = document.getElementById("cvv");
-const cardTypeImg = document.getElementById('cardImg');
-let displayPrice = 0;
 
-// Display credit options
-function displayCredit() {
-    option1.style.display = "block";
-    flagSpecial = 1;
+function displayCredit(){
+    document.getElementById("option1").style.display="block";
+    flagSpecial=1;
+}
+function displayCredit2(){
+    document.getElementById("option1").style.display="none";
+    flagSpecial=0;
 }
 
-function displayCredit2() {
-    option1.style.display = "none";
-    flagSpecial = 0;
+var checkoutBtn = document.getElementById("final");
+var displayPrice=0;
+if(sessionStorage.getItem("totalprice")!=null){
+    displayPrice=sessionStorage.getItem("totalprice");
 }
+  checkoutBtn.innerHTML="Confirm & Pay Your Order"+"    "+displayPrice+" "+"LE";
+//   var regEx = /^5[1-5][0-9]{14}$|^2(?:2(?:2[1-9]|[3-9][0-9])|[3-6][0-9][0-9]|7(?:[01][0-9]|20))[0-9]{12}$/;
+//   if(creditCradNum.value.match(regEx))
+//     {
+//      return true;
+//     }
+//   else
+//     {
+//     alert("Please enter a valid credit card number.");
+//     return false;
+//     }
 
-// Initialize display price
-if (sessionStorage.getItem("totalprice") !== null) {
-    displayPrice = sessionStorage.getItem("totalprice");
-}
-checkoutBtn.innerHTML = "Confirm & Pay Your Order" + "    " + displayPrice + " " + "LE";
-
-// Validation functions
-function validateInput(oldValue, validationFunc, errorMsgElem, flagNum) {
-    if (oldValue.value !== "") {
-        if (!validationFunc(oldValue.value)) {
-            oldValue.style.background = "lightpink";
-            errorMsgElem.innerHTML = "<span class='star'>Not valid</span>";
-            flagNum = 0;
-            alert(errorMsgElem.innerText);
-        } else {
-            errorMsgElem.innerHTML = "<span class='star'>Valid</span>";
-            oldValue.style.background = "palegreen";
-            flagNum = 1;
+var flagNum1=0;
+var flagNum2=0;
+var flagNum3=0;
+var flagSpecial=1;
+function oldCondition(oldValue){
+    if(oldValue.value!="")
+    {
+        if(!nameValidation(oldValue.value)){
+            oldValue.style.background="lightpink";
+            document.getElementById("nameMsg").innerHTML="<span class='star'>Not valid</span>";
+            flagNum1=0;
+            alert("name must be 2 or 3 words seprated by space with min length 3 digit");
+            
         }
-    } else {
-        oldValue.style.background = "white";
-        flagNum = 0;
-        errorMsgElem.innerHTML = "<span class='star'>Required</span>";
+        else
+        {
+            document.getElementById("nameMsg").innerHTML="<span class='star'>Valid</span>";
+            oldValue.style.background="palegreen";
+            flagNum1=1;
+        }
+    }
+    else{
+        oldValue.style.background="white";
+        flagNum1=0;
+        document.getElementById("nameMsg").innerHTML="<span class='star'>Required</span>";
     }
 }
-
-// Validation functions for name, credit card, and CVV
-function nameValidation(name) {
-    const reg = /^([a-z]{3,10})+((\s+([a-z]{3,10})){1,2})$/gi;
-    return reg.test(name);
+function nameValidation(name)
+{
+    var reg=/^([a-z]{3,10})+((\s+([a-z]{3,10})){1,2})$/gi;
+    if(reg.test(name))
+    return true;
+    else
+    return false;
+}
+function oldCondition1(oldValue){
+    if(oldValue.value!="")
+    {
+        if(!creditValidation(oldValue.value)){
+            oldValue.style.background="lightpink";
+            document.getElementById("creditMsg").innerHTML="<span class='star'>Not valid</span>";
+            flagNum2=0;
+            alert("please enter valid credit card number");
+            
+        }
+        else
+        {
+            document.getElementById("creditMsg").innerHTML="<span class='star'>Valid</span>";
+            oldValue.style.background="palegreen";
+            flagNum2=1;
+        }
+    }
+    else{
+        oldValue.style.background="white";
+        flagNum2=0;
+        document.getElementById("creditMsg").innerHTML="<span class='star'>Required</span>";
+    }
+}
+function creditValidation(name)
+{
+    var visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+    var mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
+    // var amexpRegEx = /^(?:3[47][0-9]{13})$/;
+    // var discovRegEx = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/; 
+    if(visaRegEx.test(name)||mastercardRegEx.test(name)
+    // ||amexpRegEx.test(name)||discovRegEx.test(name)
+        )
+    return true;
+    else
+    return false;
+}
+function oldCondition2(oldValue){
+    if(oldValue.value!="")
+    {
+        if(!cvvValidation(oldValue.value)){
+            oldValue.style.background="lightpink";
+            document.getElementById("cvvMsg").innerHTML="<span class='star'>Not valid</span>";
+            flagNum3=0;
+            alert("please enter valid CVV number");
+            
+        }
+        else
+        {
+            document.getElementById("cvvMsg").innerHTML="<span class='star'>Valid</span>";
+            oldValue.style.background="palegreen";
+            flagNum3=1;
+        }
+    }
+    else{
+        oldValue.style.background="white";
+        flagNum3=0;
+        document.getElementById("cvvMsg").innerHTML="<span class='star'>Required</span>";
+    }
+}
+function cvvValidation(name)
+{
+    var reg=/^([0-9]{3,3})$/gi;
+    if(reg.test(name))
+    return true;
+    else
+    return false;
 }
 
-function creditValidation(name) {
-    const visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
-    const mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
-    // const amexpRegEx = /^(?:3[47][0-9]{13})$/;
-    // const discovRegEx = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
-    return visaRegEx.test(name) || mastercardRegEx.test(name) 
-    // || amexpRegEx.test(name) || discovRegEx.test(name)
-    ;
-}
 
-function cvvValidation(name) {
-    const reg = /^([0-9]{3,3})$/gi;
-    return reg.test(name);
-}
 
-// Event listeners for input validation
-function addInputValidationEventListener(oldValue, validationFunc, errorMsgElem, flagNum) {
-    oldValue.addEventListener("blur", function () {
-        validateInput(oldValue, validationFunc, errorMsgElem, flagNum);
-    });
-}
-
-addInputValidationEventListener(nameInput, nameValidation, nameMsg, flagNum1);
-addInputValidationEventListener(cardNumInput, creditValidation, creditMsg, flagNum2);
-addInputValidationEventListener(ccvInput, cvvValidation, cvvMsg, flagNum3);
-
-// Event listener for checkout button
-checkoutBtn.addEventListener("click", function (e) {
+// function checkout(e) {
+    
+    
+// }
+// }
+  checkoutBtn.addEventListener("click", function(e){
     e.preventDefault();
-    if (flagSpecial === 1) {
-        if (flagNum1 === 1 && flagNum2 === 1 && flagNum3 === 1) {
-            window.location.href = "..\payment\delivery.html";
-        } else {
-            alert("Some data are missing or invalid");
-        }
-    } else if (flagSpecial === 0) {
-        window.location.href = "..\payment\delivery.html";
+    if(flagSpecial==1){
+        if(flagNum1==1&&flagNum2==1&&flagNum3==1){
+            window.location.href = "delivery.html";
+            // alert("Thanks for using our store");
+            }
+        else{
+            alert("Some data are missing or invalid")
+            }
     }
-});
+    else if(flagSpecial==0){
+        
+        window.location.href="delivery.html";
+        // alert("Thanks for using our store");
 
+     }
+})
+
+const cardNumInput = getElementById("creditNum");
+const cardTypeImg = getElementById("cardImg");
 // Show Image of Card Type
-cardNumInput.addEventListener("blur", function(){
+cardNumInput.addEventListener("keydown", function(){
+    console.log("Event listener success")
     if(cardNumInput.value[0]==4){
-        cardTypeImg.src='../Utilites/visa.svg';
+        cardTypeImg.src='/ITI-Ecommerce/Utilites/visa.svg';
     }else if(cardNumInput.value[0]==5){
-        cardTypeImg.src='../Utilites/mastercard.svg';
+        cardTypeImg.src='/ITI-Ecommerce/Utilites/mastercard.svg';
     }else{
-        cardTypeImg.src='../Utilites/generic.svg';
+        cardTypeImg.src='/ITI-Ecommerce/Utilites/generic.svg';
     }
 });

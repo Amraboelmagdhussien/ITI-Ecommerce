@@ -636,3 +636,10 @@ select {
 .header .logo img {
   height: 40px;
 }
+
+.errorShow {
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
