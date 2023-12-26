@@ -112,6 +112,8 @@ function ShowMyPrice() {
     let finalTotal = (document.getElementById(
       "total-prices"
     ).innerHTML = `${lastTotal}$`);
+    
+    sessionStorage.setItem("totalprice",totalPrice);
 
     return finalTotal;
   } catch (e) {
@@ -179,6 +181,11 @@ let profConfig = document.getElementById("pro-config");
 let showPass = document.getElementById("showpassword");
 let chngPass = document.getElementById("change-password");
 let editbtn = document.getElementById("edit");
+let paymentButton = document.getElementById("paymentButton");
+
+paymentButton.addEventListener("click", () => {
+  couponDis();
+});
 
 let profile = localStorage.getItem("usersData");
 let parsedProfile = JSON.parse(profile);
