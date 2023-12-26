@@ -13,10 +13,12 @@ As Per Discount Added In Database
 we have 2 coupons that are currently retrieved from database
 
 iti30 => 30% Off
-iti50 => 50% Off\n
-
+iti50 => 50% Off
+<br>
 [x] Profile Done
+<br>
 [x] Cart Done
+<br>
 [x] Homepage Done
 [x] Find us Done
 [x] About Us Done
