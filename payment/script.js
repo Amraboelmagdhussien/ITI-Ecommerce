@@ -48,7 +48,7 @@ function addedToCart(id) {
     badgeDom.innerHTML = uniqueProducts.length;
     displayCartItemsCount();
   } else {
-    window.location = "..\registeration\registeration.html";
+    window.location = "/loginRegister/register.html";
   }
 }
 

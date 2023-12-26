@@ -646,3 +646,27 @@ select {
   color: white;
   font-family: "Inter", sans-serif;
 }
+
+#change-password input {
+  padding: 0.4rem 0.5rem;
+  border-radius: 10px;
+  border: 1px solid grey;
+}
+
+#change-password {
+  display: none;
+}
+
+#func {
+  background: var(
+    --primary-gradient,
+    linear-gradient(180deg, #127fff 0%, #0067ff 100%)
+  );
+  border: 0;
+  border-radius: 8px;
+  height: 2rem;
+  width: 10rem;
+  cursor: pointer;
+  color: white;
+  font-family: "Inter", sans-serif;
+}

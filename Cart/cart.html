@@ -31,20 +31,27 @@
         <nav class="header">
           <div class="logo">
             <!-- logo here -->
-            <h1>Store Name</h1>
+            <a href="/home/homepage.html"
+              ><img src="/Logo/1111.svg" alt=""
+            /></a>
           </div>
-          <!-- Search here-->
-          <!-- <div class="postion">
-            
-            <input class="search-bar" type="text" placeholder="Search..." />
-            <button class="srch-btn">Search</button>
-          </div> -->
 
-          <div class="icons">
+          <div class="postion">
+            <!-- Search here-->
+            <input
+              id="searchInput"
+              class="search-bar"
+              type="text"
+              placeholder="Search..."
+            />
+            <button class="srch-btn" onclick="performSearch()">Search</button>
+          </div>
+
+          <div id="loggedInIcons" class="hiddenIcons">
             <!--Icons -->
             <div class="iconLay">
               <i class="fa-solid fa-user"></i>
-              <a href="#">Profile</a>
+              <a href="/profile/profile.html">Profile</a>
             </div>
 
             <div class="iconLay">
@@ -54,16 +61,20 @@
 
             <div class="iconeLay">
               <i class="fa-solid fa-heart"></i>
-              <a href="#">My Orders</a>
+              <a href="/WishList/wishlist.html">Wishlist</a>
             </div>
             <div class="iconLay">
               <i class="fa-solid fa-cart-shopping"></i>
-              <a href="#">My Cart</a>
+              <a href="/Cart/cart.html">My Cart</a>
+            </div>
+
+            <div class="iconLay">
+              <button id="headerLogout">Logout</button>
             </div>
           </div>
         </nav>
 
-        <!-- <nav class="header-2">
+        <nav class="header-2">
           <div class="categories-1">
             <ul>
               <li class="dropDownList">
@@ -79,42 +90,29 @@
                   <li>Cate 1</li>
                 </ul>
               </li>
-              <li><a href="#">Hot offers</a></li>
-              <li><a href="#">Gift Boxes</a></li>
-              <li><a href="#">Projects</a></li>
-              <li><a href="#">Menu Item</a></li>
-              <li><a href="#">Help</a></li>
+              <li><a href="/Product-Page/products.html">Products</a></li>
+              <li><a href="/About Us/aboutus.html">About Us</a></li>
+              <li><a href="/Find Us/Find Us.html">Find us</a></li>
+              <li><a href="/help/help.html">Help</a></li>
+              <li id="loginButton">
+                <a href="/loginRegister/login.html">login/register</a>
+              </li>
             </ul>
           </div>
 
           <div class="info-1">
             <ul>
-              <li>English, USD <i class="fa-solid fa-caret-down"></i></li>
+              <li>English, USD</li>
 
               <li id="shipmentSelector" class="dropDownList">
                 <div>
                   <span>Ship To</span>
                   <img class="imgIcon" src="/Flags/EG.png" alt="EG" />
-                  <i class="fa-solid fa-caret-down"></i>
                 </div>
-                <ul>
-                  <li>
-                    <span>EG </span>
-                    <img class="imgIcon" src="/Flags/EG.png" alt="EG" />
-                  </li>
-                  <li>
-                    <span>DE</span
-                    ><img class="imgIcon" src="/Flags/DE.png" alt="DE" />
-                  </li>
-                  <li>
-                    <span>USA</span
-                    ><img class="imgIcon" src="/Flags/US.png" alt="USA" />
-                  </li>
-                </ul>
               </li>
             </ul>
           </div>
-        </nav> -->
+        </nav>
       </div>
     </header>
     <div class="container">
@@ -123,8 +121,8 @@
       </h2>
 
       <div class="cart-components">
-          <div class="checkout-left">
-            <!-- <div class="product-card-1">
+        <div class="checkout-left">
+          <!-- <div class="product-card-1">
               <div class="img">
                 <img src="/Product-Page/FP/Iphone 14.jpg" alt="" />
                 <div class="check-info">
@@ -142,7 +140,7 @@
               </div>
             </div> -->
 
-            <!-- <div class="product-card-1">
+          <!-- <div class="product-card-1">
               <div class="img">
                 <img src="/Product-Page/FP/Iphone 14.jpg" alt="" />
                 <div class="check-info">
@@ -156,18 +154,16 @@
               </div>
               <div class="price">55$</div>
             </div> -->
-          </div>
-
+        </div>
 
         <div id="checkout-right" class="checkout-right">
           <div class="coupon">
             <h2>Have a coupon?</h2>
-            <input id="coupon" type="text" placeholder="Enter Your Coupon..">
+            <input id="coupon" type="text" placeholder="Enter Your Coupon.." />
             <div class="btns-coup">
               <button id="discountBtn">Add</button>
-            <button id="removeCpn">Remove</button>
+              <button id="removeCpn">Remove</button>
             </div>
-            
           </div>
           <div class="total-price">
             <div class="prices">
@@ -180,44 +176,38 @@
               <p id="discount" class="Discount">0%</p>
               <p class="tax">15%</p>
             </div>
-
-
           </div>
 
           <div class="total">
             <div class="new-Price">
               <h3>Total:</h3>
-            <h3 id="total-prices" class="total-prices">0$</h3>
+              <h3 id="total-prices" class="total-prices">0$</h3>
             </div>
             <h3 id="old-price" class="old-price">0$</h3>
+          </div>
 
-        </div>
+          <button class="procced-to-checkout">Procced to Checkout</button>
 
-        <button class="procced-to-checkout">Procced to Checkout</button>
-
-        <div class="payments-logo">
-          <a href="#"><i class="fa-brands fa-cc-visa"></i></a>
-          <a href="#"><i class="fa-brands fa-cc-mastercard"></i></a>
-          <a href="#"><i class="fa-brands fa-cc-paypal"></i></a>
-          <a href="#"><i class="fa-brands fa-apple-pay"></i></a>
-        </div>
+          <div class="payments-logo">
+            <a href="#"><i class="fa-brands fa-cc-visa"></i></a>
+            <a href="#"><i class="fa-brands fa-cc-mastercard"></i></a>
+            <a href="#"><i class="fa-brands fa-cc-paypal"></i></a>
+            <a href="#"><i class="fa-brands fa-apple-pay"></i></a>
+          </div>
         </div>
       </div>
-
-
-
-
-
-
+    </div>
 
     <footer class="container">
       <div class="sub-container-2">
         <div class="flexed-div">
           <div class="sub-div">
-            <p class="logo-brand-store">Logo here</p>
+            <a href="/home/homepage.html"
+              ><img src="/Logo/1111.svg" alt=""
+            /></a>
             <p class="store-info">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Molestiae facilis obcaecati delectus rem suscipit sint?
+              Group of 3 Men Started Their E-commerce Enterprise to Elevate
+              Shopping Experince To Whole new Level
             </p>
           </div>
           <div class="social-logos">
@@ -230,8 +220,8 @@
         <div class="flexed-div">
           <p class="sec-header">About Us</p>
           <ul>
-            <li><a href="">About Us</a></li>
-            <li><a href="">Find Store</a></li>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
             <li><a href="">Categories</a></li>
             <li><a href="">Blogs</a></li>
           </ul>
@@ -239,8 +229,8 @@
         <div class="flexed-div">
           <p class="sec-header">Partnership</p>
           <ul>
-            <li><a href="">About Us</a></li>
-            <li><a href="">Find Store</a></li>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
             <li><a href="">Categories</a></li>
             <li><a href="">Blogs</a></li>
           </ul>
@@ -248,8 +238,8 @@
         <div class="flexed-div">
           <p class="sec-header">Information</p>
           <ul>
-            <li><a href="">About Us</a></li>
-            <li><a href="">Find Store</a></li>
+            <li><a href="/About Us/aboutus.html">About Us</a></li>
+            <li><a href="/Find Us/Find Us.html">Find Store</a></li>
             <li><a href="">Categories</a></li>
             <li><a href="">Blogs</a></li>
           </ul>
@@ -257,8 +247,8 @@
         <div class="flexed-div">
           <p class="sec-header">For Users</p>
           <ul>
-            <li><a href="">Login</a></li>
-            <li><a href="">Register</a></li>
+            <li><a href="/loginRegister/login.html">Login</a></li>
+            <li><a href="/loginRegister/register.html">Register</a></li>
           </ul>
         </div>
         <div class="flexed-div">

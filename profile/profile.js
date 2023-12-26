@@ -99,8 +99,6 @@ let discountDate = new Date("Dec 28 2023 9:00:00").getTime();
 let userData = sessionStorage.getItem("nameOfUser");
 let isLoggedIn = sessionStorage.getItem("loginStatus");
 let logoutButton = document.getElementById("headerLogout");
-let loggedIn = document.getElementById("loggedInDiv");
-let loggedOut = document.getElementById("loggedOutDiv");
 let icons = document.getElementById("loggedInIcons");
 let login = document.getElementById("loginButton");
 let ShowsError = document.getElementById("ifNotLoggedIn");
@@ -109,6 +107,8 @@ let userPassword = document.getElementById("userPassword");
 let userEmail = document.getElementById("userEmail");
 let profConfig = document.getElementById("pro-config");
 let showPass = document.getElementById("showpassword");
+let chngPass = document.getElementById("change-password");
+let editbtn = document.getElementById("edit");
 
 let profile = localStorage.getItem("usersData");
 let parsedProfile = JSON.parse(profile);
@@ -183,4 +183,43 @@ showPass.addEventListener("mouseup", () => {
 });
 showPass.addEventListener("mousedown", () => {
   showFunc();
+});
+
+function changePass() {
+  try {
+    const passwordRegex = /^(?=.[0-9])(?=.[!@#$%^&])[a-zA-Z0-9!@#$%^&]{6,16}$/;
+    let newVal = document.getElementById("newPassValue").value; // Retrieve new password value
+    for (let i = 0; i < parsedProfile.length; i++) {
+      if (parsedProfile[i].uName === userData) {
+        if (!newVal == "") {
+          if (passwordRegex.test(newVal)) {
+            parsedProfile[i].pass = newVal; // Update password in parsedProfile array
+            localStorage.setItem("usersData", JSON.stringify(parsedProfile)); // Store updated profile in localStorage
+            alert("Password updated successfully");
+            chngPass.style.display = "none";
+          } else {
+            alert("Password Does Not match Condtion");
+          }
+        } else {
+          alert("Field Cannot be Empty");
+        }
+      } else {
+        console.log("Error: User not found");
+      }
+    }
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+const fucButton = document.getElementById("func");
+fucButton.addEventListener("click", () => {
+  changePass();
+});
+
+function editPass() {
+  chngPass.style.display = "block";
+}
+
+editbtn.addEventListener("click", () => {
+  editPass();
 });

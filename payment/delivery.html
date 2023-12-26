@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,109 +27,62 @@
     <link rel="stylesheet" href="../loginRegister/headerFooter.css" />
     <style>
       .section-form {
-        margin: 50px auto;
-        width: 40%;
-        text-align: center;
-        background-color: #1281ff8e;
-        padding: 20px;
-        border-radius: 40px;
-        height: 700px;
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
         flex-direction: column;
       }
 
-      @media only screen and (max-width: 767px) {
-        .section-form {
-          width: 70%;
-        }
-      }
       .section-form h2 {
         font-size: 50px;
         letter-spacing: 2px;
-        /* color: #52057b; */
-        color: #fbfbfb;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
       }
 
       .section-form form input[type="text"] {
-        display: inline-block;
-        width: 70%;
-        margin: 8px 1px 8px 7px;
-        height: 40px;
-        /* margin-top: 8x;
-            margin-bottom: 8x; */
-        padding: 5px;
-        border-style: none;
-        font-family: inherit;
-        outline: none;
-        border-radius: 10px;
-        border-style: none;
-
-        font-size: large;
+        width: 100%;
+          padding: 10px;
+          margin: 10px 0;
+          border: 1px solid #ccc;
+          border-radius: 5px;
       }
+
       .section-form form input[type="submit"] {
-        font-size: 30px;
-        height: 50px;
-        text-transform: uppercase;
-        height: auto;
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #127fff;
+        color: white;
+        border: none;
+        border-radius: 5px;
         cursor: pointer;
+        transition: background-color 0.3s;
       }
 
       .section-form form input[type="submit"]:hover {
-        opacity: 0.8;
+        background-color: #268afc;
       }
+
       #final {
-        display: block;
-        position: relative;
-        width: 80%;
-        margin: 5px 0;
-        border: 1px solid #4942e4;
-        height: 50px;
-        padding: 5px;
-        font-size: 20px;
-        font-weight: bolder;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 20px;
-        background-color: #ffffff;
-        background: var(
-          --primary-gradient,
-          linear-gradient(180deg, #127fff 0%, #0067ff 100%)
-        );
-        cursor: pointer;
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #127fff;
         color: white;
-        border-style: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
       }
+
       #final:hover {
         background-color: #11009e;
         color: rgba(0, 0, 0, 0.614);
       }
 
-      .star {
-        font-weight: bold;
-        color: white;
-      }
-      .section-form form input[type="radio"] {
-        width: 17px;
-        height: 17px;
-        position: relative;
-        float: left;
-        accent-color: #11009e;
-      }
-      .star1 {
-        float: left;
-        font-weight: bold;
-        margin-left: 10px;
-        color: #11009e;
-      }
-      .spaceDiv {
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
-      #option1 {
-        display: block;
-      }
       #dele {
         display: flex;
         flex-direction: column;
@@ -172,7 +126,9 @@
     </style>
     <title>Delivery</title>
   </head>
+
   <body>
+
     <header>
       <div class="container">
         <nav class="header">
@@ -264,6 +220,7 @@
     </header>
 
     <main>
+      
       <div id="ifNotLoggedIn" class="container errorShow">
         <i class="fa-solid fa-xmark"></i>
         <h1>Nothing To Show here Please Login First</h1>
@@ -356,8 +313,10 @@
         </div>
       </div>
     </footer>
+
+    
     <script src="../ADMINDASJBOURD/ADMINDB.js"></script>
     <script src="delivery.js"></script>
-    <!-- <script src="script.js"></script> -->
+    <script src="script.js"></script>
   </body>
 </html>

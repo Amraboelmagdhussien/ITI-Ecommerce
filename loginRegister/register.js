@@ -24,30 +24,25 @@ var flagNum4=0;
 
 // Function to validate username
 function oldCondition(oldValue){
-    if(oldValue.value!="")
-    {
+    if(oldValue.value!=""){
         if(!nameValidation(oldValue.value)){
             oldValue.style.background="lightpink";
             document.getElementById("nameMsg").innerHTML="<b>Not valid</b>";
             flagNum1=0;
             alert("username can be alphanumeric & underscore with 5 digit minimum length");
-        }
-        else
-        {
+        }else{
             document.getElementById("nameMsg").innerHTML="<b>valid</b>";
             oldValue.style.background="palegreen";
             flagNum1=1;
         }
-    }
-    else{
+    }else{
         oldValue.style.background="white";
         flagNum1=0;
         document.getElementById("nameMsg").innerHTML="<b>Required</b>";
     }
 }
-function nameValidation(name)
-{
-    var reg=/^[\w]{3,}$/g;
+function nameValidation(name){
+    const reg=/^[\w]{3,}$/g;
     if(reg.test(name))
     return true;
     else
@@ -78,48 +73,40 @@ function oldCondition1(oldValue){
 }
 
 
-function mailValidation(name)
-{
-  var visaRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-    
-    if(visaRegEx.test(name))
+function mailValidation(name){
+  const RegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    if(RegEx.test(name))
     return true;
     else
     return false;
 }
 
 function oldCondition2(oldValue){
-  
-  if(oldValue.value!="")
-    {   
+  if(oldValue.value!=""){   
         if(!passValidation(oldValue.value)){
             oldValue.style.background="lightpink";
             document.getElementById("passMsg").innerHTML="<b>Not valid</b>";
             flagNum3=0;
-            alert("Password must have at least 8 digits");
-            
-        }
-        else
-        {
+            alert("Password must have at least 8 digits");    
+        }else{
             document.getElementById("passMsg").innerHTML="<b>valid</b>";
             oldValue.style.background="palegreen";
             flagNum3=1;
         }
-    }
-    else{
+    }else{
         oldValue.style.background="white";
         flagNum3=0;
         document.getElementById("passMsg").innerHTML="<b>Required</b>";
     }
 }
-function passValidation(name)
-{
-   
+
+function passValidation(name){
     if(name.length>=8)
     return true;
     else
     return false;
 }
+
 function oldCondition3(oldValue){
   if(oldValue.value!="")
   {
@@ -143,15 +130,13 @@ function oldCondition3(oldValue){
       document.getElementById("repeatMsg").innerHTML="<b>Required</b>";
   }
 }
-function repeatValidation(name)
-{
- 
+
+function repeatValidation(name){
   if(name==password.value)
   return true;
   else
   return false;
 }
-
 
 registerBtn.addEventListener("click", register);
 function register(e) {

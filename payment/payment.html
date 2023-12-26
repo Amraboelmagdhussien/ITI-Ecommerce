@@ -25,70 +25,44 @@
     />
     <link rel="stylesheet" href="../loginRegister/headerFooter.css" />
     <style>
-      /* .section-form {
-        margin: 50px auto;
-        width: 40%;
-        text-align: center;
-        background-color: #4942E4;
-        padding: 20px;
-        border-radius: 40px;
-        
-      } */
-      
-      @media only screen and (max-width: 767px) {
-        .section-form {
-          width: 70%;
-        }
+      .section-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
       }
       .section-form h2 {
-        text-align: center;
         font-size: 50px;
         letter-spacing: 2px;
-        /* color: #52057b; */
-        color: #11009E;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
       }
       
       .section-form form input[type="text"] {
-            align-items: center;
-            width: 80%;
-            margin: 5px auto;
-            padding: 20px;
-            border-radius: 20px;
-            font-size: large;
-            border: 1px solid #127fff;
-            font-family: inherit;
-      }
-      .section-form form input[type="submit"] {
-        font-size: 30px;
-        text-transform: uppercase;
-        height: auto;
-        cursor: pointer;
-      }
-      
-      .section-form form input[type="submit"]:hover {
-        opacity: 0.8;
-      }
-    button{
-        display: block;
-        position: relative;
+        width: 100%;
         padding: 10px;
-        font-size: 20px;
-        font-weight: bolder;
-        margin: auto;
-        border-radius: 20px;
-        background-color: #127fff;
-        color:white;
-    }  
-    button:hover {
-      background-color: #11009E;
-      color: 	#ece0d1;
-    
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
       }
 
-      .star{
+      button{
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #127fff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
       
-        font-weight: bold;
-        color: #11009E;
+      button:hover {
+        background-color: #268afc;
+      
       }
       .section-form form input[type="radio"]{
         width: 17px;
@@ -96,19 +70,6 @@
         position: relative;
         float: left;
         accent-color: #11009E;
-      }
-      .star1{
-      float: left;
-        font-weight: bold;
-        margin-left: 10px;
-        color: #11009E;
-      }
-      .spaceDiv{
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
-      #option1{
-        display: block;
       }
     </style>
     <title>Payment</title>
@@ -297,7 +258,7 @@
         </div>
       </div>
     </footer>
-    <!-- <script src="../ADMINDASJBOURD/ADMINDB.js"></script> -->
+    <script src="../ADMINDASJBOURD/ADMINDB.js"></script>
     <script src="../profile/profile.js"></script>
     <script src="payment.js"></script>
     <script src="script.js"></script>
