@@ -217,11 +217,11 @@ if (Userdata) {
   console.log("No data found in LocalStorage");
 }
 
-try {
-  document.getElementById("final").addEventListener("click", display_items());
-} catch (error) {
-  console.log(error);
-}
+// try {
+//   document.getElementById("final").addEventListener("click", display_items());
+// } catch (error) {
+//   console.log(error);
+// }
 display_items();
 //
 
