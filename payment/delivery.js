@@ -73,7 +73,7 @@ checkoutBtn.addEventListener("click", function (e) {
     localStorage.removeItem("productsInCart");
     sessionStorage.removeItem("totalprice");
 
-    window.location.href = "index.html";
+    window.location.href = "/home/homepage.html";
     alert("Thanks for using our store");
   } else {
     alert("Some data are missing or invalid");
