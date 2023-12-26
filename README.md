@@ -14,3 +14,7 @@ we have 2 coupons that are currently retrieved from database
 
 iti30 => 30% Off
 iti50 => 50% Off
+
+[x] Profile Done
+[x] Cart Done
+[x] Homepage Done
