@@ -27,6 +27,6 @@ iti50 => 50% Off
 <br>
 [x] Homepage Done
 <br>
-[x] Find us Done|
+[x] Find us Done
 <br>
 [x] About Us Done
