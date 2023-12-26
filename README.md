@@ -27,3 +27,7 @@ iti50 => 50% Off
 [x] Find us Done
 <br>
 [x] About Us Done
+<br>
+[x] Wish List Done
+<br>
+[x] Help Done
