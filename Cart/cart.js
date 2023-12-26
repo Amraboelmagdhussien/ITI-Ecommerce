@@ -70,7 +70,7 @@ let display = function () {
     <div class="price">
     ${dataRet[i].price}$
     <input id="qty" type="text" placeholder="QTY..." value="1">
-    <button class="addQtys" data-index="${i}" id="add-qty">Add</button>
+    <button class="addQtys" data-index="${i}" id="add-qty" onclick="add(${i})">Add</button>
     </div>
     </div>`;
       document.querySelector(".checkout-left").appendChild(cartEle);
@@ -86,6 +86,8 @@ let display = function () {
 };
 
 display();
+
+let lastTotal;
 
 function ShowMyPrice() {
   try {
@@ -108,12 +110,12 @@ function ShowMyPrice() {
     // console.log(sumPrice(sumValues));
 
     let afterTaxes = wholeTotal * 0.15;
-    let lastTotal = wholeTotal + afterTaxes;
+    lastTotal = wholeTotal + afterTaxes;
     let finalTotal = (document.getElementById(
       "total-prices"
     ).innerHTML = `${lastTotal}$`);
     
-    sessionStorage.setItem("totalprice",totalPrice);
+    sessionStorage.setItem("totalprice",lastTotal);
 
     return finalTotal;
   } catch (e) {
@@ -182,10 +184,18 @@ let showPass = document.getElementById("showpassword");
 let chngPass = document.getElementById("change-password");
 let editbtn = document.getElementById("edit");
 let paymentButton = document.getElementById("paymentButton");
+// let addButton = document.getElementById("add-qty");
+
 
 paymentButton.addEventListener("click", () => {
-  couponDis();
+  sessionStorage.setItem("totalprice",lastTotal);
+  console.log(sessionStorage.getItem("totalprice"));
+  setTimeout(() => {
+    window.location = "/payment/payment.html";
+  }, 10);
 });
+
+
 
 let profile = localStorage.getItem("usersData");
 let parsedProfile = JSON.parse(profile);
@@ -229,6 +239,7 @@ logoutButton.addEventListener("click", handleLogout);
 function handleLogout() {
   // Clear session storage and remove a specific item from local storage
   sessionStorage.clear();
+  localStorage.removeItem("productsInCart");
   console.log("clicked");
 
   // Set a timeout before redirecting to the index page
