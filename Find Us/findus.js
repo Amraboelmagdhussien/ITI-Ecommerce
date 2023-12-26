@@ -92,12 +92,6 @@ if (isLoggedIn != null) {
   logoutButton.style.display = "block";
   // loggedOut.style.display = "none";
   // loggedIn.style.display = "block";
-  ShowsError.classList.remove("errorShow");
-  ShowsError.classList.add("hiddenIcons");
-
-  profConfig.classList.add("prof-config");
-  profConfig.classList.add("container");
-  profConfig.classList.remove("hiddenIcons");
   // document.getElementById("uName").innerHTML = userData;
 }
 
@@ -113,6 +107,6 @@ function handleLogout() {
 
   // Set a timeout before redirecting to the index page
   setTimeout(() => {
-    window.location = "findus.html";
+    window.location = "Find%20Us.html";
   }, 1000);
 }
