@@ -702,9 +702,6 @@ select {
 #headerLogout {
   display: None;
 }
-.hiddenIcons {
-  display: none;
-}
 
 #headerLogout {
   border: 0;

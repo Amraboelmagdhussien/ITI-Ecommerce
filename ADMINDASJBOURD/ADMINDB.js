@@ -142,7 +142,7 @@ let parsedProfile = JSON.parse(profile);
 
 try {
   for (let i = 0; i < parsedProfile.length; i++) {
-    if (parsedProfile[i].uName == userData1) {
+    if (parsedProfile[i].uName == userData) {
       userName.innerHTML = `${parsedProfile[i].uName}`;
       userEmail.innerHTML = `${parsedProfile[i].mail}`;
       userPassword.value = `${parsedProfile[i].pass}`;
@@ -200,7 +200,7 @@ function handleLogout() {
 
   // Set a timeout before redirecting to the index page
   setTimeout(() => {
-    window.location = "profile.html";
+    window.location = "/home/homepage.html";
   }, 1000);
 }
 
