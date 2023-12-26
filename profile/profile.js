@@ -253,6 +253,7 @@ function addToWishlistItems(indexedId) {
 // display
 function display_items() {
   var productContainer = JSON.parse(localStorage.getItem("userOrders"));
+  console.log()
   for (var i = 0; i < productContainer.length; i++) {
     // parent
     const dataDiv = document.getElementById("Prevorders");
@@ -300,8 +301,6 @@ function display_items() {
     });
   });
 }
-
-
 
 display_items();
 
