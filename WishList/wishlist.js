@@ -197,6 +197,6 @@ function handleLogout() {
 
   // Set a timeout before redirecting to the index page
   setTimeout(() => {
-    window.location = "profile.html";
+    window.location = "wishlist.html";
   }, 1000);
 }
