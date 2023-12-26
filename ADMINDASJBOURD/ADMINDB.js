@@ -4,6 +4,23 @@ const order = localStorage.getItem("cartItems")
 const Userdata = JSON.parse(data);
 const Orderdta = JSON.parse(order);
 // console.log(Orderdta)
+
+
+
+
+// Retrieve existing orders or initialize an empty array
+const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
+
+// Add the new order to the array
+
+
+// Save the updated array back to local storage
+localStorage.setItem('userOrders', JSON.stringify(orders));
+ 
+// console.log(orders);
+
+
+
 // Check if data exists
 if (Userdata) {
 for(i=0;i<Userdata.length;i++){
@@ -14,7 +31,6 @@ function display_items(){
     let dataRet = JSON.parse(getItemss || "[]");
     const dataDiv = document.getElementById("orderItems");
     const User_ssion =JSON.parse(localStorage.getItem('nameOfUser'));
-    orders.push(order);
  try {
 for (let i = 0; i < getItemss.length; i++){
         dataDiv.innerHTML += `
@@ -63,7 +79,10 @@ for (let i = 0; i < getItemss.length; i++){
             // console.log(isLoggedIn)
           if ( isLoggedIn != null ){
             console.log(` Hello  ${Userdata[i].uName} your order is Abrove `);
+            orders.push(order);
+            break;
           }
+          
           }
         }
       });
@@ -127,16 +146,7 @@ function abroveFunction() {
 // }
 // }
 
-// Retrieve existing orders or initialize an empty array
-const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
 
-// Add the new order to the array
-
-
-// Save the updated array back to local storage
-localStorage.setItem('userOrders', JSON.stringify(orders));
- 
-// console.log(orders);
 
 
 

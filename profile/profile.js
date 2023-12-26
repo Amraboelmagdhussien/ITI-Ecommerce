@@ -223,3 +223,105 @@ function editPass() {
 editbtn.addEventListener("click", () => {
   editPass();
 });
+
+
+
+
+
+
+
+
+
+/*
+Mahmoud Amr hassan 
+*/
+let localItems = localStorage.getItem("userOrders");
+let parsedItem = JSON.parse(localItems);
+
+function addToCartItems(indexedId) {
+  let vaariable = parsedItem[indexedId];
+  cartItems.push(vaariable);
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+}
+
+function addToWishlistItems(indexedId) {
+  let vaariable = parsedItem[indexedId];
+  wishList.push(vaariable);
+  localStorage.setItem("wishList", JSON.stringify(wishList));
+}
+
+// display
+function display_items() {
+  var productContainer = JSON.parse(localStorage.getItem("userOrders"));
+  for (var i = 0; i < productContainer.length; i++) {
+    // parent
+    const dataDiv = document.getElementById("Prevorders");
+    dataDiv.innerHTML += `
+    <div class='full-sec'>
+        <div class='products'>
+                <div class="product-card-1">
+                    <div class="img">
+                    <img src="${dataRet[i].image || dataRet[i].pimg}" alt="" />
+                    <div class="check-info">
+                        <p>${dataRet[i].pname || dataRet[i].title}</p>
+                        <p class="prod-desc">${dataRet[i].description || dataRet[i].pname}</p>
+                        <div class="btns-sAndR">
+                        <button class="add-to-cart-btn" data-index="${i}">Add To Cart</button>
+                        <i data-index='${i}' class="fa-regular fa-heart wishListIcon"></i>
+                        <i  class="fa-solid fa-heart added"></i>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="price">${dataRet[i].price}$</div>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div><br>
+    `;
+  }
+
+  const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+  const wishListIcons = document.querySelectorAll(
+    ".fa-regular.fa-heart.wishListIcon"
+  );
+
+  wishListIcons.forEach((icon) => {
+    icon.addEventListener("click", function (event) {
+      const index = event.target.dataset.index;
+      addToWishlistItems(index);
+    });
+  });
+
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click", function (event) {
+      const index = event.target.dataset.index;
+      addToCartItems(index);
+    });
+  });
+}
+
+
+
+display_items();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
