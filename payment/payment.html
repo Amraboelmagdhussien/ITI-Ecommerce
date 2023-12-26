@@ -3,25 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="products.css" />
+    <link rel="stylesheet" href="/ADMINDASJBOURD/ADMINDB.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap"
-    rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap"
+      rel="stylesheet"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap"
-    rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap"
+      rel="stylesheet"
     />
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="../loginRegister/headerFooter.css" />
     <style>
@@ -39,7 +39,7 @@
         justify-content: center;
         text-align: center;
       }
-      
+
       .section-form form input[type="text"] {
         width: 100%;
         padding: 10px;
@@ -48,7 +48,7 @@
         border-radius: 5px;
       }
 
-      button{
+      button {
         width: 100%;
         padding: 10px;
         margin: 10px 0;
@@ -59,23 +59,21 @@
         cursor: pointer;
         transition: background-color 0.3s;
       }
-      
+
       button:hover {
         background-color: #268afc;
-      
       }
-      .section-form form input[type="radio"]{
+      .section-form form input[type="radio"] {
         width: 17px;
         height: 17px;
         position: relative;
         float: left;
-        accent-color: #11009E;
+        accent-color: #11009e;
       }
     </style>
     <title>Payment</title>
   </head>
   <body>
-
     <header>
       <div class="container">
         <nav class="header">
@@ -170,30 +168,60 @@
       <div id="aboutusSearch"></div>
       <section class="section-form" id="specialLogin">
         <h2>Payment Information</h2>
-        <form action="#" id="jjjj" >
+        <form action="#" id="jjjj">
           <div class="spaceDiv">
-            <input type="radio" name="payoption" value="x" onclick="displayCredit2()" checked  >
-            <span class="star1">Cash On Delivery (COD)</span><br>
+            <input
+              type="radio"
+              name="payoption"
+              value="x"
+              onclick="displayCredit2()"
+              checked
+            />
+            <span class="star1">Cash On Delivery (COD)</span><br />
           </div>
           <div class="spaceDiv">
-            <input type="radio" name="payoption" value="y" id="radio1" onclick="displayCredit()" checked  >
+            <input
+              type="radio"
+              name="payoption"
+              value="y"
+              id="radio1"
+              onclick="displayCredit()"
+              checked
+            />
             <span class="star1">Pay by CreditCard</span>
           </div>
-          <br>
+          <br />
           <div id="option1">
-          <input type="text" placeholder="Name" id="username" onblur="oldCondition(this)"/>
-          <span id="nameMsg"><span class="star"></span></span>
-          <input type="text" placeholder="Credit Card Number" id="creditNum" onblur="oldCondition1(this)"/>
-          <span id="creditMsg"><span class="star"></span></span>
-          <img id="cardImg" src="/ITI-Ecommerce/Utilites/generic.svg" alt="CreditCard" height="50">
-          <input type="text" placeholder="CVV" id="CVV" onblur="oldCondition2(this)"/>
-          <span id="cvvMsg"><span class="star"></span></span>
-          
+            <input
+              type="text"
+              placeholder="Name"
+              id="username"
+              onblur="oldCondition(this)"
+            />
+            <span id="nameMsg"><span class="star"></span></span>
+            <input
+              type="text"
+              placeholder="Credit Card Number"
+              id="creditNum"
+              onblur="oldCondition1(this)"
+            />
+            <span id="creditMsg"><span class="star"></span></span>
+            <img
+              id="cardImg"
+              src="/ITI-Ecommerce/Utilites/generic.svg"
+              alt="CreditCard"
+              height="50"
+            />
+            <input
+              type="text"
+              placeholder="CVV"
+              id="CVV"
+              onblur="oldCondition2(this)"
+            />
+            <span id="cvvMsg"><span class="star"></span></span>
           </div>
-          
 
           <button id="final"></button>
-          
         </form>
       </section>
     </main>
