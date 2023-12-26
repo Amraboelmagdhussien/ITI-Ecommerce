@@ -6,12 +6,12 @@ const Orderdta = JSON.parse(order);
 // console.log(Orderdta)
 
 // Retrieve existing orders or initialize an empty array
-const orders = JSON.parse(localStorage.getItem("userOrders")) || [];
+let Userorders = JSON.parse(localStorage.getItem("userOrders")) || [];
 
 // Add the new order to the array
 
 // Save the updated array back to local storage
-localStorage.setItem("userOrders", JSON.stringify(orders));
+localStorage.setItem("userOrders", JSON.stringify(Userorders));
 
 // console.log(orders);
 
@@ -78,10 +78,11 @@ if (Userdata) {
               if (isLoggedIn != null) {
                 console.log(
                   ` Hello  ${Userdata[i].uName} your order is Abrove `
-                );
-                orders.push(order);
-                break;
+                );              
               }
+              let array3 = Userorders.concat(order);
+              Userorders=JSON.parse(array3)
+              console.log(orders)
             }
           }
         });
@@ -99,8 +100,14 @@ try {
   console.log(error);
 }
 
-//
 
+
+// orders.push(order)
+
+// console.log(or)
+
+
+//
 let getItemss = localStorage.getItem("cartItems");
 let dataRet = JSON.parse(getItemss || "[]");
 
