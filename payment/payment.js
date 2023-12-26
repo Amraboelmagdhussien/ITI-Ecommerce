@@ -3,6 +3,7 @@ function displayCredit(){
     document.getElementById("option1").style.display="block";
     flagSpecial=1;
 }
+
 function displayCredit2(){
     document.getElementById("option1").style.display="none";
     flagSpecial=0;
@@ -10,20 +11,13 @@ function displayCredit2(){
 
 var checkoutBtn = document.getElementById("final");
 var displayPrice=0;
+
 if(sessionStorage.getItem("totalprice")!=null){
     displayPrice=sessionStorage.getItem("totalprice");
 }
-  checkoutBtn.innerHTML="Confirm & Pay Your Order"+"    "+displayPrice+" "+"LE";
-//   var regEx = /^5[1-5][0-9]{14}$|^2(?:2(?:2[1-9]|[3-9][0-9])|[3-6][0-9][0-9]|7(?:[01][0-9]|20))[0-9]{12}$/;
-//   if(creditCradNum.value.match(regEx))
-//     {
-//      return true;
-//     }
-//   else
-//     {
-//     alert("Please enter a valid credit card number.");
-//     return false;
-//     }
+
+
+checkoutBtn.innerHTML="Confirm & Pay Your Order"+" => "+displayPrice+" "+"LE";
 
 var flagNum1=0;
 var flagNum2=0;
@@ -119,6 +113,7 @@ function oldCondition2(oldValue){
         document.getElementById("cvvMsg").innerHTML="<span class='star'>Required</span>";
     }
 }
+
 function cvvValidation(name)
 {
     var reg=/^([0-9]{3,3})$/gi;
@@ -128,48 +123,32 @@ function cvvValidation(name)
     return false;
 }
 
-
-
-// function checkout(e) {
-    
-    
-// }
-// }
-  checkoutBtn.addEventListener("click", function(e){
+checkoutBtn.addEventListener("click", function(e){
     e.preventDefault();
     if(flagSpecial==1){
         if(flagNum1==1&&flagNum2==1&&flagNum3==1){
             window.location.href = "delivery.html";
-            // alert("Thanks for using our store");
             }
         else{
-            alert("Some data are missing or invalid")
+            alert("Data is missing or invalid")
             }
     }
     else if(flagSpecial==0){
-        
         window.location.href="delivery.html";
-        // alert("Thanks for using our store");
-
-     }
+    }
 })
 
 const cardNumInput = getElementById("creditNum");
 const cardTypeImg = getElementById("cardImg");
+
 // Show Image of Card Type
-cardNumInput.addEventListener("keydown", function(){
-    console.log("Event listener success")
+cardNumInput.addEventListener("blur", function(){
+    console.log("Event listener success");
     if(cardNumInput.value[0]==4){
-        cardTypeImg.src='/ITI-Ecommerce/Utilites/visa.svg';
+        cardTypeImg.src='visa.svg';
     }else if(cardNumInput.value[0]==5){
-        cardTypeImg.src='/ITI-Ecommerce/Utilites/mastercard.svg';
+        cardTypeImg.src='mastercard.svg';
     }else{
-        cardTypeImg.src='/ITI-Ecommerce/Utilites/generic.svg';
+        cardTypeImg.src='generic.svg';
     }
 });
-
-
-
-/*
-
-*/
