@@ -18,9 +18,6 @@ iti50 => 50% Off
 <br>
 <br>
 <br>
-<br>
-
-<br>
 [x] Profile Done
 <br>
 [x] Cart Done
