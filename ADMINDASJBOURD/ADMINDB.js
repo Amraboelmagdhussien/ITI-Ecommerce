@@ -5,35 +5,18 @@ const Userdata = JSON.parse(data);
 const Orderdta = JSON.parse(order);
 // console.log(Orderdta)
 
-
-
-
 // Retrieve existing orders or initialize an empty array
-const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
+const orders = JSON.parse(localStorage.getItem("userOrders")) || [];
 
 // Add the new order to the array
 
-
 // Save the updated array back to local storage
-localStorage.setItem('userOrders', JSON.stringify(orders));
- 
+localStorage.setItem("userOrders", JSON.stringify(orders));
+
 // console.log(orders);
-
-
 
 // Check if data exists
 if (Userdata) {
-for(i=0;i<Userdata.length;i++){
-//  console.log(Userdata[i].role == "customer")
-if(Userdata[i].role != "customer"){
-function display_items(){
-    let getItemss = localStorage.getItem("cartItems");
-    let dataRet = JSON.parse(getItemss || "[]");
-    const dataDiv = document.getElementById("orderItems");
-    const User_ssion =JSON.parse(localStorage.getItem('nameOfUser'));
- try {
-for (let i = 0; i < getItemss.length; i++){
-        dataDiv.innerHTML += `
   for (i = 0; i < Userdata.length; i++) {
     //  console.log(Userdata[i].role == "customer")
     if (Userdata[i].role != "customer") {
@@ -42,7 +25,6 @@ for (let i = 0; i < getItemss.length; i++){
         let dataRet = JSON.parse(getItemss || "[]");
         const dataDiv = document.getElementById("orderItems");
         const User_ssion = JSON.parse(localStorage.getItem("nameOfUser"));
-        orders.push(order);
         try {
           for (let i = 0; i < getItemss.length; i++) {
             dataDiv.innerHTML += `
@@ -67,8 +49,8 @@ for (let i = 0; i < getItemss.length; i++){
                 </div>
                 </div>
             </div>
-            </div>
-            </div><br>`;
+        </div>
+        </div><br>`;
           }
         } catch (e) {
           console.log(e.message);
@@ -90,20 +72,6 @@ for (let i = 0; i < getItemss.length; i++){
         dataDiv.addEventListener("click", (event) => {
           if (event.target.classList.contains("Aprove")) {
             abroveFunction(event);
-<<<<<<< HEAD
-          for (let i = 0; i < Userdata.length; i++){
-            const isLoggedIn = sessionStorage.getItem('loginStatus');
-            // console.log(isLoggedIn)
-          if ( isLoggedIn != null ){
-            console.log(` Hello  ${Userdata[i].uName} your order is Abrove `);
-            orders.push(order);
-            break;
-          }
-          
-          }
-        }
-      });
-=======
             for (let i = 0; i < Userdata.length; i++) {
               const isLoggedIn = sessionStorage.getItem("loginStatus");
               // console.log(isLoggedIn)
@@ -111,24 +79,22 @@ for (let i = 0; i < getItemss.length; i++){
                 console.log(
                   ` Hello  ${Userdata[i].uName} your order is Abrove `
                 );
+                orders.push(order);
+                break;
               }
             }
           }
         });
       }
     }
->>>>>>> 9fb66fe (Admin Dashboard)
   }
 } else {
   // Data does not exist in LocalStorage
   console.log("No data found in LocalStorage");
 }
 
-try {
-  document.getElementById("final").addEventListener("click", display_items());
-} catch (e) {
-  console.log(e.message);
-}
+document.getElementById("final").addEventListener("click", display_items());
+
 //
 
 let getItemss = localStorage.getItem("cartItems");
@@ -151,44 +117,6 @@ function abroveFunction() {
   localStorage.setItem("cartItems", JSON.stringify(dataRet));
   location.reload();
 }
-
-/*
-
-// */
-// for (let i = 0; i < Userdata.length; i++){
-//     const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-//     let User = localStorage.getItem('usersData');
-//   if (isLoggedIn == 'true'  && Userdata[i].role == 'customer') {
-//     console.log(` Hello  ${User[i].uName} your order is aproved `);
-//     console.log(variable );
-//   }else{
-//     console.log("Notfound ...");
-//   }
-// }
-
-// for (let i = 0; i < Userdata.length; i++){
-//   const isLoggedIn = sessionStorage.getItem('loginStatus');
-//   console.log(isLoggedIn)
-//   // let User = localStorage.getItem('usersData');
-//   // console.log(Userdata[i].role);
-// if ( isLoggedIn != null ){
-//   console.log(` Hello  ${Userdata[i].uName} your order is aproved `);
-// }
-// }
-
-<<<<<<< HEAD
-
-=======
-// Retrieve existing orders or initialize an empty array
-const orders = JSON.parse(localStorage.getItem("userOrders")) || [];
-
-// Add the new order to the array
-
-// Save the updated array back to local storage
-localStorage.setItem("userOrders", JSON.stringify(orders));
-
-// console.log(orders);
->>>>>>> 9fb66fe (Admin Dashboard)
 
 let userData = sessionStorage.getItem("nameOfUser");
 let isLoggedIn = sessionStorage.getItem("loginStatus");
