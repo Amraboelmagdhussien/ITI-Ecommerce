@@ -135,8 +135,8 @@ if (isLoggedIn != null) {
   logoutButton.style.display = "block";
   // loggedOut.style.display = "none";
   // loggedIn.style.display = "block";
-  ShowsError.classList.remove("errorShow");
-  ShowsError.classList.add("hiddenIcons");
+  // ShowsError.classList.remove("errorShow");
+  // ShowsError.classList.add("hiddenIcons");
 
   profConfig.classList.add("prof-config");
   profConfig.classList.add("container");
