@@ -13,8 +13,9 @@ function display_items(){
     let getItemss = localStorage.getItem("cartItems");
     let dataRet = JSON.parse(getItemss || "[]");
     const dataDiv = document.getElementById("orderItems");
-    try {
-      for (var i = 0; i < getItemss.length; i++){
+    const User_ssion =JSON.parse(localStorage.getItem('nameOfUser'));
+ try {
+for (let i = 0; i < getItemss.length; i++){
         dataDiv.innerHTML += `
         <div class='full-sec'>
         <div class='products'>
@@ -23,11 +24,12 @@ function display_items(){
                     <img src="${dataRet[i].image || dataRet[i].pimg}" alt="" />
                     <div class="check-info">
                         <p>${dataRet[i].pname || dataRet[i].title}</p>
-                        <p class="prod-desc">${dataRet[i].title || dataRet[i].pname}</p>
+                        <p class="prod-desc">${dataRet[i].description || dataRet[i].pname}</p>
                         <div class="btns-sAndR">
                         <button data-index="${i}" class="remove">Cancel</button>
                         <button data-index="${i}" class="Aprove">Aprove</button>
                         </div>
+                        <div>User Name : ${User_ssion}</div>
                     </div>
                     </div>
                     <div class="price">${dataRet[i].price}$</div>
@@ -43,8 +45,25 @@ function display_items(){
     dataDiv.addEventListener("click", (event) => {
         if (event.target.classList.contains("remove")) {
           CancelFunction(event);
-
-        //   console.log("Cans");
+          for (let i = 0; i < Userdata.length; i++){
+            const isLoggedIn = sessionStorage.getItem('loginStatus');
+            console.log(isLoggedIn)
+          if ( isLoggedIn != null ){
+            console.log(` Hello  ${Userdata[i].uName} your order is Canceld `);
+          }
+          }
+        }
+      });
+    dataDiv.addEventListener("click", (event) => {
+        if (event.target.classList.contains("Aprove")) {
+            abroveFunction(event);
+          for (let i = 0; i < Userdata.length; i++){
+            const isLoggedIn = sessionStorage.getItem('loginStatus');
+            console.log(isLoggedIn)
+          if ( isLoggedIn != null ){
+            console.log(` Hello  ${Userdata[i].uName} your order is Abrove `);
+          }
+          }
         }
       });
   }
@@ -54,31 +73,58 @@ function display_items(){
   // Data does not exist in LocalStorage
   console.log('No data found in LocalStorage');
 }
-// s
+display_items();
+//
+
+let getItemss = localStorage.getItem("cartItems");
+let dataRet = JSON.parse(getItemss || "[]");
+
 function CancelFunction() {
   const button = event.target;
   let dataIndex = button.getAttribute("data-index");
-//   console.log(dataIndex);
+  console.log(dataIndex);
   dataRet.splice(dataIndex, 1);
-  localStorage.setItem("wishList", JSON.stringify(dataRet));
+  localStorage.setItem("cartItems", JSON.stringify(dataRet));
+  location.reload();
+
 }
+
+
+function abroveFunction() {
+    const button = event.target;
+    let dataIndex = button.getAttribute("data-index");
+    console.log(dataIndex);
+    dataRet.splice(dataIndex, 1);
+    localStorage.setItem("cartItems", JSON.stringify(dataRet));
+    location.reload();
+
+  }
+
+
 /*
 
 // */
+// for (let i = 0; i < Userdata.length; i++){
+//     const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+//     let User = localStorage.getItem('usersData');
+//   if (isLoggedIn == 'true'  && Userdata[i].role == 'customer') {
+//     console.log(` Hello  ${User[i].uName} your order is aproved `);
+//     console.log(variable );
+//   }else{
+//     console.log("Notfound ...");
+//   }
+// }
+
+
 for (let i = 0; i < Userdata.length; i++){
-    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-    let User = localStorage.getItem('usersData');
-  if (isLoggedIn == 'true'  && Userdata[i].role == 'customer') {
-    console.log(` Hello  ${User[i].uName} your order is aproved `);
-    console.log(variable );
-  }else{
-    console.log("Notfound ...");
-  }
+  const isLoggedIn = sessionStorage.getItem('loginStatus');
+  console.log(isLoggedIn)
+  // let User = localStorage.getItem('usersData');
+  // console.log(Userdata[i].role);
+if ( isLoggedIn != null ){
+  console.log(` Hello  ${Userdata[i].uName} your order is aproved `);
 }
-
-
-
-
+}
 
 
 

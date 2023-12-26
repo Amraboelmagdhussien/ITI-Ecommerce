@@ -581,12 +581,7 @@ select {
   resize: none;
 }
 
-/* .container .bg-color .part-right #question {
-  height: 35px;
-  border-radius: 11px;
-  padding: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.331);
-} */
+
 
 .container .bg-color .part-right #question:focus {
   outline: none;
@@ -637,68 +632,71 @@ select {
   height: 40px;
 }
 
-
-
-/*      */
 .full-sec .products .product-card-1 {
   border: 1px solid rgba(128, 128, 128, 0.399);
   border-radius: 10px;
   display: flex;
   align-items: center;
-  }
-  .products .product-card-1 .product-info-1 {
+}
+.products .product-card-1 .product-info-1 {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   padding: 1.3rem;
-  }
-  
-  .products .product-card-1 .product-info-1 #price {
+}
+
+.products .product-card-1 .product-info-1 #price {
   font-weight: 700;
-  }
-  
-  .products .product-card-1 .product-info-1 #shipping {
+}
+
+.products .product-card-1 .product-info-1 #shipping {
   color: #00b517;
-  }
-  
-  .products .product-card-1 .product-info-1 a {
+}
+
+.products .product-card-1 .product-info-1 a {
   text-decoration: none;
   color: #0d6efd;
-  }
-  
-  .products .product-card-1 .product-info-1 button {
+}
+
+.products .product-card-1 .product-info-1 button {
   background: linear-gradient(180deg, #127fff 0%, #0067ff 100%);
   border-style: none;
   border-radius: 5px;
   color: white;
   padding: 0.3rem;
   cursor: pointer;
-  }
-  
-  .products .product-card-1 .product-info-1 .cart-items {
+}
+
+.products .product-card-1 .product-info-1 .cart-items {
   display: flex;
   align-items: center;
   gap: 1rem;
-  }
-  
-  .products .product-card-1 .product-info-1 a:hover {
+}
+
+.products .product-card-1 .product-info-1 a:hover {
   color: grey;
-  }
-  
-  .products .product-card-1 img {
+}
+
+.products .product-card-1 img {
   width: 225px;
   height: 225px;
   padding: 0.5rem 0.3rem;
-  }
-  /* Weeed */
-  .cart-items i {
+}
+
+.cart-items i {
   color: red;
   border-radius: 3px;
   padding: 0.3rem;
   cursor: pointer;
-  }
-  .cart-items .added {
+}
+
+.cart-items .added {
   display: none;
-  }
+}
 
-
+.cart-items button {
+  color: red;
+  border-radius: 3px;
+  padding: 0.3rem;
+  cursor: pointer;
+}

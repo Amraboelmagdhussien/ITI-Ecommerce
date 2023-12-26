@@ -5,7 +5,11 @@ const loginBtn = document.getElementById("sign_in");
 const checkbox = document.getElementById("checkbox");
 
 // Clear sessionStorage and remove 'productsInCart' from localStorage
+console.log(sessionStorage);
+console.log("before")
 sessionStorage.clear();
+console.log("After")
+
 localStorage.removeItem("productsInCart");
 
 // Check if 'rememberme' data is stored in localStorage and set the values if available

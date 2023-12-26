@@ -134,3 +134,31 @@ function handleLogout() {
     window.location = "/home/homepage.html";
   }, 1000);
 }
+
+
+
+
+// for (let i = 0; i < Userdata.length; i++){
+//   const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+//   // console.log(isLoggedIn)
+//   // let User = localStorage.getItem('usersData');
+//   // console.log(Userdata[i].role);
+// if (Userdata[i].role == 'customer' && isLoggedIn != 'null' ){
+//   console.log(` Hello  ${Userdata[i].uName} your order is aproved `);
+// }
+// // else{
+// //   console.log("Notfound ...");
+// // }
+// }
+
+const data = localStorage.getItem('usersData');
+const Userdata = JSON.parse(data);
+for (let i = 0; i < Userdata.length; i++){
+  const isLoggedIn = sessionStorage.getItem('loginStatus');
+  const User_ssion = sessionStorage.getItem('nameOfUser');
+  if(User_ssion == Userdata[i].uName){
+    if ( isLoggedIn != null ){
+         console.log(` Hello  ${Userdata[i].uName} your order is aproved `);
+      }
+  }
+}
