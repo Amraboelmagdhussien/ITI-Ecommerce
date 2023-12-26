@@ -14,6 +14,7 @@ function display_items(){
     let dataRet = JSON.parse(getItemss || "[]");
     const dataDiv = document.getElementById("orderItems");
     const User_ssion =JSON.parse(localStorage.getItem('nameOfUser'));
+    orders.push(order);
  try {
 for (let i = 0; i < getItemss.length; i++){
         dataDiv.innerHTML += `
@@ -59,7 +60,7 @@ for (let i = 0; i < getItemss.length; i++){
             abroveFunction(event);
           for (let i = 0; i < Userdata.length; i++){
             const isLoggedIn = sessionStorage.getItem('loginStatus');
-            console.log(isLoggedIn)
+            // console.log(isLoggedIn)
           if ( isLoggedIn != null ){
             console.log(` Hello  ${Userdata[i].uName} your order is Abrove `);
           }
@@ -73,7 +74,9 @@ for (let i = 0; i < getItemss.length; i++){
   // Data does not exist in LocalStorage
   console.log('No data found in LocalStorage');
 }
-display_items();
+
+document.getElementById("final").addEventListener("click",display_items());
+
 //
 
 let getItemss = localStorage.getItem("cartItems");
@@ -89,7 +92,6 @@ function CancelFunction() {
 
 }
 
-
 function abroveFunction() {
     const button = event.target;
     let dataIndex = button.getAttribute("data-index");
@@ -99,7 +101,6 @@ function abroveFunction() {
     location.reload();
 
   }
-
 
 /*
 
@@ -116,15 +117,26 @@ function abroveFunction() {
 // }
 
 
-for (let i = 0; i < Userdata.length; i++){
-  const isLoggedIn = sessionStorage.getItem('loginStatus');
-  console.log(isLoggedIn)
-  // let User = localStorage.getItem('usersData');
-  // console.log(Userdata[i].role);
-if ( isLoggedIn != null ){
-  console.log(` Hello  ${Userdata[i].uName} your order is aproved `);
-}
-}
+// for (let i = 0; i < Userdata.length; i++){
+//   const isLoggedIn = sessionStorage.getItem('loginStatus');
+//   console.log(isLoggedIn)
+//   // let User = localStorage.getItem('usersData');
+//   // console.log(Userdata[i].role);
+// if ( isLoggedIn != null ){
+//   console.log(` Hello  ${Userdata[i].uName} your order is aproved `);
+// }
+// }
+
+// Retrieve existing orders or initialize an empty array
+const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
+
+// Add the new order to the array
+
+
+// Save the updated array back to local storage
+localStorage.setItem('userOrders', JSON.stringify(orders));
+ 
+// console.log(orders);
 
 
 
