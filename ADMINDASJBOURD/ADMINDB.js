@@ -93,7 +93,11 @@ if (Userdata) {
   console.log("No data found in LocalStorage");
 }
 
-document.getElementById("final").addEventListener("click", display_items());
+try {
+  document.getElementById("final").addEventListener("click", display_items());
+} catch (error) {
+  console.log(error);
+}
 
 //
 
@@ -138,7 +142,7 @@ let parsedProfile = JSON.parse(profile);
 
 try {
   for (let i = 0; i < parsedProfile.length; i++) {
-    if (parsedProfile[i].uName == userData) {
+    if (parsedProfile[i].uName == userData1) {
       userName.innerHTML = `${parsedProfile[i].uName}`;
       userEmail.innerHTML = `${parsedProfile[i].mail}`;
       userPassword.value = `${parsedProfile[i].pass}`;
