@@ -6,9 +6,9 @@ const checkbox = document.getElementById("checkbox");
 
 // Clear sessionStorage and remove 'productsInCart' from localStorage
 console.log(sessionStorage);
-console.log("before")
+console.log("before");
 sessionStorage.clear();
-console.log("After")
+console.log("After");
 
 localStorage.removeItem("productsInCart");
 
@@ -70,7 +70,7 @@ loginBtn.addEventListener("click", function (e) {
       // Redirect based on user role after a delay
       setTimeout(() => {
         if (sessionStorage.getItem("role") == "admin") {
-          window.location = "/ADMINDASJBOURD/homepage.html"; // Admin homepage (CRUD)
+          window.location = "/ADMINDASJBOURD/ADMINDB.html"; // Admin homepage (CRUD)
         } else if (sessionStorage.getItem("role") == "customer") {
           window.location = "/home/homepage.html"; // Regular user homepage
         }
