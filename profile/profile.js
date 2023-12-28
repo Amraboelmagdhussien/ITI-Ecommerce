@@ -242,6 +242,7 @@ function display_items() {
         </div><br>
     `;
   }
+  display_items();
 
   const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
   const wishListIcons = document.querySelectorAll(
@@ -263,4 +264,3 @@ function display_items() {
   });
 }
 
-display_items();

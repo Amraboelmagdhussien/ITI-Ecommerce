@@ -122,11 +122,11 @@
 //   location.reload();
 // }
 
-const data = localStorage.getItem("usersData");
-const order = localStorage.getItem("cartItems");
+let data = localStorage.getItem("usersData");
+let order = localStorage.getItem("cartItems");
 
-const Userdata = JSON.parse(data);
-const Orderdta = JSON.parse(order);
+let Userdata = JSON.parse(data);
+let Orderdta = JSON.parse(order);
 // console.log(Orderdta)
 
 // Retrieve existing orders or initialize an empty array
@@ -144,7 +144,7 @@ if (Userdata) {
   for (i = 0; i < Userdata.length; i++) {
     //  console.log(Userdata[i].role == "customer")
     if (Userdata[i].role != "customer") {
-      function display_items() {
+      function display_items(){
         let getItemss = localStorage.getItem("cartItems");
         let dataRet = JSON.parse(getItemss || "[]");
         const dataDiv = document.getElementById("orderItems");
@@ -198,16 +198,14 @@ if (Userdata) {
             abroveFunction(event);
             for (let i = 0; i < Userdata.length; i++) {
               const isLoggedIn = sessionStorage.getItem("loginStatus");
-              // console.log(isLoggedIn)
               if (isLoggedIn != null) {
                 console.log(
                   ` Hello  ${Userdata[i].uName} your order is Abrove `
-                );              
+                ); Userorders = Userorders.concat(order)            
               }
-              let array3 = Userorders.concat(order);
-              Userorders=JSON.parse(array3)
-              console.log(orders)
-            }
+
+            } 
+            
           }
         });
       }
