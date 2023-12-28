@@ -98,7 +98,7 @@ const loginRegGoogle = async () => {
       const user = result.user;
       console.log(user);
       console.log("User logged in successfully");
-      window.location.href = "/ITI-Ecommerce/home/homepage.html";
+      window.location.href = "/home/homepage.html";
     })
     .catch((error) => {
       console.log(`${error.code}: ${error.message}`);
@@ -125,7 +125,7 @@ const loginMail = (evt) => {
               "user-info",
               JSON.stringify(credentials.user)
             );
-            window.location.href = "/ITI-Ecommerce/home/homepage.html";
+            window.location.href = "/home/homepage.html";
           }
         }
       );

@@ -457,6 +457,7 @@ body {
 #headerLogout {
   display: None;
 }
+
 .hiddenIcons {
   display: none;
 }
@@ -492,6 +493,6 @@ body {
   font-size: 190px;
 }
 
-#Item_wishlist {
+/* #Item_wishlist {
   height: 750px;
-}
+} */
