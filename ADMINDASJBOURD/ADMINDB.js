@@ -122,8 +122,8 @@
 //   location.reload();
 // }
 
-let data = localStorage.getItem("usersData");
-let order = localStorage.getItem("cartItems");
+const data = localStorage.getItem("usersData");
+const order = localStorage.getItem("cartItems");
 
 let Userdata = JSON.parse(data);
 let Orderdta = JSON.parse(order);
@@ -152,29 +152,23 @@ if (Userdata) {
         try {
           for (let i = 0; i < getItemss.length; i++) {
             dataDiv.innerHTML += `
-        <div class='full-sec'>
-        <div class='products'>
-                <div class="product-card-1">
-                    <div class="img">
-                    <img src="${dataRet[i].image || dataRet[i].pimg}" alt="" />
-                    <div class="check-info">
-                        <p>${dataRet[i].pname || dataRet[i].title}</p>
-                        <p class="prod-desc">${
-                          dataRet[i].description || dataRet[i].pname
-                        }</p>
-                        <div class="btns-sAndR">
-                        <button data-index="${i}" class="remove">Cancel</button>
-                        <button data-index="${i}" class="Aprove">Aprove</button>
-                        </div>
-                        <div>User Name : ${User_ssion}</div>
-                    </div>
-                    </div>
-                    <div class="price">${dataRet[i].price}$</div>
-                </div>
-                </div>
+            <div class="productCard-1">
+            <div class="product-image-1">
+              <img src="${dataRet[i].image || dataRet[i].pimg}" alt="" />
             </div>
-        </div>
-        </div><br>`;
+            <div class="prod-information">
+              <p>${dataRet[i].pname || dataRet[i].title}</p>
+              <p id="price">${dataRet[i].price}$</p>
+    
+              <div class="btns-sAndR">
+                <button data-index="${i}" class="remove">Cancel</button>
+                <button data-index="${i}" class="Aprove">Aprove</button>
+              </div>
+              <p>Username: ${User_ssion}</p>
+            </div>
+          </div>
+
+`;
           }
         } catch (e) {
           console.log(e.message);
@@ -265,42 +259,74 @@ let showPass = document.getElementById("showpassword");
 let chngPass = document.getElementById("change-password");
 let editbtn = document.getElementById("edit");
 let orderItems = document.getElementById("orderItems");
+let panel = document.getElementById("panel");
+let pending = document.getElementById("pending");
+console.log(panel.innerHTML);
 
 let profile = localStorage.getItem("usersData");
 let parsedProfile = JSON.parse(profile);
 
-try {
-  for (let i = 0; i < parsedProfile.length; i++) {
-    if (parsedProfile[i].uName == userData) {
-      userName.innerHTML = `${parsedProfile[i].uName}`;
-      userEmail.innerHTML = `${parsedProfile[i].mail}`;
-      userPassword.value = `${parsedProfile[i].pass}`;
-    } else {
-      console.log("Error");
-    }
-  }
-} catch (error) {
-  error.message;
+// try {
+//   for (let i = 0; i < parsedProfile.length; i++) {
+//     if (parsedProfile[i].uName == userData) {
+//       userName.innerHTML = `${parsedProfile[i].uName}`;
+//       userEmail.innerHTML = `${parsedProfile[i].mail}`;
+//       userPassword.value = `${parsedProfile[i].pass}`;
+//     } else {
+//       console.log("Error");
+//     }
+//   }
+// } catch (error) {
+//   error.message;
+// }
+
+const currentUserRole = sessionStorage.getItem("role");
+if (currentUserRole === "admin") {
+  console.log("show");
+  ShowsError.classList.remove("errorShow");
+  ShowsError.classList.add("hiddenIcons");
+  orderItems.classList.add("products");
+  orderItems.classList.remove("hiddenIcons");
+  panel.classList.add("Panel");
+  panel.classList.remove("hiddenIcons");
+  pending.classList.add("container");
+  pending.classList.remove("hiddenIcons");
+} else {
+  console.log("test");
+  ShowsError.classList.add("errorShow");
+  ShowsError.classList.remove("hiddenIcons");
+  orderItems.classList.remove("products");
+  orderItems.classList.add("hiddenIcons");
+  panel.classList.remove("Panel");
+  panel.classList.add("hiddenIcons");
+  pending.classList.remove("container");
+  pending.classList.add("hiddenIcons");
 }
 
 if (isLoggedIn != null) {
   try {
-    for (let i = 0; i < parsedProfile.length; i++) {
-      if (
-        parsedProfile[i].uName == userData &&
-        parsedProfile[i].role === "admin"
-      ) {
-        ShowsError.classList.remove("errorShow");
-        ShowsError.classList.add("hiddenIcons");
-        orderItems.classList.add("products");
-        orderItems.classList.remove("hiddenIcons");
-      } else {
-        ShowsError.classList.add("errorShow");
-        ShowsError.classList.remove("hiddenIcons");
-        orderItems.classList.remove("products");
-        orderItems.classList.add("hiddenIcons");
-      }
-    }
+    // for (let i = 0; i < parsedProfile.length; i++) {
+    //   if (
+    //     parsedProfile[i].uName == userData &&
+    //     parsedProfile[i].role === "admin"
+    //   ) {
+    //     console.log("1");
+    //     ShowsError.classList.remove("errorShow");
+    //     ShowsError.classList.add("hiddenIcons");
+    //     orderItems.classList.add("products");
+    //     orderItems.classList.remove("hiddenIcons");
+    //     panel.classList.add("Panel");
+    //     panel.classList.remove("hiddenIcons");
+    //   } else {
+    //     console.log(2);
+    //     ShowsError.classList.add("errorShow");
+    //     ShowsError.classList.remove("hiddenIcons");
+    //     orderItems.classList.remove("products");
+    //     orderItems.classList.add("hiddenIcons");
+    //     panel.classList.remove("Panel");
+    //     panel.classList.add("hiddenIcons");
+    //   }
+    // }
   } catch (error) {
     error.message;
   }

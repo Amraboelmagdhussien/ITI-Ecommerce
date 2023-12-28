@@ -630,11 +630,19 @@ select {
   height: 40px;
 }
 
+.products {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .full-sec .products .product-card-1 {
   border: 1px solid rgba(128, 128, 128, 0.399);
   border-radius: 10px;
   display: flex;
   align-items: center;
+  width: 650px;
+  height: 550px;
 }
 .products .product-card-1 .product-info-1 {
   display: flex;
@@ -702,6 +710,9 @@ select {
 #headerLogout {
   display: None;
 }
+.hiddenIcons {
+  display: none;
+}
 
 #headerLogout {
   border: 0;
@@ -732,4 +743,75 @@ select {
 
 .errorShow i {
   font-size: 190px;
+}
+
+.productCard-1 {
+  display: flex;
+  border: 1px solid black;
+  flex-direction: column;
+  max-width: 300px;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem;
+  border-radius: 15px;
+  gap: 1rem;
+}
+
+.productCard-1 img {
+  width: 150px;
+  height: 150px;
+}
+
+.prod-information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.remove {
+  background: var(
+    --primary-gradient,
+    linear-gradient(180deg, #ff6347 0%, #ff0000 100%)
+  );
+  border-style: none;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  border-radius: 7px;
+  color: white;
+}
+
+.Aprove {
+  background: var(
+    --primary-gradient,
+    linear-gradient(180deg, #127fff 0%, #0067ff 100%)
+  );
+  border-style: none;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  border-radius: 7px;
+  color: white;
+}
+
+.crud button {
+  background-color: #00b517;
+  border-style: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+
+.crud {
+  padding-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.crud button a {
+  text-decoration: none;
+  color: white;
+}
+
+.crud button a:visited {
+  color: white; /* Change this color to the desired visited link color */
 }

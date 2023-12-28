@@ -154,7 +154,7 @@ showPass.addEventListener("mousedown", () => {
 
 function changePass() {
   try {
-    const passwordRegex = /^(?=.[0-9])(?=.[!@#$%^&])[a-zA-Z0-9!@#$%^&]{6,16}$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
     let newVal = document.getElementById("newPassValue").value; // Retrieve new password value
     for (let i = 0; i < parsedProfile.length; i++) {
       if (parsedProfile[i].uName === userData) {
@@ -165,7 +165,9 @@ function changePass() {
             alert("Password updated successfully");
             chngPass.style.display = "none";
           } else {
-            alert("Password Does Not match Condtion");
+            alert(
+              " password must have a minimum of 6 characters, at least one uppercase letter, and at least one number"
+            );
           }
         } else {
           alert("Field Cannot be Empty");
