@@ -1,4 +1,3 @@
-
 function displayCredit(){
     document.getElementById("option1").style.display="block";
     flagSpecial=1;
@@ -17,7 +16,7 @@ if(sessionStorage.getItem("totalprice")!=null){
 }
 
 
-checkoutBtn.innerHTML="Confirm & Pay Your Order"+" => "+displayPrice+" "+"LE";
+checkoutBtn.innerHTML="Confirm & Pay Your Order"+" => "+displayPrice+" $";
 
 var flagNum1=0;
 var flagNum2=0;
@@ -142,7 +141,7 @@ const cardNumInput = getElementById("creditNum");
 const cardTypeImg = getElementById("cardImg");
 
 // Show Image of Card Type
-cardNumInput.addEventListener("blur", function(){
+cardNumInput.addEventListener("change", function(){
     console.log("Event listener success");
     if(cardNumInput.value[0]==4){
         cardTypeImg.src='visa.svg';

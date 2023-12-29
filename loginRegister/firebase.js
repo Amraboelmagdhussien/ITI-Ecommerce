@@ -15,30 +15,29 @@ import {
   signInWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// // Hassan Firebase configuration
-// const firebaseConfig = {
-// const firebaseConfig = {
-//     apiKey: "AIzaSyCc3-wg2QDfafZlvwEA9GfLlnW8mWswET0",
-//     authDomain: "iti-javsascript-r2-python.firebaseapp.com",
-//     databaseURL: "https://iti-javsascript-r2-python-default-rtdb.firebaseio.com",
-//     projectId: "iti-javsascript-r2-python",
-//     storageBucket: "iti-javsascript-r2-python.appspot.com",
-//     messagingSenderId: "1031672503736",
-//     appId: "1:1031672503736:web:d64162faaf749114ec834d",
-//     measurementId: "G-S8C7MPDDKH"
-//     };
-
-// https://firebase.google.com/docs/web/setup#available-libraries
-// Mahmoud Amr Firebase configuration
+// Hassan Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDYDdUx3ZZNAzWL84Ar60fGH7wL_uyd71M",
-  authDomain: "formal-folder-376913.firebaseapp.com",
-  databaseURL: "https://formal-folder-376913-default-rtdb.firebaseio.com",
-  projectId: "formal-folder-376913",
-  storageBucket: "formal-folder-376913.appspot.com",
-  messagingSenderId: "975600999814",
-  appId: "1:975600999814:web:4c0f872050c5c05cc82007",
-};
+    apiKey: "AIzaSyCc3-wg2QDfafZlvwEA9GfLlnW8mWswET0",
+    authDomain: "iti-javsascript-r2-python.firebaseapp.com",
+    databaseURL: "https://iti-javsascript-r2-python-default-rtdb.firebaseio.com",
+    projectId: "iti-javsascript-r2-python",
+    storageBucket: "iti-javsascript-r2-python.appspot.com",
+    messagingSenderId: "1031672503736",
+    appId: "1:1031672503736:web:d64162faaf749114ec834d",
+    measurementId: "G-S8C7MPDDKH"
+    };
+
+// // https://firebase.google.com/docs/web/setup#available-libraries
+// // Mahmoud Amr Firebase configuration
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDYDdUx3ZZNAzWL84Ar60fGH7wL_uyd71M",
+//   authDomain: "formal-folder-376913.firebaseapp.com",
+//   databaseURL: "https://formal-folder-376913-default-rtdb.firebaseio.com",
+//   projectId: "formal-folder-376913",
+//   storageBucket: "formal-folder-376913.appspot.com",
+//   messagingSenderId: "975600999814",
+//   appId: "1:975600999814:web:4c0f872050c5c05cc82007",
+// };
 
 // // Production configuration
 // const firebaseConfig = {
@@ -59,7 +58,7 @@ const db = getDatabase();
 const dbref = ref(db);
 
 // Firebase Auth
-const auth = getAuth();
+const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 // Get Elements (References)
@@ -125,7 +124,7 @@ const loginMail = (evt) => {
               "user-info",
               JSON.stringify(credentials.user)
             );
-            window.location.href = "/home/homepage.html";
+            // window.location.href = "/home/homepage.html";
           }
         }
       );

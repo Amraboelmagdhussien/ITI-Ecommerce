@@ -3,7 +3,7 @@ var displayPrice = 0;
 if (sessionStorage.getItem("totalprice") != null) {
   displayPrice = sessionStorage.getItem("totalprice");
 }
-checkoutBtn.innerHTML = "Confirm Your Order" + "    " + displayPrice + " LE";
+checkoutBtn.innerHTML = "Confirm Your Order" + "    " + displayPrice + " $";
 
 var flagNum1 = 0;
 var flagNum2 = 0;
